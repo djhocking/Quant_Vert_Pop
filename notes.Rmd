@@ -17,6 +17,8 @@ output: pdf_document
 # Topics
 
 * Experimental/Study Design
+* Review (if ecology prerequisite): Linear Regression
+* Mixed Models
 * Intro R
 * Intro GIS (maybe not first year)
 * Detection: Occupancy, Abundance, Mark-Recapture & Different ways to address detection (repeated visits, double-observer, distance, removal/depletion)
@@ -30,6 +32,8 @@ output: pdf_document
 * Book Sections: Bolker, Kery (4 books),
 * Primary Literature
 * Grad vs Undergrad
+
+# Prerequisites: Ecology, Biol200, Math 109, Calc?
 
 
 
