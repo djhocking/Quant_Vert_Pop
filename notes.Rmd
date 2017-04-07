@@ -1,0 +1,36 @@
+---
+title: "Notes"
+author: "Daniel Hocking"
+date: "April 7, 2017"
+output: pdf_document
+---
+
+# Project
+
+* Using existing data
+* Different than any specific published paper
+* BBS, VertNet, MBSS?, Data Dryad, Ecological Archives, Data Papers, Portal, State Fish Data, Data from DNR, EcoRetreiver
+* Choose: standard report format for Fed/DNR or publishable manuscript for science journal
+* Design next experiment?
+
+
+# Topics
+
+* Experimental/Study Design
+* Intro R
+* Intro GIS (maybe not first year)
+* Detection: Occupancy, Abundance, Mark-Recapture & Different ways to address detection (repeated visits, double-observer, distance, removal/depletion)
+* Program Mark
+* Deer or other standard wildlife analyses?
+* PVA
+* Matrix models and IPM
+* Program Mark
+* Fish & other Pop Models: Ricker, Gompertz, Holling
+* Statistical Distributions: Normal, Poison, Binomial, Multinomial
+* Book Sections: Bolker, Kery (4 books),
+* Primary Literature
+* Grad vs Undergrad
+
+
+
+
