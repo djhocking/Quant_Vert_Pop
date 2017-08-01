@@ -1,0 +1,162 @@
+---
+title: "Quantitative Analysis of Vertebrate Populations"
+output:
+  pdf_document: default
+  html_document:
+    toc: false
+    fig_caption: true
+---
+
+### Course Syllabus
+
+<hr>
+
+**Frostburg State University**
+
+**Course Number:** BIOL 414
+
+**Semester:** Fall
+
+**Year:** 2017
+
+### Instructor
+
+**Dr. Daniel Hocking**, Compton 309, [djhocking@frostburg.edu](mailto:djhocking@frostburg.edu), 301-687-4343
+
+### Meeting Times and Locations
+
+**Lecture:** MW 10:00 - 10:50 AM; CCIT 127B
+
+**Laboratory:** F 8:00 - 10:50 AM; CCIT 127B
+
+**Office Hours:** [INSERT DAY TIME]; [INSERT BUILDING RM NUMBER] or by appointment
+
+***
+
+### Description
+
+A survey of quantitative techniques used to describe, analyze and model vertebrate
+population phenomena and interactions among populations.
+
+### Prerequisites
+
+MATH 120 or a course in calculus, MATH 109/209; BIOL 150, 160 or 161
+
+### Learning Objectives
+
+### Text
+
+PDFs from the primary literature and non-required texts will be made available on the course website.
+
+**Required**
+
+Ecology: Concepts and Applications (6th ed.) by Manuel Molles Jr., McGraw Hill, 2013. ISBN #: 978-0-07-353249-3
+
+### Grades:
+
+| Task                            | Points | Grade           |
+|:--------------------------------|--------|--------------------|
+4 Lecture Exams (100 pts each)    |      400   |   A > 90% |
+Lab Practical, comprehensive      |      100    |  B = 80 – 89% |
+Final Exam, comprehensive        |   150      |   C = 70 – 79% |
+9 Lab Reports (20 pts each)       |  180    |     D = 60 – 69% |
+Literature Review Paper            | 100    |     F < 59% |
+Literature Review Presentation       |     50 | |
+**Total possible points**               | **980** | |
+
+Total points and assignments may change to accommodate teaching and learning parameters. Grades are still based on percentage of total points. Grades from individual assignments will be posted on [blackboard](https://frostburg.blackboard.com), **however, the grade calculated by blackboard will likely be incorrect because of differences in weighting of assignments**. It is your responsibility to calculate your current grade based on the grading scheme described above. I will post grades by student ID a few times per semester so that you can check your calculations.
+
+### Lecture Exams and Final Exam
+
+Lecture exams will consist of a mix of multiple choice, short answer, matching, true/false, and essay questions. The essay questions will be used to test your ability to creatively apply the concepts you have learned, interpret information, and solve problems. Lectures strongly reflect material in the textbook, yet not all topics from lecture may be included in the text and not all material in the textbook can be covered during the lecture periods. You are responsible for all information from both the lectures and the textbook for the lecture exams. The final exam will be comprehensive and will include material from both the lecture and laboratory portions of the class.
+
+### Laboratory
+
+Lab handouts that include relevant background information, instructions, and data sheets will be available on [blackboard](https://frostburg.blackboard.com) before each lab. You are responsible for accessing the lab handouts and bringing a copy with you to that week’s lab (if you do not bring the lab with you to class you will lose 3 pts for that lab assignment). Lab reports are worth 20 points each and will be due one week after completion of the corresponding lab activity. Late lab reports will lose 3 points for every day they are late. Lab reports that are more than one week late will not be accepted under any circumstances. At the end of the semester there will be one lab practical that will be comprehensive of the material covered in all previous lab exercises and will be worth 100 points.
+
+**Please note that many of our labs will be conducted at local field sites. These labs will be conducted outside so you are expected to use common sense in deciding what to wear and what to bring. You will get dirty and you will get wet during these labs.** Be prepared to spend 4 hours in areas without restrooms, if you have questions about outdoor restroom etiquette please consult leave-
+no-trace (lnt) principles: [http://www.lnt.org/training/educationaltraining.php](http://www.lnt.org/training/educationaltraining.ph), [http://lnt.org/training/OnlineCourse/](http://lnt.org/training/OnlineCourse/) or ask the instructor if you have specific questions. You must notify the instructor during the first week of class if you are 
+allergic to bees or have never been stung by a bee.  
+
+### Literature Review
+
+The purpose of this exercise is two-fold. First, it is designed to illustrate the problems that a researcher in ecology has when he/she must submit a grant proposal or manuscript for publication. In both of these cases the author must demonstrate that he/she has found and considered all important references to previous work on the subject. Additionally, this assignment will force you to read some of the primary literature to see how actual research is done and presented before it is synthesized by textbooks. Specific instructions will be provided in class.
+
+### Expectation of Student Work
+
+Student work is defined as assignments, homework, and other academic activities to be completed outside of instructional time, including reading, studying, writing, research etc. Students should expect to spend a minimum of two hours per week completing this work for each credit hour enrolled (thus 6 hours of work outside of class for a 3-credit course), although the time spent outside of class may increase based on the topic and level of the course.
+
+### Assessment
+
+Assessment allows instructors to evaluate and improve teaching methods and student learning. It is not the evaluation or grading of individuals. Students will be asked to participate in various assessment methods during the course, including pre- and post-course tests. Results will be used to improve the quality of the course and student learning.
+
+### Course Topics and Schedule
+
+Note: Readings for lecture and lab will be supplemented by the primary literature.
+
+**Lecture**
+
+| Week  | Topics                        | Readings           |
+|:-----:|-------------------------------|--------------------|
+| 1     | Introduction to ecology   | chp 1-2           |
+| 2     | Life on land & water           | chp 2-3        |
+| 3     | Physiology: Temperature & water | chp 5-6           |
+| 4     | Physiology: Energy & nutrients; **Exam 1** | chp 7     |
+| 5 | Population genetics & selection | chp 4, 8 |
+| 6 | Population modeling | chp 8-10 |
+| 7 | Population growth & life histories | chp 11-12 |
+| 8 | Review; **Exam 2**; Competition | chp 13 | 
+| 9 | Spp Interactions, Mutualisms | chp 14-15 |
+| 10 | Diversity & community structure | chp 16-17 |
+| 11 | Energy flow; **Exam 3** | chp 18-19 | 
+| 12 | Nutrient cycling & succession | chp 19-20 |
+| 13 | Landscape ecology & biogeography| chp 21-23 |
+| 14 | Global Ecology; Review; **Exam 4** | chp 23 |
+
+**Lab**
+
+The laboratory schedule is flexible based on previous lab timing and weather. We will often go out in the field during inclement weather as long as it does not result in undue risk of injury. Thus, come to all labs prepared to go out in the field and get wet and dirty. More about the lab schedule will be provided during your lab section.
+
+### Important dates and information
+
+* Friday November 4: last day to withdraw with a “W”
+* Wednesday November 23-Friday November 25: no classes (Thanksgiving Break)
+* Tuesday December 6: Wildlife and Fisheries Assessment Exam
+* Monday December 12: last day of classes
+* Email and Blackboard: access to your email and Blackboard is required for this class.  Check your email daily.
+
+### Attendance
+
+If you miss class, you miss whatever quizzes, exams, or activities that were administered and you will receive a zero.  Attendance is critical to success. Makeup exams are extremely rare, and will likely be a different format from the original exam. However, you will be allowed to make up missed exams if you have a documented, excused absence. Additionally, if the absence was planned, you must notify me before the absence.  
+
+Documented excused absences are generally limited to the following examples: university sanctioned events (field trips, or events where the student is an athlete/performer), funerals (requires an obituary or other proof), or illness/medical emergencies (requires a doctor’s note or other proof). For all of these, documentation must be provided. If a student is participating in extracurricular activities or has an excused absence, I must be notified within one week to arrange makeup assignments.
+
+If you have an unexcused absence, you do not need to contact me. Common examples of unexcused absences are "family emergencies", "car trouble", and "my ride is leaving early this week."  While you may deem these as legitimate excuses, accepting them as excusable absences and allowing students to make up work will only encourage widespread abuse. Makeups of any kind are not allowed for unexcused absences.
+
+### Class Policies
+
+There will be no cell phones on the desk or in lab. There will be no use of laptops unless prior consent is obtained for special circumstances. You may not eat food or use tobacco products including electronic cigarettes in class or labs. Disruptive behavior (using phones, talking, etc.): I will kick you out if I think you are being disruptive.
+
+"The University will not tolerate disorderly or disruptive conduct which substantially threatens, harms, or interferes with university personnel or orderly university processes and functions.  A faculty member may require a student to leave the classroom when his/her behavior disrupts the learning environment of the class.  A student found responsible for disruptive behavior in the classroom may be administratively withdrawn from the course."
+
+**Beacon Early Warning System:** all students should have a network of people who will support them in their educational journey. For that reason, the University uses a system known as Beacon, whereby your instructors and coaches, if applicable, can post notices about your academic behavior. For instance, if you are absent repeatedly from a class or are not completing assignments, your instructor may post a notice on Beacon. That information may be shared with your other instructors and/or your athletic coach. I will be monitoring notices posted on Beacon so that you and I may address any issues before they become obstacles to your academic success.
+
+### CONFIDENTIALITY & MANDATORY REPORTING
+
+Frostburg State University and its faculty are committed to maintaining a safe learning environment and supporting survivors of violence. To meet this commitment and comply with federal and state law, FSU requires all faculty and staff (other than the confidential employees in CAPS and Brady Health) to report any instances of gender-based harassment, sexual misconduct, relationship violence, or stalking against students. This means if you share your or another FSU student’s experience with gender-based harassment, sexual misconduct, relationship violence, or, stalking, I have a duty to report the information to the University’s Title IX Coordinator. The only exception to my reporting obligation is when such incidents are communicated during class discussion, as part of an assignment for a class, or as part of a University-approved research project.
+ 
+Faculty and staff are also obligated to report allegations of child abuse and neglect to University Police and to Child Protective Services. This obligation extends to disclosures of past abuse even if the victim is now an adult and the abuser is deceased. My duty to report suspected child abuse and neglect extends to disclosures that are made as part of classroom discussions and in writing assignments. 
+
+If you or someone you know has experienced an incident of harassment or violence, please go to www.frostburg.edu/titleix to find information on reporting options and the resources and services available for support.
+
+### Academic Honesty
+
+Definition of Academic Dishonesty from your student handbook:  “Academic dishonesty is defined to include any form of cheating and/or plagiarism. Cheating includes, but is not limited to, such acts as stealing or altering testing instruments; falsifying the identity of persons for any academic purpose; offering, giving or receiving unauthorized assistance on an examination, quiz or other written or oral material in a course; or falsifying information on any type of academic record. Plagiarism is the presentation of written or oral material in a manner which conceals the true source of documentary material; or the presentation of materials which uses hypotheses, conclusions, evidence, data or the like, in a way that the student appears to have done work which he/she did not, in fact, do. In cases involving academic dishonesty, a failing grade or a grade of zero (0) for either an assignment and/or a course may be administered. Students who are expelled or suspended for reasons of academic dishonesty are not admissible to other institutions within the University System of Maryland. Suspension or expulsion for academic dishonesty is noted on a student’s academic transcript.” 
+
+**Any violation of academic honesty will result in a zero for that graded work, and a repeat violation will result in failure of the course. Cheating will be reported and further disciplinary action may be pursued by the University Judicial Board** This includes plagiarism. I will check long answers, essays, and lab reports with plagiarism-checking software. When in doubt, just cite the source. There's nothing wrong with building on somone else's ideas, in fact it's the way progress in made in science. Just give that person credit. Even if you get some information from a website, don't cite what the website cited (unless you read that), just cite the website.
+
+### Persons with Disabilities
+
+Frostburg State University is committed to providing equal educational opportunities for students with documented disabilities. Students who require disability serves or reasonable accommodations must identify themselves as having a disability and provide current diagnostic documentation to Disability Support Services. All information is confidential. Please call x4483 or visit 150 Pullen Hall 
+for more information.
+
