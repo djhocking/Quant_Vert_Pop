@@ -1,0 +1,22 @@
+---
+title: "Project: Analysis of Existing Data"
+author: "Daniel Hocking"
+date: "8/13/2017"
+output: pdf_document
+---
+
+## Objectives
+
+## Instructions
+
+* Using existing data
+* Different than any specific published paper
+* BBS, VertNet, MBSS?, Data Dryad, Ecological Archives, Data Papers, Portal, State Fish Data, Data from DNR, EcoRetreiver
+* Choose: standard report format for Fed/DNR or publishable manuscript for science journal
+* Design next experiment?
+
+## Grading
+
+Rubric?
+
+

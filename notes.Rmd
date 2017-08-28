@@ -28,6 +28,7 @@ output: pdf_document
 * Matrix models and IPM
 * Program Mark
 * Fish & other Pop Models: Ricker, Gompertz, Holling
+* Metapopulations
 * Statistical Distributions: Normal, Poison, Binomial, Multinomial
 * Book Sections: Bolker, Kery (4 books),
 * Primary Literature
@@ -35,6 +36,10 @@ output: pdf_document
 
 # Prerequisites: Ecology, Biol200, Math 109, Calc?
 
+# Grad Students
+
+* Presentation and course materials for rest of the class
+* Analysis in R of something undergrads have to understand but not do
 
 
 

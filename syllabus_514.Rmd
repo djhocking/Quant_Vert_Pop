@@ -7,13 +7,13 @@ output:
     fig_caption: true
 ---
 
-### Course Syllabus
+### Course Syllabus - Graduate Students
 
 <hr>
 
 **Frostburg State University**
 
-**Course Number:** BIOL 414
+**Course Number:** BIOL 514
 
 **Semester:** Fall
 
@@ -62,9 +62,9 @@ PDFs from the primary literature and non-required texts will be made available o
 Homework assignments     |      200    |  B = 80 – 89% |
 Final Exam, comprehensive        |   150      |   C = 70 – 79% |
 Attendance & class activities       |  100    |     D = 60 – 69% |
-           |     |     F < 59% |
+Graduate student assignments           |  100   |     F < 59% |
       |      | |
-**Total possible points**               | **650** | |
+**Total possible points**               | **750** | |
 
 Total points and assignments may change to accommodate teaching and learning objectives. Grades are still based on percentage of total points. Grades from individual assignments will be posted on [blackboard](https://frostburg.blackboard.com), **however, the grade calculated by blackboard will likely be incorrect because of differences in weighting of assignments**. It is your responsibility to calculate your current grade based on the grading scheme described above.
 
@@ -95,6 +95,9 @@ The schedule will adjust based on the previous experience of students in the the
 11. Population Viability Analysis
 12. Population genetics
 
+### Graduate student assignments
+
+Graduate students will have 1-2 additional assignments worth a total of 100 points. These assignments are to be determined but may involve conducting additional analyses and presenting the results, teaching a topic during a lecture, designing a class homework assignment, or leading a field trip.
 
 ### Important dates and information
 
