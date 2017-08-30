@@ -59,12 +59,12 @@ PDFs from the primary literature and non-required texts will be made available o
 | Task                            | Points | Grade           |
 |:--------------------------------|--------|--------------------|
 2 Exams (100 pts each)    |      200   |   A > 90% |
-Homework assignments     |      200    |  B = 80 – 89% |
+Homework assignments     |      100    |  B = 80 – 89% |
 Final Exam, comprehensive        |   150      |   C = 70 – 79% |
 Attendance & class activities       |  100    |     D = 60 – 69% |
 Graduate student assignments           |  100   |     F < 59% |
       |      | |
-**Total possible points**               | **750** | |
+**Total possible points**               | **650** | |
 
 Total points and assignments may change to accommodate teaching and learning objectives. Grades are still based on percentage of total points. Grades from individual assignments will be posted on [blackboard](https://frostburg.blackboard.com), **however, the grade calculated by blackboard will likely be incorrect because of differences in weighting of assignments**. It is your responsibility to calculate your current grade based on the grading scheme described above.
 
@@ -101,7 +101,7 @@ Graduate students will have 1-2 additional assignments worth a total of 100 poin
 
 ### Important dates and information
 
-* November 3: last day to withdraw with a “W”
+* November 3: last day to withdraw with a "W"
 * November 22 - 26: no classes (Thanksgiving Break)
 * December 11: last day of classes
 * Email and Blackboard: access to your email and Blackboard is required for this class. Check your email daily.
