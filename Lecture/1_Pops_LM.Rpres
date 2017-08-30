@@ -157,6 +157,76 @@ hist(sample, col = "grey", main = "mean = 600, sd = 30")
 ```
 
 
+Putting it together: fitting a line
+========================================================
+
+$y_i = \beta_0 + \beta_1 X + \epsilon_i$
+
+Deterministic:
+
+* Intercept: $\beta_0 = 1$
+* Slope: $\beta_1 = 2$
+* Sample from -10 to 10 m at 1 m intervals [$X = (-10, -9, ... 9, 10)$]
+
+```{r line_1, echo=FALSE}
+library(ggplot2)
+x1 <- seq(-10, 10, 1)
+line <- 1 + 2 * x1
+eps <- rnorm(21, 0, 4)
+y <- line + eps
+df <- data.frame(line, y, x1, eps)
+g1 <- ggplot(data = df, aes(x1, line)) + geom_line() + ylab("Y")
+g1
+```
+
+Putting it together: fitting a line
+========================================================
+
+$y_i = \beta_0 + \beta_1 X + \epsilon_i$
+
+Stochastic:
+
+* $\epsilon_i \sim \mathcal{N}(\mu, \sigma)$
+* $\mu = 0$
+* $\sigma = 4$
+
+```{r error_1, echo=FALSE}
+
+g1 + geom_point(aes(x1, y), colour = "blue")
+
+```
+
+
+Model assumptions
+========================================================
+
+## ???
+
+Model assumptions
+========================================================
+
+* Linearity
+* Homogeneity of variance (Homoscedasticity)
+* Normally distributed error
+* Minimal multicollinearity (if multiple $X$)
+* Independence of observations (no autocorrelation)
+
+
+Model assumptions
+========================================================
+
+![Error distributions](1_Pops_LM-figure/resid-plots.png)
+
+
+Our residual plot
+========================================================
+
+```{r resid-plot-1, echo=FALSE}
+
+ggplot(data = df, aes(y, eps)) + geom_point() + geom_hline(yintercept = 0, colour = "red")
+```
+
+
 Other data and distributions?
 ========================================================
 
@@ -166,6 +236,8 @@ Other data and distributions?
 ========================================================
 
 More next week
+
+Much of this semester will be examining all the ways vertebrate data violate the assumptions and what we can do about it
 
 You can bring your laptop to lab if you'd rather use that than the computers in the room.
 
