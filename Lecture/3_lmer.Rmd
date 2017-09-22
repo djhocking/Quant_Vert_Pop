@@ -2,6 +2,7 @@
 title: "Linear Mixed-Effects Models"
 author: "Quantitative Analysis of Vertebrate Populations"
 output:
+  pdf_document: default
   beamer_presentation: default
   ioslides_presentation:
     css: styles.css
@@ -77,7 +78,7 @@ hist(length, col = "grey")
 
 ```{r}
 Xmat <- model.matrix(~pop*length-1-length)
-print(Xmat[1:21,], dig = 2) 		# Print top 21 rows
+print(Xmat[1:5, 1:5], dig = 2) 		# Print 5 rows and columns
 ```
 
 ## Choose parameter values
