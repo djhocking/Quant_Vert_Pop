@@ -21,4 +21,4 @@ output: pdf_document
 
 ## 8. Run a linear regression and print the summary table.
 
-## 9. Are the linear model assumptions met and how do you know (Hint: make diagnostic plots using `plot(Model_Name)` and interpret the output. You won't lose points if you correctly explain the plots even if I disagree with your judgement on whether things are normal or homogenous enough).
+## 9. Are the linear model assumptions met and how do you know (Hint: make diagnostic plots using `plot(Model_Name)` and interpret the output. You won't lose points if you correctly explain the plots even if I disagree with your judgement on whether things are normal or homogenous enough.

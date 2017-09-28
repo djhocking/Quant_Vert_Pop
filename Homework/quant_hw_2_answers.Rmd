@@ -1,0 +1,98 @@
+---
+title: "Quant Homework 2"
+author: "Your_Name_Here"
+output: pdf_document
+---
+
+## 1. Using the `iris` data, make a new dataframe called `iris_petal` with just the petal length and width columns.
+
+```{r}
+
+iris_petal <- iris[ , c("Petal.Length", "Petal.Width")]
+str(iris_petal)
+
+```
+
+Note that depending on the order you add `Petal.Length` and `Petal.Width` will change the order of the columns. This can be useful but it also hints at a challenge or confusion that can arise from using column numbers to select columns (e.g. `iris[ , 3:4]`).
+
+
+## 2. Now add a new column to `iris_petal` called `Random` filled with normally distributed random numbers.
+
+```{r}
+
+iris_petal$Random <- rnorm(n = ncol(iris_petal), mean = 0, sd = 3)
+
+```
+
+## 3. Display the first 15 rows of the `iris_petal` dataframe.
+
+```{r}
+
+iris_petal[1:15, ]
+
+```
+
+## 4. Print a summary of the `iris_petal` dataframe.
+
+```{r}
+
+summary(iris_petal)
+
+```
+
+## 5. Select just the values of `Petal.Length` greater than the mean petal length. Then print the new summary.
+
+```{r}
+pl_mean <- mean(iris_petal$Petal.Length)
+
+pl_big <- iris_petal[which(iris_petal$Petal.Length > pl_mean), ]
+
+summary(pl_big)
+
+```
+
+
+## 6. Read a file into R and save the dataframe as an object. Be sure to use `stringsAsFactors = FALSE`. 
+
+```{r}
+
+seals <- read.table("Data/Seals.txt", header = TRUE, stringsAsFactors = FALSE)
+str(seals)
+
+```
+
+
+
+## 7. Make a scatterplot matrix of three variables from the new dataframe.
+
+```{r}
+
+pairs(seals[ , c("Abun", "Timeofday", "Windspeed")])
+
+```
+
+## 8. Run a linear regression and print the summary table.
+
+
+```{r}
+
+lm_seals <- lm(Abun ~ Timeofday, data = seals)
+summary(lm_seals)
+
+```
+
+## 9. Are the linear model assumptions met and how do you know (Hint: make diagnostic plots using `plot(Model_Name)` and interpret the output. You won't lose points if you correctly explain the plots even if I disagree with your judgement on whether things are normal or homogenous enough.
+
+```{r}
+
+plot(lm_seals)
+
+```
+
+There is no evidence of strong patterning in the residuals plot or in the standardized residuals plot. The QQ-plot shows evidence of normality and there are no clear outliers identified by Cook's distance. As such, there seems to be a good match between the data and the model (this is probably not true since there is likely some problems of independence in the experimental design that needs to be accounted for but it's not apparent from these plots).
+
+
+
+
+
+

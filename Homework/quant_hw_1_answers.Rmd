@@ -1,0 +1,162 @@
+---
+title: "Homework 1: R Introduction"
+author: "Answer Key"
+output: pdf_document
+---
+
+*Adapted from University of Tennessee Biometry course by Dr. Jim Fordyce*
+
+Turn in via blackboard next Friday by the end of the day. please title the document **hw1_yourlastname_yourfirstname**. Ideally it will be a PDF file generated from knitting an RMarkdown document.
+
+
+## 1. Assign to a vector called X the values 1,3,5,6,7, and 9. Assign to a vector called Y the values 2,7,4,5,2 and 12.
+
+```{r q1}
+
+X <- c(1, 3, 5, 6, 7, 9)
+Y <- c(2, 7, 4, 5, 2, 12)
+
+```
+
+ 
+## 2. Combine the two vectors together as one large vector called Z.
+
+```{r q2}
+
+Z <- c(X, Y)
+
+```
+
+
+## 3. Create a new vector that includes all the values in Z that are less than 6.
+
+```{r q3}
+
+Z_small <- Z[which(Z < 6)]
+
+```
+
+
+## 4. Using R functions, calculate the mean of Z.
+
+```{r q4}
+
+mean(Z)
+
+```
+
+
+## 5. Create an matrix where the columns are X and Y. Assign this matrix to an object called mat1.
+
+```{r q5}
+
+mat1 <- cbind(X, Y)
+
+# alternate solution
+mat1b <- matrix(c(X, Y), nrow = length(X), ncol = 2, byrow = FALSE)
+
+```
+
+## 6. Using the R function `rowSums`, calculate the sum of each row.
+
+```{r q6}
+
+rowSums(mat1)
+
+```
+
+
+## 7. Calculate the mean of the rows of mat1 and add this as a third column.
+
+```{r q7}
+
+means <- rowMeans(mat1)
+
+mat1 <- cbind(mat1, means)
+
+mat1
+
+```
+
+
+## 8. Extract the value of mat1 at the second row and first column.
+
+```{r q8}
+
+mat1[2, 1]
+
+```
+
+
+## 9. Write mat1 to a .csv file.
+
+For my code to work you will have to have a folder called `Output` in your working directory.
+
+```{r q9}
+
+write.csv(mat1, file = "Output/hw1_mat.csv", row.names = FALSE)
+
+```
+
+
+## 10. Read the .csv file and assign it to an object called mat_new.
+
+```{r q10}
+
+mat_new <- read.csv(file = "Output/hw1_mat.csv")
+
+```
+
+
+## 11 Show that the third number in the first column of `mat_new` is equal to the fourth number in the second column.
+
+```{r q11}
+
+mat_new[3, 1] == mat_new[4, 2]
+
+```
+
+If this is not true, check that you set `row.names = FALSE` when writing out the object. Otherwise when reading it back in the first column will be the row numbers.
+
+## 12 Make 'mat1' a data frame.
+
+```{r q12}
+
+mat1 <- as.data.frame(mat1)
+
+```
+
+
+## 13 Using R functions, calculate the length of X.
+
+```{r q13}
+
+length(X)
+
+```
+
+
+## 14 Assign the name "mean" to the third column of mat1.
+
+```{r q14}
+
+colnames(mat1)[3] <- "mean"
+
+names(mat1)
+
+```
+
+
+## 15 Create a sequence of numbers from -10 to 10 with intevals of 0.5 using R functions. Assign it to an object and calculate the sum of the values.
+
+```{r q15}
+
+q15 <- seq(-10, 10, by = 0.5)
+
+sum(q15)
+
+```
+
+
+
+
