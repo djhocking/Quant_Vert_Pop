@@ -1,0 +1,102 @@
+---
+title: "Extracting Information from Regression Objects"
+author: "Quantitative Analysis of Vertebrate Populations"
+output:
+  pdf_document: default
+  ioslides_presentation:
+    css: style.css
+  beamer_presentation: default
+  slidy_presentation: default
+---
+
+
+## Get the data
+
+```{r}
+sally <- read.table("Data/Salamander_Demographics.csv", header = TRUE, stringsAsFactors = FALSE, sep = ",")
+str(sally)
+```
+
+## Run a regression
+
+Using the Salamander Demographic Data run a regression of the affect of svl on mass
+
+```{r}
+library(lme4)
+lme1 <- lmer(mass ~ 1 + svl + (1 | plot), data = sally)
+summary(lme1)
+```
+
+## Examine object and summary object
+
+```{r}
+str(lme1)
+```
+
+
+## Examine object and summary object
+
+```{r}
+lme1_sum <- summary(lme1)
+lme1_sum
+str(lme1_sum)
+```
+
+
+## Get Fitted and Residuals and Plot
+
+```{r}
+lme1_resids <- lme1_sum$residuals # or resid(lme1)
+lme1_fits <- fitted(lme1)
+par(mfrow = c(1, 2))
+hist(lme1_resids)
+plot(lme1_fits, lme1_resids)
+abline(h = 0, col = "red")
+par(mfrow = c(1,1))
+```
+
+
+## Get random effects
+
+```{r}
+lme1_ints <- ranef(lme1)
+lme1_ints
+mean(lme1_ints$plot[[1]]) # should approximate 0
+```
+
+## Get Coefficients
+
+```{r}
+coef(lme1)
+fixef(lme1)
+```
+
+## Plot Random Effects
+
+```{r}
+Intercepts <- fixef(lme1)[1] + lme1_ints$plot[[1]]
+Slope <- fixef(lme1)[2]
+X <- seq(0, 60)
+overall_intercept <- fixef(lme1)[1]
+fit_line <- overall_intercept + Slope * X 
+plot(X, fit_line, type = "l", lwd = 2, xlab = "SVL (mm)", ylab = "Mass (g)",
+     xlim = c(30, 35),
+     ylim = c(0.35, 0.6))
+for(i in 1:length(Intercepts)) {
+  rand_line <- Intercepts[i] + Slope * X
+  lines(X, rand_line, col = "blue", lwd = 1)
+}
+lines(X, fit_line, lwd = 3)
+```
+
+
+
+
+
+
+
+
+
+
+
+

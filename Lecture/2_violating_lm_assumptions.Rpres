@@ -143,8 +143,44 @@ plot(Clams$fMONTH, E, xlab = "Month", ylab = "Residuals")
 par(op)
 ```
 
-Better. Linear but still a problem of heterogeneity with Month.
+Better. Linear but still a problem of heterogeneity with Month. (solution is to allow variance to vary by month)
 
 
+Case Study 2: Moby's Teeth 
+========================================================
+
+
+Isotope ratios in teeth of standed whales. We expect $\delta^{15}N$ to increase with age.
+
+$y_i = 11.7 + 0.113 x age_i + \epsilon_i$
+
+$\sigma = 0.485$
+
+89% of the variance explained by the model
+
+***
+
+```{r whale-1, echo = FALSE}
+
+teeth <- read.table("Data/ZuurDataMixedModelling/TeethNitrogen.txt", header = TRUE)
+
+lm_teeth1 <- lm(X15N ~ Age, subset = (teeth$Tooth == "Moby"), data = teeth)
+
+summary(lm_teeth1)
+```
+
+
+Case Study 2: Moby's Teeth 
+========================================================
+
+**Check assumptions**
+
+```{r whale-assumptions, echo = FALSE}
+op <- par(mfrow = c(2,2), mar = c(5, 4, 1, 2))
+plot(lm_teeth1, add.smooth = FALSE)
+par(op)
+```
+
+Violation of independence. We shouldn't draw inference from the model. Solution will be to model the variance, likely with an autoregressive (AR1) function.
 
 

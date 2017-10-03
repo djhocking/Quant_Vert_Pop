@@ -29,10 +29,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Probability Theory
 
-1. If two events are mutually exclusive then the prob that either occurs (prob of A or B: $Prob(A \bigcup B)$) is sum of the individual probabilities:
+1. If two events are mutually exclusive then the prob that either occurs (prob of A or B: $Prob(A \cup B)$) is sum of the individual probabilities:
 
 $$
-Prob(male \bigcup female) = Prob(male) + Prob(female)
+Prob(male \cup female) = Prob(male) + Prob(female)
 $$
 
 $$
@@ -41,10 +41,10 @@ $$
 
 ## Probability Theory
 
-2. If two events, $A$ and $B$ are not mutually exclusive - the *joint probability* that they occur together, $Prob(A \bigcap B)$ is greater than zero - and we have to account for double-counting
+2. If two events, $A$ and $B$ are not mutually exclusive - the *joint probability* that they occur together, $Prob(A \cap B)$ is greater than zero - and we have to account for double-counting
 
 $$
-Prob(A \bigcup B) = Prob(A) + Prob(B) - Prob(A \bigcap B)
+Prob(A \cup B) = Prob(A) + Prob(B) - Prob(A \cap B)
 $$
 
 For example Prob(blue or male) = Prob(blue) + Prob(male) - Prob(blue male)
@@ -61,7 +61,7 @@ Prob(male) + Prob(female) = 1
 4. The *conditional probability* of $A$ given $B$, $Prob(A|B)$, is the probability that $A$ happens if we know or assume $B$ happens
 
 $$
-Prob(A|B) = \frac{Prob(A \bigcap B)}{Prob(B)}
+Prob(A|B) = \frac{Prob(A \cap B)}{Prob(B)}
 $$
 
 ## Probability Theory
@@ -69,7 +69,7 @@ $$
 5. If the conditional probability of $A$ given $B$ equals the unconditional probability of $A$, then $A$ is independent of $B$ so
 
 $$
-Prob(A \bigcap B) = Prob(A) Prob(B)
+Prob(A \cap B) = Prob(A) Prob(B)
 $$
 
 We will refer back to these rules to understand probabilities and stochastic processes later.
