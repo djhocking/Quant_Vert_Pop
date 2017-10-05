@@ -90,7 +90,11 @@ lines(X, fit_line, lwd = 3)
 ```
 
 
+## Exercise
 
+* Simulate data with random slopes and intercepts
+* Run a linear mixed model on the data
+* Plot the expected lines for each group
 
 
 
