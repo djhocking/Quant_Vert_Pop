@@ -395,8 +395,13 @@ More impressively, the lattice package can automatically plot a barplot of a thr
  > barchart(log10(1 + table(available, Species, taken)), stack = FALSE, 
 +     auto.key = TRUE)
  
-Exercise 5*: Restricting your analysis to only the observations with 5 seeds available, create a barplot showing the distribution of number of seeds taken broken down by species. Hints: you can create a new data set that includes only the appropriate rows by using row indexing, then attach() it.
-2.3  Barplot with error bars
+## Exercise 5: 
+
+Restricting your analysis to only the observations with 5 seeds available, create a barplot showing the distribution of number of seeds taken broken down by species. 
+
+Hints: you can create a new data set that includes only the appropriate rows by using row indexing, then attach() it.
+
+## 2.3  Barplot with error bars
 
 Computing the fraction taken:
  > frac_taken = taken/available
@@ -418,7 +423,8 @@ I'll actually use a variant of barplot(), barplot2() (from the gplots package, w
 +     ci.u = upper_lim, xlab = "Number available", ylab = "Mean number taken")
  
 I specified that I wanted error bars plotted (plot.ci=TRUE) and the lower (ci.l) and upper (ci.u) limits.
-2.4  Histograms by species
+
+## 2.4  Histograms by species
 
 All I had to do to get the lattice package to plot the histogram by species was:
  > histogram(~frac_taken | Species, xlab = "Fraction taken")
@@ -439,10 +445,11 @@ par(op) will restore the previous graphics parameters.
 It's a bit harder to get the species names plotted on the graphs: it is technically possible to use mapply() to do this, but then we've reinvented most of the wheels used in the lattice version ...
 Plots in this section: scatterplot (plot() or xyplot()) bubble plot (sizeplot()), barplot (barplot() or barchart() or barplot2()), histogram (hist() or histogram()).
 Data manipulation: reshape(), stack()/unstack(), table(), split(), lapply(), sapply()
-3  Measles data
+
+## 3  Measles data
 
 I'm going to clear the workspace (rm(list=ls()) lists all the objects in the workspace with ls() and then uses rm() to remove them: you can also Clear workspace from the menu) and read in the measles data, which are space-separated and have a header:
- > detach(data)
+ > detach(df)
 > rm(list = ls())
 > data = read.table("ewcitmeas.dat", header = TRUE, na.strings = "*")
 > attach(data)
@@ -457,7 +464,7 @@ Later on it will be useful to have the data in long format. It's easiest to do u
 +     v.name = "incidence", drop = c("day", "mon", "year"), times = factor(city_names), 
 +     timevar = "city")
  
-3.1  Multiple-line plots
+## 3.1  Multiple-line plots
 
 matplot() (matrix plot), which plots several different numeric variables on a common vertical axis, is most useful when we have a wide format (otherwise it wouldn't make sense to plot multiple columns on the same scale). I'll plot columns 4 through 10, which represent the incidence data, against the date, and I'll tell R to use lines (type="l"), and to plot all lines in different colors with different line types (the colors aren't very useful since I have set them to different gray scales for printing purposes, but the example should at least give you the concept). I also have to tell it not to put on any axes, because R won't automatically plot a date axis. Instead, I'll use the axis() and axis.Date() commands to add appropriate axes to the left (side=2) and bottom (side=1) sides of the plot, and then use box() to draw a frame around the plot. I've used abline() to add vertical lines (v=) to the plot every two years, and also on 1 January 1968 (approximately when mass vaccination against measles began in the UK). You can also use abline() to add horizontal lines (h=); or lines with intercepts (a=) and slopes (b=). (I use seq.Date(), a special command to create a sequence of dates, to define the beginning of biennial periods.) legend() puts a legend on the plot; I set the line width (lwd to 2 so you could actually see the different colors. Here are the commands:
  > matplot(date, data[, 4:10], type = "l", col = 1:7, lty = 1:7, 
@@ -479,7 +486,8 @@ I could use the long-format data set and the lattice package to do this more eas
  
 To plot each city in its own subplot, use the formula incidence~date|city and omit the groups argument.
 You can also draw any of these plots with different kinds of symbols ("l" for lines, "p" for points (default): see ?plot for other options).
-3.2  Histogram and density plots
+
+## 3.2  Histogram and density plots
 
 I'll start by just collapsing all the incidence data into a single, logged, non-NA vector (in this case I have to use c(as.matrix(x)) to collapse the data and remove all of the data frame information):
  > allvals = na.omit(c(as.matrix(data[, 4:10])))
@@ -503,14 +511,18 @@ By now the legend() command should be reasonably self-explanatory:
  > legend(x = 2.1, y = 0.62, legend = c("density, default", "density, adjust=0.5", 
 +     "normal"), lwd = 2, lty = c(1, 2, 3))
  
-3.3  Scaling data
+## 3.3  Scaling data
 
 Scaling the incidence in each city by the population size, or by the mean or maximum incidence in that city, begins to get us into some non-trivial data manipulation. This process may actually be easier in the wide format. Several useful commands:
 rowMeans(), rowSums(), colMeans(), and colSums() will compute the means or sums of columns efficiently. In this case we would do something like colMeans(data[,4:10]) to get the mean incidence for each city.
 apply() is the more general command for running some command on each of a set of rows or columns. When you look at the help for apply() you'll see an argument called MARGIN, which specifies whether you want to operate on rows (1) or columns (2). For example, apply(data[,4:10],1,mean) is the equivalent of rowMeans(data[,4:10]), but we can also easily say (e.g.) apply(data[,4:10],1,max) to get the maxima instead. Later, when you've gotten practice defining your own functions, you can apply any function - not just R's built-in functions.
 scale() is a function for subtracting and dividing specified amounts out of the columns of a matrix. It is fairly flexible: scale(x,center=TRUE,scale=TRUE) will center by subtracting the means and then scale by dividing by the standard errors of the columns. Fairly obviously, setting either to FALSE will turn off that part of the operation. You can also specify a vector for either center or scale, in which case scale() will subtract or divide the columns by those vectors instead. Exercise 6*: figure out how to use apply() and scale() to scale all columns so they have a minimum of 0 and a maximum of 1 (hint: subtract the minimum and divide by (max-min)).
 sweep() is more general than scale; it will operate on either rows or columns (depending on the MARGIN argument), and it will use any operator (typically "-", "/", etc. - arithmetic symbols must be in quotes) rather than just subtracting or dividing. For example, sweep(x,1,rowSums(x),"/") will divide the rows (1) of x by their sums. 
-Exercise 7: figure out how to use a call to sweep() to do the same thing as scale(x,center=TRUE,scale=FALSE).
+
+## Exercise 7: 
+
+figure out how to use a call to sweep() to do the same thing as scale(x,center=TRUE,scale=FALSE).
+
 So, if I want to divide each city's incidence by its mean (allowing for adding 1) and take logs:
  > logscaledat = as.data.frame(log10(scale(1 + data[, 4:10], center = FALSE, 
 +     scale = colMeans(1 + data[, 4:10], na.rm = TRUE))))
@@ -522,8 +534,13 @@ You can also scale the data while they are in long format, but you have to think
 Now you can use vector indexing to scale each incidence value by the appropriate mean value - city_means[data_long$city] does the trick. (Why?)
  > scdat <- (1 + data_long$incidence)/city_means[data_long$city]
  
-Exercise 8*: figure out how to scale the long-format data to minima of zero and maxima of 1.
-Plotting  
+## Exercise 8*: 
+
+figure out how to scale the long-format data to minima of zero and maxima of 1.
+
+
+## Plotting  
+
 Here are (approximately) the commands I used to plot the scaled data.
 First, I ask R to set up the graph by plotting the first column, but without actually putting any lines on the plot (type="n"):
  > plot(density(na.omit(logscaledat[, 1])), type = "n", main = "", 
@@ -562,7 +579,8 @@ Of course, I can do this with the lattice package as well. If I want violin plot
  
 Plots in this section: multiple-groups plot (matplot() or xyplot(...,groups), box-and-whisker plot (boxplot() or bwplot()), density plot (plot(density()) or lines(density()) or densityplot()), violin plot (panel.violin())
 Data manipulation: row/colMeans(), row/colSums(), sweep(), scale(), apply(), mapply()
-4  Continuous data
+
+## 4  Continuous data
 
 First let's make sure the earthquake data are accessible:
  > data(quakes)
@@ -608,7 +626,11 @@ Now I can just use lines() to add these values to the graph, and add a legend:
 +     3, 1, 2), col = c(rep("black", 3), rep("gray", 2)))
  
 Plots in this section: scatterplot matrix (pairs(), splom()), conditioning plot (coplot()), spline (smooth.spline() and locally weighted (lowess()) smoothing
-Exercise 9*: generate three new plots based on one of the data sets in this lab, or on your own data.
+
+
+## Exercise 9*: 
+
+generate three new plots based on one of the data sets in this lab, or on your own data.
 
 
 File translated from TEX by TTH, version 3.67.
