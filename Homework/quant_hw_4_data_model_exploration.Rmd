@@ -1,0 +1,18 @@
+---
+title: "Homework 4: Mixed Models and Data Exploration"
+author: "Your_Name_Here"
+output: pdf_document
+---
+
+Turn in via blackboard next Monday by the end of the day. please title the document **hw4_yourlastname_yourfirstname**. Ideally it will be a PDF file generated from knitting an RMarkdown document.
+
+## 1. The package `tidyr` can also be used to reshape and organize data. Load the `tidyr` package. Look up the help menu for the functions `spread()` and `gather()`. The help documentation isn't very good, so doing a web search for a tutorial is likely the easiest option. Try these functions to go back and forth between long and wide format using the data `d` as we did with reshape during lab.
+
+
+## 2. Install and load the package `lubridate`. There is a great tutorial at [https://rpubs.com/davoodastaraky/lubridate](https://rpubs.com/davoodastaraky/lubridate). Use it to get today's date. Convert it from year-month-day format to the more familiar US format of month-day-year.
+
+
+## 3. Use any dataset you want and make one histogram and one boxplot and print them side by side (hint: use the `par(mfrow = )` function.)
+
+
+## 4. Use a linear mixed model to examine the effects of NAP on species richness with a random intercept for beach (from homework 3). Now use the regression equation and independent data along with the model coefficients, beach-specific random effects, and residuals to exactly recreate the original dependent data.

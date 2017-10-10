@@ -1,0 +1,41 @@
+---
+title: "Homework 3: Linear Mixed Models"
+author: "Your_Name_Here"
+output: pdf_document
+---
+
+Turn in via blackboard next Friday by the end of the day. please title the document **hw3_yourlastname_yourfirstname**. Ideally it will be a PDF file generated from knitting an RMarkdown document.
+
+In this lab you will be working with the RIKZ data (Zuur et al. 2007). They are data on the macrofauna species richness from five sites at each of nine beaches. The authors were interested in how  species richness is affected by exposure and NAP (height of sampling station relative to mean tidal level). However, they likely have to account for the potential correlation of data from sites collected at the same beach.
+
+
+## 1. Read in the RIKZ data from blackboard using `read.table` since it's a text file and not a csv. Assign it to an object and examine the structure of the object. How many rows and columns are there?
+
+
+## 2. Use a linear regression to examine the effects of NAP on species richness. 
+
+
+## 3. Check if the model assumptions fit the data. Describe the results.
+
+
+## 4. Analyze the same patterns, this time using a linear mixed effects model with a random intercept for beach. Check the model assumptions including homogenity by group (beach).
+
+
+## 5. Run a third model using a random intercept and random effect of beach on NAP (random slope). Check the model assumptions including homogenity by group (beach).
+
+
+## 6. Which model would you use and why?
+
+
+## 7. Describe the results of this model.
+
+
+
+
+
+ 
+
+
+
+
+

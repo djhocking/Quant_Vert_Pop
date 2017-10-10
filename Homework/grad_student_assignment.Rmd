@@ -1,0 +1,16 @@
+---
+title: "Graudate Homework: Mini-Power Analysis"
+author: "Your_Name_Here"
+output: pdf_document
+---
+
+## Graduate Student Assignment
+
+* Design/Describe a study involving vertebrate populations
+* Describe potential areas of correlation due to study design, spatial/temporal autocorrelation, and animal behavior.
+* Describe sources of variation
+* Simulate these data using both deterministic and stochastic processes.
+* Simulate *at least* two more datasets with higher or lower variability in at least one process.
+* **OR** hold the variance constant but vary the sampling effort (number or area and or frequency of sampling)
+* Analyze these datasets using an appropriate statistical method
+* Compare and describe the results
