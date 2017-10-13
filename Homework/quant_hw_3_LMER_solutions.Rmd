@@ -11,27 +11,62 @@ In this lab you will be working with the RIKZ data (Zuur et al. 2007). They are 
 
 ## 1. Read in the RIKZ data from blackboard using `read.table` since it's a text file and not a csv. Assign it to an object and examine the structure of the object. How many rows and columns are there?
 
+```{r}
+df <- read.table(file = "Data/RIKZ.txt", header = TRUE, stringsAsFactors = FALSE)
+str(df)
+ncol(df)
+nrow(df)
+```
+
+45 rows and 5 columns
+
 
 ## 2. Use a linear regression to examine the effects of NAP on species richness. 
 
+```{r}
+lm1 <- lm(Richness ~ NAP, data = df)
+summary(lm1)
+```
 
 ## 3. Check if the model assumptions fit the data. Describe the results.
 
+```{r}
+plot(lm1)
+```
+
+Heterogeneity of residuals with increasing variance with larger values. Also some potential patterning in the residuals. Significant violations of normality based on the QQplot. I would not use this model with these data.
 
 ## 4. Analyze the same patterns, this time using a linear mixed effects model with a random intercept for beach. Check the model assumptions including homogenity by group (beach).
 
+```{r}
+library(lme4)
+lme1 <- lmer(Richness ~ 1 + NAP + (1 | Beach), data = df)
+# par(mfrow = c(1,2))
+plot(lme1)
+
+boxplot(resid(lme1) ~ df$Beach)
+# par(mfrow = c(1,1))
+```
 
 ## 5. Run a third model using a random intercept and random effect of beach on NAP (random slope). Check the model assumptions including homogenity by group (beach).
 
+```{r}
+lme2 <- lmer(Richness ~ 1 + NAP + (1 + NAP | Beach), data = df)
+plot(lme2)
+boxplot(resid(lme2) ~ df$Beach)
+```
 
 ## 6. Which model would you use and why?
 
+I would use the random intercepts and slopes model of these options but there still might be some heterogeneity of variance in the residuals and I would explore other models for these data.
 
 ## 7. Describe the results of this model.
 
+```{r}
+summary(lme2)
+```
 
-
-
+Richness decreases with increasing NAP but this affect varies modestly among beaches based on the random slope SD. There is large variation in richness among beaches (SD = 3.5) not explained by the deterministic part of the model (NAP).
 
  
 

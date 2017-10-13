@@ -9,7 +9,7 @@ output:
   slidy_presentation: default
 ---
 
-## Generalize Linear Model
+## Generalized Linear Model
 
 Example with a Poisson distribution for count data. **Why do we use Poisson for counts?**
 

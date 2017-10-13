@@ -297,7 +297,7 @@ We get better parameter estimates as we increase the amount of information/data.
 
 ## Binomial Examples 
 
-For you all. Start by making binomial distibutions in R with 10 trials but with p = 0.1, 0.5, and 0.9. Then we will examine other distributions.
+**Mini Activity:** Start by making binomial distibutions in R with 10 trials but with p = 0.1, 0.5, and 0.9. Then we will examine other distributions.
 
 
 ## Poisson
