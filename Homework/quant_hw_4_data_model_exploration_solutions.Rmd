@@ -1,6 +1,6 @@
 ---
 title: "Homework 4: Mixed Models and Data Exploration"
-author: "Your_Name_Here"
+author: "Answer Key"
 output: pdf_document
 ---
 
@@ -10,18 +10,56 @@ Turn in via blackboard next Monday by the end of the day. please title the docum
 
 ```{r}
 library(tidyr)
+loc = factor(rep(LETTERS[1:3], 2))
+day = factor(rep(1:2, each = 3))
+val = round(runif(6), 3)
+d = data.frame(loc, day, val)
 
+d_wide <- spread(d, key = day, value = val)
+d_wide
+
+d_long <- gather(d_wide, key = day, value = val, -loc)
+d_long
+
+d == d_long
 ```
 
 ## 2. Install and load the package `lubridate`. There is a great tutorial at [https://rpubs.com/davoodastaraky/lubridate](https://rpubs.com/davoodastaraky/lubridate). Use it to get today's date. Convert it from year-month-day format to the more familiar US format of month-day-year.
 
+```{r}
+library(lubridate)
+
+td <- today()
+td
+
+td_us <- format(td, "%m-%d-%Y")
+td_us
+
+# What I meant to have you do:
+
+bad_day <- "9/1/2017"
+
+good_day <- mdy(bad_day)
+good_day
+
+```
 
 ## 3. Use any dataset you want and make one histogram and one boxplot and print them side by side (hint: use the `par(mfrow = )` function.)
 
+```{r}
+df <- read.table(file = "Data/RIKZ.txt", header = TRUE, stringsAsFactors = FALSE)
+str(df)
+
+par(mfrow = c(1, 2))
+hist(df$Richness, xlab = "Richness")
+boxplot(df$Richness ~ df$Beach, xlab = "Beach", ylab = "Richness")
+par(mfrow = c(1, 1))
+```
 
 ## 4. Use a linear mixed model to examine the effects of NAP on species richness with a random intercept for beach (from homework 3). Now use the regression equation and independent data along with the model coefficients, beach-specific random effects, and residuals to exactly recreate the original dependent data.
 
 ```{r}
+library(lme4)
 df <- read.table(file = "Data/RIKZ.txt", header = TRUE, stringsAsFactors = FALSE)
 
 lme1 <- lmer(Richness ~ 1 + NAP + (1 | Beach), data = df)
