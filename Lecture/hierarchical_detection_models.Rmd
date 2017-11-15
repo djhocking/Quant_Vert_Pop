@@ -1,0 +1,110 @@
+---
+title: "Hierarchical Models Accounting for Detection"
+author: "Daniel J. Hocking"
+date: "11/13/2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+## N-mixture Model
+
+Simulate data and look at summary
+
+```{r}
+library(unmarked)
+
+# Simulate data
+set.seed(35)
+nSites <- 100
+nVisits <- 3
+x <- rnorm(nSites)               # a covariate
+beta0 <- 0
+beta1 <- 1
+lambda <- exp(beta0 + beta1*x)   # expected counts at each site
+N <- rpois(nSites, lambda)       # latent abundance
+y <- matrix(NA, nSites, nVisits)
+p <- c(0.3, 0.6, 0.8)            # detection prob for each visit
+for(j in 1:nVisits) {
+  y[,j] <- rbinom(nSites, N, p[j])
+  }
+
+# Organize data
+visitMat <- matrix(as.character(1:nVisits), nSites, nVisits, byrow=TRUE)
+
+umf <- unmarkedFramePCount(y=y, siteCovs=data.frame(x=x),
+    obsCovs=list(visit=visitMat))
+summary(umf)
+```
+
+### Fit a model
+
+```{r}
+# Fit a model
+fm1 <- pcount(~visit-1 ~ x, umf, K=50)
+fm1
+
+plogis(coef(fm1, type="det")) # Should be close to p
+```
+
+
+### Empirical Bayes estimation of random effects
+
+```{r}
+fm1re <- ranef(fm1)
+plot(fm1re, subset=site %in% 1:25, xlim=c(-1,40))
+sum(bup(fm1re))         # Estimated population size
+sum(N)                  # Actual population size
+```
+
+### Try with real data
+
+Mallard counts
+
+```{r}
+data(mallard)
+mallardUMF <- unmarkedFramePCount(mallard.y, siteCovs = mallard.site,
+obsCovs = mallard.obs)
+(fm.mallard <- pcount(~ ivel+ date + I(date^2) ~ length + elev + forest, mallardUMF, K=30))
+(fm.mallard.nb <- pcount(~ date + I(date^2) ~ length + elev, mixture = "NB", mallardUMF, K=30))
+```
+
+
+
+## Occupancy Data
+
+Data from NAAMP for *Pseudacris feriarum* (pfer) and *Pseudacris crucifer* (pcru) in 2001 (chorus frogs)
+
+```{r}
+data(frogs)
+pferUMF <- unmarkedFrameOccu(pfer.bin)
+plot(pferUMF, panels=4)
+```
+
+```{r}
+# add some fake covariates for illustration
+siteCovs(pferUMF) <- data.frame(sitevar1 = rnorm(numSites(pferUMF)))
+
+# observation covariates are in site-major, observation-minor order
+obsCovs(pferUMF) <- data.frame(obsvar1 = rnorm(numSites(pferUMF) * obsNum(pferUMF)))
+
+(fm <- occu(~ obsvar1 ~ 1, pferUMF))
+```
+
+Look at confidence intervals
+
+```{r}
+confint(fm, type='det', method = 'normal')
+confint(fm, type='det', method = 'profile')
+
+# estimate detection effect at obsvars=0.5
+(lc <- linearComb(fm['det'],c(1,0.5)))
+
+# transform this to probability (0 to 1) scale and get confidence limits
+(btlc <- backTransform(lc))
+confint(btlc, level = 0.9)
+
+# Empirical Bayes estimates of proportion of sites occupied
+re <- ranef(fm)
+sum(bup(re, stat="mode"))
+```

@@ -144,6 +144,8 @@ Modnames2 <- c("GLMM",
 df <- data.frame(model = c("GLMM", "GLM"), AICc = c(AICc(glmer4), AICc(glm4)))
 df[order(df$AICc), ]
 
+anova(glm4, glmer4, test = "LRT") # not working correctly?
+
 ```
 
 

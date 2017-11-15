@@ -6,18 +6,44 @@ output: pdf_document
 ---
 
 ```{r}
+library(AHMbook)
+library(unmarked)
+```
+
+```{r}
+# Execute function and inspect results
+# data <- simNmix()                   # Default arguments
+data <- simNmix(show.plot = FALSE)  # Default args, no plots
+set.seed(24)
+str(data <- simNmix(nsite = 267, nvisit = 3, mean.theta = 1, mean.lam = 2, mean.p = 0.6, area = FALSE, beta1.theta = 0, beta2.theta = 0, beta3.theta = 0, beta2.lam = 0, beta3.lam = 0, beta4.lam = 0, beta3.p = 0, beta5.p = 0, beta6.p = 0, beta.p.survey = 0, beta.p.N = 0, sigma.lam = 0, dispersion = 10, sigma.p.site = 0, sigma.p.visit = 0, sigma.p.survey = 0, sigma.p.ind = 0, Neg.Bin = FALSE, open.N = FALSE, show.plot = TRUE))  # All default args explicit
+
+
+str(data <- simNmix())                  # Null data-generating model
+str(data <- simNmix(mean.theta = 0.60)) # ZIP with 40% structural zeroes
+str(data <- simNmix(sigma.lam = 1))     # Poisson-lognormal (PLN) mixture
+str(data <- simNmix(Neg.Bin = TRUE))    # Negative-binomial mixture
+str(data <- simNmix(mean.theta = 0.6, sigma.lam = 1))  # Zero-inflated PLN
+str(data <- simNmix(mean.theta = 0.6, Neg.Bin = TRUE)) # Zero-infl. NegBin
+str(data <- simNmix(mean.p = 1))        # Perfect detection (p = 1)
+str(data <- simNmix(mean.theta = 0.6, mean.p = 1))     # ZIP with p = 1
+str(data <- simNmix(sigma.lam = 1, mean.p = 1))        # PLN with p = 1
+```
+
+
+```{r}
+
 # Define simulation settings and arrays for sim results
-simreps <- 1000                    # Simulate and analyse 1000 data sets
-nsites <- c(20, 120, 250)          # Levels for nsites factor
-nreps <- c(2, 5, 10)               # Levels of nrep factor
+simreps <- 50                    # Simulate and analyse 1000 data sets
+nsites <- c(20, 100, 200)          # Levels for nsites factor
+nreps <- c(2, 5)               # 2, 5, 10, Levels of nrep factor
 estimates <- array(NA, dim = c(2, simreps, 3, 3))
 
 # Fill p with random numbers between 0.01 and 0.99
 p <- array(runif(n=simreps*3*3, 0.01, 0.99), dim = c(simreps, 3, 3))
 
 # Launch simulation (takes about 6.3 hours)
-for(s in 1:3){                     # Loop over levels of nsites factor
-  for(r in 1:3){                   # Loop over levels of nreps factor
+for(s in 1:length(nsites)){                     # Loop over levels of nsites factor
+  for(r in 1:length(nreps)){                   # Loop over levels of nreps factor
     for(i in 1:simreps){           # Simulate and analyse 1000 data sets
       cat("*** Simrep number", i, "***\n")
       data <- simNmix(nsite=nsites[s], nvisit=nreps[r], mean.lam = 5,
@@ -30,9 +56,9 @@ for(s in 1:3){                     # Loop over levels of nsites factor
 }
 
 # Visualisation
-par(mfrow = c(3,3), mar = c(4.5,4.5,2,2), cex.lab = 1.5, cex.axis = 1.3)
-for(s in 1:3){                     # Loop over nsites
-  for(r in 1:3){                   # Loop over nreps
+par(mfrow = c(length(nsites), length(nreps)), mar = c(4.5,4.5,2,2), cex.lab = 1.5, cex.axis = 1.3)
+for(s in 1:length(nsites)){                     # Loop over nsites
+  for(r in 1:length(nreps)){                   # Loop over nreps
     plot(p[,s,r], exp(estimates[1,,s,r]), xlab = "Detection probability",
       ylab = "lambda_hat", main = "", ylim = c(0, 75), frame = F)
     text(0.75, 60, paste("M = ", nsites[s], ", J = ", nreps[r], sep = ""),
