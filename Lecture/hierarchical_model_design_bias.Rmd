@@ -35,8 +35,9 @@ str(data <- simNmix(sigma.lam = 1, mean.p = 1))        # PLN with p = 1
 # Define simulation settings and arrays for sim results
 simreps <- 50                    # Simulate and analyse 1000 data sets
 nsites <- c(20, 100, 200)          # Levels for nsites factor
-nreps <- c(2, 5)               # 2, 5, 10, Levels of nrep factor
+nreps <- c(2, 4, 6)               # 2, 5, 10, Levels of nrep factor
 estimates <- array(NA, dim = c(2, simreps, 3, 3))
+lambda_mean <- 5
 
 # Fill p with random numbers between 0.01 and 0.99
 p <- array(runif(n=simreps*3*3, 0.01, 0.99), dim = c(simreps, 3, 3))
@@ -46,7 +47,7 @@ for(s in 1:length(nsites)){                     # Loop over levels of nsites fac
   for(r in 1:length(nreps)){                   # Loop over levels of nreps factor
     for(i in 1:simreps){           # Simulate and analyse 1000 data sets
       cat("*** Simrep number", i, "***\n")
-      data <- simNmix(nsite=nsites[s], nvisit=nreps[r], mean.lam = 5,
+      data <- simNmix(nsite=nsites[s], nvisit=nreps[r], mean.lam = lambda_mean,
       mean.p=p[i,s,r], show.plot = F)        # Generate data set
       umf <- unmarkedFramePCount(y = data$C) # Bundle data for unmarked
       fm <- pcount(~1 ~1, umf)               # Fit model
