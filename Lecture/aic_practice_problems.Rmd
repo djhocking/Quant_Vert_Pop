@@ -148,6 +148,9 @@ anova(glm4, glmer4, test = "LRT") # not working correctly?
 
 ```
 
+## Read the following paper and describe the main points of the paper:
+
+Grueber, Nakagawa, Laws, and Jamieson. 2011. Multimodel inference in ecology and evolution: challenges and solutions. Journal of Evolutionary Biology. 24:699-711.
 
 ## Grad Student Optional: Using Model Averaging for Multimodel Inference
 

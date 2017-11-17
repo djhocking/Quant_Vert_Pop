@@ -1,11 +1,10 @@
 ---
-title: "Untitled"
-author: "Daniel J. Hocking"
-date: "11/14/2017"
+title: "Hierarchical Modeling Activity"
+author: "Quantitative Analysis of Vertebrate Populations"
 output: pdf_document
 ---
 
-Types of Models
+## Types of Models
 
 * Occupancy
 * Colonization extinction (open)
@@ -13,7 +12,7 @@ Types of Models
 * Point Count N-Mixture Model
 * Generalized N-mixture Model (open)
 
-Approaches to accountig for detection when interested in abundance or occupancy in unmarked populations
+## Approaches to accounting for detection when interested in abundance or occupancy in unmarked populations:
 
 * Multiple visits during close population time
 * Temporary removal/depletion
@@ -21,13 +20,31 @@ Approaches to accountig for detection when interested in abundance or occupancy 
 * Distance sampling
 
 
-Read ... papers. For each describe the objectives of the study
+## Read the papers liste below. For each describe: 
 
-* Number of study units (independent replicates)
-* Any random effects and how many levels if any and what varies by the random effects
-* How they accounting for imperfect detection
-* What affected abundance/occupancy
-* What affected detection
-* How would you redesign the study to answer the same questions (same objectives)
+* The objectives of the study?
+* Number of study units (independent replicates)?
+* Any random effects and how many levels if any and what varies by the random effects?
+* How they accounting for imperfect detection?
+* What affected abundance/occupancy?
+* What affected detection?
+* What was the main finding of the paper (1-2 sentences)?
+* How would you redesign the study to answer the same questions (same objectives), if at all?
 
-You are interested in ... Design and experiment to examine ...
+Papers: 
+
+**Occupancy dynamics of the Wood Warbler Phylloscopus sibilatrix assessed with habitat and remote sensing data**
+
+**Using occupancy-based surveys and multi-model inference to estimate abundance and distribution of crested gibbons (Nomascus spp.) in central Laos**
+
+**Hierarchical distance-sampling models to estimate population size
+and habitat-specific abundance of an island endemic**
+ 
+## Design and Experiment
+
+You are interested in estimating the effects of impervious surfaces (% area within a watershed) and rainbow trout stocking on the abundance of native brook trout across Maryland. Design and experiment to examine these effects. You can assume that detection probability when electrofishing for brook trout is 50% on average. Be sure to include enough details so that someone else could conduct the sampling (assume they know how to electrofish and just focus on the number of visits, number of locations, distribution of locations, and other relevant experimental design information).
+
+
+
+
+

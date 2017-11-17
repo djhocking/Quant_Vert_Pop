@@ -72,5 +72,9 @@ Richness decreases with increasing NAP but this affect varies modestly among bea
 
 
 
+While diving off Pūpūkea Beach you notice an algae that you have never seen before. You wonder if the parrotfish you see at other beaches are able to keep down this algal invader. You want to test the question: Do parrotfish have an effect on invasive Macroalgae cover? You suspect there might be an effect of water depth. Furthermore, any given location has an amount of native algae.  To do so, you decide to do a cage experiment, excluding parrotfish from certain locations. You have permits to work at 5 beaches, at both shallow and deep depths. You have 160 cages. How do you design this experiment?
+
+
+Once we have discussed the design of the experiment, open the .csv file named “AlgaeProject.csv”. Your assignment (due next Friday, as an .R document) is to analyze the data with the appropriate statistical model and address the research question above.
 
 

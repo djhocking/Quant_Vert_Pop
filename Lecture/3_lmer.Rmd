@@ -43,7 +43,7 @@ $\epsilon_i \sim \mathcal{N}(0, \sigma^2)$
 ## Random intercept and slope model
 
 $$
-y_i = \alpha_{j(i)} + \beta X_{j(i)} + \epsilon_i
+y_i = \alpha_{j(i)} + \beta_{j(i)} X_i + \epsilon_i
 $$
 
 where
@@ -141,7 +141,7 @@ lme.fit2
 ## Random-coefficients model with correlation between intercept and slope
 
 $$
-y_i = \alpha_{j(i)} + \beta X_{j(i)} + \epsilon_i
+y_i = \alpha_{j(i)} + \beta_{j(i)} X_{i} + \epsilon_i
 $$
 
 where
