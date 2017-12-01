@@ -33,12 +33,11 @@ output: pdf_document
 
 Papers: 
 
-**Occupancy dynamics of the Wood Warbler Phylloscopus sibilatrix assessed with habitat and remote sensing data**
+**Spatial Occupancy and Abundance Trends of Endangered Florida Grasshopper Sparrows at Three Lakes Wildlife Management Area**
 
-**Using occupancy-based surveys and multi-model inference to estimate abundance and distribution of crested gibbons (Nomascus spp.) in central Laos**
+**Detectability of the global weed Hypochaeris radicata is influenced by species, environment and observer characteristics**
 
-**Hierarchical distance-sampling models to estimate population size
-and habitat-specific abundance of an island endemic**
+**Hierarchical distance-sampling models to estimate population size and habitat-specific abundance of an island endemic**
  
 ## Design and Experiment
 
