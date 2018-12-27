@@ -1,0 +1,212 @@
+---
+title: "Lab2 Tutorial: Linear Regression"
+author: "Daniel Hocking"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+*Lab adapted from Linear Regression I by Dr. Nicholas Nagel at the University of Tennessee*
+
+## Introduction
+
+In this lab, we will get data and do a few few linear regressions using various datasets.
+
+Another thing that you'll see in today's lab is how to merge two different data sets together. This is an extraordinarily valuable skill. Rarely will all of your data be in one dataset. I find that this is more so for geographers than for other disciplines.
+
+There are two common ways to do a linear regression in R, depending on whether you just want the intercept and slope, or whether you want to plot it. The command to run a regression and get the intercept and slope is `lm`. The command to show a line in ggplot is `geom_smooth(method='lm')`. Before we get to doing regressions, we need to look into R packages including `ggplot2` with special funtions that make life easier.
+
+## R libraries
+
+There must be tens of thousands of different functions in R now, covering over a hundred different fields. More than you could possibly ever use. To keep all this straight, there is "base" R, and then over a thousand different add-on packages. Most people will only ever use a few. 
+
+The package we will use the most is called `ggplot2.` Another package that we will use in this lab is called `lme4.`
+
+To load packages, use the `library` function.
+
+Below is an example of a code "chunk" in Rmarkdown. Try executing this chunk by either (1) clicking the *Run* button within the chunk (little green arrow on the right), (2) Selecting Run on the top menu, or (3) by placing your cursor inside the chunk and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(ggplot2)
+```
+
+On a classroom comupter this should work because the packages are already installed. If you're on your personal computer, chances are high that you get the message, `Error in library(ggplot2) : there is no package called ‘ggplot2’`.
+
+This means that the package `ggplot2` is not in your computer's library. You may have to install it first. This is how to install it and lme4.
+
+```{r, eval = FALSE}
+install.packages('lme4')
+install.packages('ggplot2')
+```
+
+However, on a university computer, you likely will not have permission to install packages. Everything we need for this course should be already installed for you. After they are installed, you can go back and load the libraries with the command:
+
+```{r}
+library(lme4)
+library(ggplot2)
+library(dplyr)
+```
+
+You only need to install a package once. But everytime you fire up R, you will have to use the library command to load the package into R so that you can use it. Think of R as a desk in your bedroom where you do your studying. Before you can study, you will need to go to your `library` and get the books you need (you have your own library at home, right?). And if the library doesn't have the books, then you will have to ask the library to go out and get the books (with `install.packages`).
+
+Please note, while you can run R without internet access, you will need to be online when you run install.packages. **Pro Tip:** If you are taking a plane trip and expect to get work done, then always make sure that you have installed the packages you will need before you take off.
+
+## Getting the data
+
+Data are usually obtained from a file that someone gives you, or that you make yourself, or that you download from the web. Some data come installed with base R and others come as example datasets with particular packages. Download the `Sparrows.txt` file from Canvas and put it in a single folder containing your R Project and Rmd file (if can be in a subfolder within that folder such as `Data/Sparrows.txt`). Use the following code to read in the text file and look at the file structure. You can also click it in your "Environment" to the right in to open it with the RStudio Viewer.
+
+```{r}
+sparrows <- read.table("Data/Sparrows.txt", sep = "", header = TRUE, stringsAsFactors = FALSE)
+str(sparrows)
+```
+
+Let's also look at the first 10 rows of data
+
+```{r}
+head(sparrows, 10)
+# sparrows[1:10, ] # also prints the first 10 rows and each column
+```
+
+Or we can just look at the fist 12 rows of only the sex, wingcrd, and wt columns.
+
+```{r}
+sparrows[1:12, c("Sex", "wingcrd", "wt")]
+```
+ 
+or all rows of just the wingcrd using the `$` to call that column
+ 
+```{r}
+sparrows$wingcrd
+```
+ 
+If you save a MS Excel file as a comma separated csv file, you will use a similar command but with a comma for the separator. You can try this with the `Salamander_Demographics.csv` file.
+
+```{r}
+sally <- read.table("Data/Salamander_Demographics.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+str(sally)
+```
+
+## Regression with the sparrow data
+
+Let's use the sparrow data because we are familiar with it. Let's pick a length measurement, wingcrd, and estimate the relationship with mass (unfortunately named `wt` for weight).
+
+### Plotting
+
+You should always plot your data first. The x-axis should be `wingcrd`, and the y-axis should be `wt`. We usually use a scatter plot for plotting two continuous variables, and so let's use a point geometry in the ggplot2 package to show each observation.
+
+```{r}
+ggplot(sparrows, aes(x = wingcrd, y = wt)) + 
+  geom_point() + 
+  labs(x='Wing cord length (mm)', y='Mass (g)')
+```
+
+It looks like a line fits that fairly well. So first, let's go ahead and add a line to the plot using `geom_smooth`.
+
+```{r}
+ggplot(sparrows, aes(x = wingcrd, y = wt)) + 
+  geom_point() + 
+  labs(x='Wing cord length (mm)', y='Mass (g)') +
+  geom_smooth(method = "lm")
+
+```
+
+You see the regression line in blue, but a grey band around the regression that represents our confidence in the regression line. We'll get that soon enough, but for now just recognize that we estimated this based on a sample, and so there is some uncertainty in our data, and thus, there is some uncertainty in our line. The grey band is an estimate of where the regression could be given this uncertainty.
+
+Visually, this looks like a decent regression.
+
+## The linear model function and interpretation
+
+Now, let's fit the regression using the function `lm`. To use `lm`, we need to specify the y and x variables. R has a type of "short hand" for linear models that looks like this : `y ~ x`. R will interpret that $y = b_0 + b_1 x$.
+
+
+```{r}
+my_lm <- lm(wt ~ wingcrd, sparrows)
+```
+
+Right now, R has finished the regression, and we just need to know how to print it out.
+
+```{r}
+summary(my_lm)
+```
+
+That's it. Pretty easy, right?
+
+What does the line predict for the mass for a bird with a wing cord of 70 mm?
+It predicts $-10.77121 + 0.52972 * 70$ or 26.3 g. This might be reasonable.
+
+What does the line predict for the mass for a bird with a wing cord of 200 mm?
+It predicts $-10.77121 + 0.52972 * 200$ or 95.1 g. This would be a big bird and is totally unrealistic for a sparrow. Be careful when making predictions. In general, don't make predictions that aren't supported by your data.
+
+We always want to check the to see if our model and data matched the assumptions of the linear model (refer back to your lecture notes). We can do this by visualizing the residuals. It's easy with the plot function on your fitted model object.
+
+```{r}
+plot(my_lm)
+```
+
+## Calculate average response for each Species.
+
+We will calculate the average reponse per species 
+
+I will draw bar charts for each country.
+If there are dramatic breaks between adjacent groups, then that may suggest that that differences between adjacent categories is very nonlinear.
+
+```{r}
+ggplot(data=sparrows, aes(wingcrd, wt, colour = factor(Speciescode))) + geom_point() + geom_smooth(method = "lm") + facet_wrap(~Sex)
+```
+
+```{r}
+ggplot(data=sparrows, aes(Speciescode, wt, group = Speciescode)) + geom_boxplot() + facet_wrap(~Sex)
+```
+
+To calculate species averages, we will need to (1) `group_by` species, and then (2) summarize by `mean`. I've been doing this for awhile, so I know that `mean` won't like the NAs (missing values) in the data. So we will have to tell `mean` that it can remove NAs if it needs to.
+
+```{r}
+species_data <- sparrows %>%
+  group_by(Speciescode) %>%
+  summarise(wingcrd = mean(wingcrd, na.rm=TRUE),
+            wt = mean(wt, na.rm=TRUE)) %>%
+  ungroup()
+
+species_data
+```
+
+## Export Data
+
+Now imagine you want to save some data or results you worked up in R. To save a set of R objects for later use in R, you can use the `save` function.
+
+```{r}
+save(my_lm, species_data, file = "Output/lab2_tutorial.RData")
+```
+
+If you have a table you want to be able to open in a spreadsheet like MS Excel you can use the `write.csv` function.
+
+```{r}
+write.csv(species_data, file = "Output/species_data.csv", row.names = FALSE)
+```
+
+## Commands learned in this lab
+
+Base R
+
+- `$`
+- `mean( , na.rm=TRUE)`
+- `lm()`
+- `save()`
+- `write.csv()`
+
+tidyverse (dplyr)
+
+- `%>%`
+- `group_by()`
+- `summarise()`
+- `mean()`
+
+ggplot
+
+- `geom_smooth(, method='lm')`
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+---
+title: "Lab 3 Part 2: GLM Preditions"
+author: "Your_Name_Here"
+output: word_document
+---
+
+Turn in via Canvas next Friday by the end of the day. Submit either a knitted pdf, html, or doc file (you can submit the .Rmd file if knitting doesn't work).
+
+
+## 1. Read in the salamander demographics data and look at the structure.
+
+## 2. Run a linear model to look at the effects of svl and sex on mass. Print the summary results.
+
+## 3. What is the expected mass of an individual of male with a snout-vent length (svl) of 40? 
+
+## 4. What is the expected mass of a female with the same svl?
+
+## 5. Run a GLM to test the effect of year, elevation, and landuse on the count (count1) of bunnies.
+
+## 6. What is the expected number of bunnies on at low elevation in a grassland in 2005? What about at high elevation?

@@ -1,0 +1,7 @@
+---
+title: "formatting_mark_data"
+author: "Daniel Hocking"
+output: pdf_document
+---
+
+[https://sites.google.com/site/cmrsoftware/lecture-lab-schedule/3-intro-to-mark-rmark/formatting-data-for-mark-and-rmark](https://sites.google.com/site/cmrsoftware/lecture-lab-schedule/3-intro-to-mark-rmark/formatting-data-for-mark-and-rmark)

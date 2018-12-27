@@ -1,0 +1,42 @@
+---
+title: "Lab 5 Tutorial: Open-population models in Program MARK"
+author: "Your_Name_Here"
+output: pdf_document
+---
+
+## 1. In the CJS model with time-constant survival and capture probability, write out the likelihood of the following capture history:
+
+```
+1 1 1 1
+```
+
+NOTE: the initial “1” of the capture history is not part of the likelihood, as it simply indicates that the individual was captured and is now available for estimating survival.
+
+NOTE: use the term `ϕ` to represent survival, and use the term `p` to represent the encounter probability. So the probability of observing the capture history “11” could be represented as:
+
+`ϕ⋅p` – that is, to be observed on the second capture occasion, the individual had to survive to year 2 with probability phi and be detected with probability p.
+
+Similarly, the capture history “101” could be represented as:
+
+`ϕ⋅(1−p)×ϕ⋅p`
+
+## Does it make sense why? If not, review the lecture on capture-mark-recapture analysis.
+
+## 2. In the CJS model with time-constant survival and capture probability, write out the likelihood of the following capture history:
+
+```
+1 0 0 1
+```
+
+## 3. In the CJS model with time-constant survival and capture probability, write out the likelihood of the following capture history (this one is a little harder!!):
+
+```
+1 1 1 0
+```
+
+## 4. [building off the demonstration in Program MARK]. Build and run the following model: capture probability varies by year, but survival is constant across time. Is this model better than the current top model? What are the parameter estimates for this model? What are the confidence intervals for these parameters?
+
+## 5. Build and run the following model: capture probability is constant across time, but survival exhibits temporal variability. Is this model better than the current top model? What are the parameter estimates for this model? What are the confidence intervals for these parameters?
+
+## 6. Use your results to estimate environmental stochasticity in survival for European dippers. In other words, what random number generator would you use to represent annual variation in survival for this population? Explain how you obtained your answer, and show your work!
+

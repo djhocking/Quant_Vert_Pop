@@ -1,0 +1,8 @@
+---
+title: "Simulating CMR Data"
+author: "Daniel Hocking"
+output: pdf_document
+---
+
+[https://sites.google.com/site/cmrsoftware/software/simulation-code-for-cmr-data](https://sites.google.com/site/cmrsoftware/software/simulation-code-for-cmr-data)
+

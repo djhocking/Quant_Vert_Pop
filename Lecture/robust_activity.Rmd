@@ -1,0 +1,20 @@
+---
+title: "Robust Design Reading Quiz"
+author: "Quantitative Analysis of Vertebrate Populations"
+output: pdf_document
+---
+
+## 1. What is a super-population?
+
+\vspace{30mm}
+
+## 2. What is temporary emigration? 
+
+\vspace{30mm}
+
+## 3. Describe or draw the sample design for a robust design (open vs. closed periods)?
+
+\vspace{60mm}
+
+## 4. Does the robust design provide survival or apparent survival and what's the difference?
+

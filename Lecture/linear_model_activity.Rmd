@@ -1,0 +1,53 @@
+---
+title: "Data Exploration and Linear Model Activity 1"
+author: "Daniel J. Hocking"
+date: "September 12, 2018"
+output: pdf_document
+---
+
+## Tasks
+
+1. Generate Data in R
+2. Run a linear model to see if the estimated data matches the created data
+3. Read it "Sparrow.txt" data from Canvas
+4. Explore the structure of the data
+5. Make plots to compare sizes among species or sexes
+6. Make a linear model to relate wing chord length (`wingcrd`) to mass (`wt`)
+
+## Generate Data in R
+
+```{r}
+
+```
+
+
+## Linear model
+
+```{r}
+
+```
+
+## Read Sparrow data
+
+```{r}
+
+```
+
+## Data Structure
+
+```{r}
+
+```
+
+## Plot sizes among species or sexes
+
+```{r}
+
+```
+
+## Linear model to relate wing chord length (`wingcrd`) to mass (`wt`)
+
+```{r}
+
+```
+

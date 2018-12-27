@@ -1,0 +1,7 @@
+---
+title: "Lab 3 Tutorial: Generalized Linear Models"
+author: "Daniel Hocking"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
