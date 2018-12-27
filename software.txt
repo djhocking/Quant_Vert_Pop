@@ -1,0 +1,54 @@
+
+
+R
+RStudio
+pandoc
+latex (miktex on Windows and mactex on Mac OS)
+Program Mark
+
+permissions to knit (convert) markdown files to html and pdf files via pandoc and miktex using the knitr package in R (or button in RStudio).
+
+Rpackages (and all their dependencies):
+dplyr
+lubridate
+lme4
+nlme
+lattice
+ggplot2
+knitr
+sp
+raster
+swirl
+tidyr
+unmarked
+jagsUI
+stan
+rjags
+rmarkdown
+secr
+devtools
+Rcapture
+RMark
+marked
+multimark
+AICcmodavg
+TMB
+vegan
+KMsurv
+Survival
+fishR
+tidyverse
+rvertnet
+inla
+boot
+Distance
+dplr
+prism
+worldclim
+car
+ggmap
+grid.arrange
+popbio
+
+
+

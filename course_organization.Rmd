@@ -1,0 +1,13 @@
+---
+title: "Untitled"
+author: "Daniel Hocking"
+date: "12/27/2018"
+output: pdf_document
+---
+
+## Introduction, Questions, and Concepts (pre-reading)
+
+## Study Design (homework)
+
+## Analysis and Interpretation (lab activity)
+

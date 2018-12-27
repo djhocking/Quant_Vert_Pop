@@ -1,0 +1,113 @@
+---
+title: "Generalized Linear Mixed Models"
+author: "Quantitative Analysis of Vertebrate Populations"
+output:
+  pdf_document: default
+  ioslides_presentation:
+    css: style.css
+  beamer_presentation: default
+  slidy_presentation: default
+---
+
+## Generalized Linear Model
+
+Example with a Poisson distribution for count data. **Why do we use Poisson for counts?**
+
+1. Distribution: $C_i \sim Poisson(\lambda_i)$
+2. Link Function: $log(\lambda_i)$
+3. Linear Predictor: $log(\lambda_i) = \alpha + \beta X_i$
+
+## Generalized Linear Mixed Model
+
+Add submodels for the random effect parameters.
+
+1. Distribution: $C_i \sim Poisson(\lambda_i)$
+2. Link Function: $log(\lambda_i)$
+3. Linear Predictor: $log(\lambda_i) = \alpha_{j(i)} + \beta X_{i}$
+4. Submodel for random effects parameters
+
+$$
+\alpha_j \sim \mathcal{N}(\mu_{\alpha}, \sigma_{\alpha}^2)
+$$
+
+## Random intercept and slope model
+
+1. Distribution: $C_i \sim Poisson(\lambda_i)$
+2. Link Function: $log(\lambda_i)$
+3. Linear Predictor: $log(\lambda_i) = \alpha_{j(i)} + \beta_{j(i)} X_{i}$
+4. Submodel for random effects parameters
+
+$$
+\alpha_j \sim \mathcal{N}(\mu_{\alpha}, \sigma_{\alpha}^2)
+$$
+$$
+\beta_j \sim \mathcal{N}(\mu_{\beta}, \sigma_{\beta}^2)
+$$
+
+
+## Data generation (From Kery 2010)
+
+Random slope and intercepts without correlation
+
+```{r}
+n.groups <- 16
+n.years <- 30
+n <- n.groups * n.years
+pop <- gl(n = n.groups, k = n.years)
+```
+
+Standardize the year covariate to range from zero to one.
+
+```{r}
+original.year <- rep(1:n.years, n.groups)
+year <- (original.year-1)/29
+```
+
+## Build design matrix without intercept
+
+```{r}
+Xmat <- model.matrix(~pop*year-1-year)
+print(Xmat[1:21,], dig = 2) 		# Print top 21 rows
+```
+
+## Draw random intercept and slopes from normal distributions
+
+```{r}
+intercept.mean <- 3			# Choose values for the hyperparams
+intercept.sd <- 1
+slope.mean <- -2
+slope.sd <- 0.6
+intercept.effects<-rnorm(n = n.groups, mean = intercept.mean, sd = intercept.sd)
+slope.effects <- rnorm(n = n.groups, mean = slope.mean, sd = slope.sd)
+all.effects <- c(intercept.effects, slope.effects) # Put them all together
+```
+
+## Assemble and inspect results
+
+```{r}
+lin.pred <- Xmat[,] %*% all.effects	# Value of lin.predictor
+C <- rpois(n = n, lambda = exp(lin.pred)) # Exponentiate and add Poisson noise
+hist(C, col = "grey", xlab = "Counts", main = "")			# Inspect what we’ve created
+```
+
+## Assemble and inspect results
+
+```{r}
+library("lattice")
+xyplot(C ~ original.year | pop, ylab = "Red-backed shrike counts", xlab = "Year")
+```
+
+
+## Analysis under a random-coefficients model
+
+```{r, warning = FALSE, message=FALSE}
+library('lme4')
+glmm.fit <- glmer(C ~ year + (1 | pop) + ( 0+ year | pop), family = poisson)
+summary(glmm.fit)				# Inspect results
+```
+
+## Examine Pearson residuals for patterning
+
+```{r}
+plot(glmm.fit)
+```

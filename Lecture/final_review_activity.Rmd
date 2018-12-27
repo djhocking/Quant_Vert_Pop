@@ -1,9 +1,0 @@
----
-title: "Final Review Activity"
-author: "Quantitative Analysis of Vertebrate Populations"
-output:
-  word_document: default
-  pdf_document: default
----
-
-## List each of the different models we learned this semester and what information you get from them or what you learn from each. Also think about what type of data you need to use the model.

@@ -30,7 +30,7 @@ Turn in via blackboard next Friday by the end of the day. please title the docum
 
 
 
-## 6. Using the R function `rowSums`, calculate the sum of each row.
+## 6. Using the R function `rowSums`, calculate the sum of each row. You may have to look up how to use this function.
 
 
 

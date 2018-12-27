@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+output: pdf_document
+---
+
+```{r}
+install.packages("RMark")
+install.packages("Rcapture")
+install.packages("multimark")
+install.packages("marked")
+install.packages("secr")
+install.packages("Oscr")
+```
+
+```{r}
+library(RMark)
+```
+
+```{r}
+vignette(package = "RMark")
+vignette(package = "Rcapture")
+vignette(package = "multimark")
+```

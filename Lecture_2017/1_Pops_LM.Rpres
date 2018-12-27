@@ -1,0 +1,244 @@
+Populations and Linear Models
+========================================================
+author: Quantitative Analysis of Vertebrate Populations
+date: Fall 2017
+autosize: true
+
+What is a population?
+========================================================
+
+
+What is a population?
+========================================================
+
+* Individuals of a single species
+* Potential interbreeding
+* Living in the same place and time
+
+What do we want to know about populations?
+========================================================
+
+
+What do we want to know about populations?
+========================================================
+
+* How many individuals (abundance)
+* How tightly packed (density)
+* Spatial extent (distribution)
+* Changes over time (temporal pop dynamics)
+* How affected by the each other, other spp., the environment
+* Genetic diversity and relatedness of individuals
+* Adaptation to the local environment
+
+What types of data do we collect to learn about populations?
+========================================================
+
+
+What types of data do we collect to learn about populations?
+========================================================
+
+* Observations of species presence/absence
+* Counts of individuals
+* Observations of individuals (Mark-Recapture)
+* Movements among populations/sub-populations
+* Population genetics
+* Correlations and responses to the environment
+
+
+A step back: linear models (regression)
+========================================================
+
+Before we can deal with counts or even presence/absence data, it is helpful to understand how linear regression works in the simplest of cases.
+
+Linear Model (LM)
+* LM: Continuous response variable $[-\infty, \infty]$ 
+* Assume normal error distribution
+
+Generalized Linear Model (GLM)
+* Counts and P/A 
+* Use distributions besides normal
+
+
+One more step back: statistical models
+========================================================
+
+response = deterministic part + stochastic part
+
+* deterministic:
+* stochastic:
+
+
+One more step back: statistical models
+========================================================
+
+response = deterministic part + stochastic part
+
+* deterministic: systematic or mechanistic part of the model (e.g. equation of a line or curve)
+* stochastic: random, unexplained part of the model (error distribution)
+
+The stochastic part changes it from just a mathematical model to a statistical model
+
+
+Linear Model
+========================================================
+
+Used to describe, and ideally predict, the relationship between variables and the amount of variation explained by the independent variables (deterministic part)
+
+* Dependent variable = response variable (often $Y$)
+* Independent variable = predictor, covariate (often $X_1, X_2, etc.$)
+
+
+Linear model
+========================================================
+
+response = deterministic part + stochastic part
+
+response variable = model + error
+
+independent variable = equation of dependent variables + error
+
+$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2$ (error distribution often stated or implied)
+
+$y_i = \beta_0 + \beta_1 soil_i + \beta_2 litter_i + \epsilon_i$
+
+
+Linear model
+========================================================
+
+$y_i = \beta_0 + \beta_1 soil_i + \beta_2 litter_i + \epsilon_i$
+
+$\epsilon_i \sim \mathcal{N}(\mu, \sigma)$
+
+The data, $y_i$, don't have to be normally distributed by the error (residuals) do. 
+
+
+Normal (Gaussian) distribution
+========================================================
+
+$\epsilon_i \sim \mathcal{N}(\mu, \sigma)$
+
+$\sim$ : distributed as
+
+$\mu$ : mean
+
+$\sigma$ : standard deviation
+
+$\sigma^2$ : variance
+
+Can see normal distribution expressed in terms of the variance or standard deviation
+
+
+Normal (Gaussian) distribution
+========================================================
+
+### Probability density function
+
+$$
+F(x | \mu, \sigma) = \frac{1}{{\sigma \sqrt {2\pi } }}e^{{{ - \left( {x - \mu } \right)^2 } \mathord{\left/ {\vphantom {{ - \left( {x - \mu } \right)^2 } {2\sigma ^2 }}} \right.} {2\sigma ^2 }}}
+$$
+
+### Shorthand
+
+$\epsilon_i \sim \mathcal{N}(\mu, \sigma)$
+
+
+Normal (Gaussian) distribution
+========================================================
+
+$\epsilon_i \sim \mathcal{N}(\mu, \sigma)$
+
+```{r normal_dist, echo=FALSE}
+n <- 100000
+mu <- 600
+sd <- 30
+
+sample <- rnorm(n = n, mean = mu, sd = sd)
+hist(sample, col = "grey", main = "mean = 600, sd = 30")
+```
+
+
+Putting it together: fitting a line
+========================================================
+
+$y_i = \beta_0 + \beta_1 X + \epsilon_i$
+
+Deterministic:
+
+* Intercept: $\beta_0 = 1$
+* Slope: $\beta_1 = 2$
+* Sample from -10 to 10 m at 1 m intervals [$X = (-10, -9, ... 9, 10)$]
+
+```{r line_1, echo=FALSE}
+library(ggplot2)
+x1 <- seq(-10, 10, 1)
+line <- 1 + 2 * x1
+eps <- rnorm(21, 0, 4)
+y <- line + eps
+df <- data.frame(line, y, x1, eps)
+g1 <- ggplot(data = df, aes(x1, line)) + geom_line() + ylab("Y")
+g1
+```
+
+Putting it together: fitting a line
+========================================================
+
+$y_i = \beta_0 + \beta_1 X + \epsilon_i$
+
+Stochastic:
+
+* $\epsilon_i \sim \mathcal{N}(\mu, \sigma)$
+* $\mu = 0$
+* $\sigma = 4$
+
+```{r error_1, echo=FALSE}
+
+g1 + geom_point(aes(x1, y), colour = "blue")
+
+```
+
+
+Model assumptions
+========================================================
+
+## ???
+
+Model assumptions
+========================================================
+
+* Linearity
+* Homogeneity of variance (Homoscedasticity)
+* Normally distributed error
+* Minimal multicollinearity (if multiple $X$)
+* Independence of observations (no autocorrelation)
+
+
+Model assumptions
+========================================================
+
+![Error distributions](1_Pops_LM-figure/resid-plots.png)
+
+
+Our residual plot
+========================================================
+
+```{r resid-plot-1, echo=FALSE}
+
+ggplot(data = df, aes(y, eps)) + geom_point() + geom_hline(yintercept = 0, colour = "red")
+```
+
+
+Other data and distributions?
+========================================================
+
+
+
+Other data and distributions?
+========================================================
+
+More next week
+
+Much of this semester will be examining all the ways vertebrate data violate the assumptions and what we can do about it
+
+You can bring your laptop to lab if you'd rather use that than the computers in the room.
+
+

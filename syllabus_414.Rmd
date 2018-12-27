@@ -7,9 +7,9 @@ output:
     fig_caption: true
 ---
 
-### Course Syllabus
+## Course Syllabus
 
-<hr>
+****
 
 **Frostburg State University**
 
@@ -17,7 +17,7 @@ output:
 
 **Semester:** Fall
 
-**Year:** 2017
+**Year:** 2018
 
 ### Instructor
 
@@ -29,9 +29,9 @@ output:
 
 **Laboratory:** F 8:00 - 10:50 AM; CCIT 127B
 
-**Office Hours:** Monday 11:00 - 12:00; Tuesday & Thursday 9:00 - 10:30 AM, Wednesday 9:00 - 10:00 AM; or by appointment
+**Office Hours:** Monday 11:00 - 12:00; Tuesday 9:00 - 11:00 AM, Wednesday 11:00 - 12:00 AM, Thursday 12:00 - 1:00 pm; or by appointment
 
-***
+****
 
 ### Description
 
@@ -45,33 +45,33 @@ MATH 120 or a course in calculus, MATH 109/209; BIOL 150, 160 or 161. BIOL 340 (
 
 * Gain understanding of population dynamics
 * Learn how to model abundance and distribution of vertebrate populations
-* Gain experience accessing and analyzing existing population data
+* Gain experience interpretting and analyzing existing population data
 * Increase understanding of study design for collecting population data
 * Gain experience with field methods for count data and mark-recapture
 * Develop computational skills for fish and wildlife management
+* Learn basic scientific programming skills in the R language
 
 ### Text
 
-PDFs from the primary literature and non-required texts will be made available on the course website.
+Powell, L. A., and G. A. Gale. 2015. Estimation of parameters for animal populations: A primer for the rest of us. Caught Napping Publications, Lincoln, Nebraska.
 
 ### Grades:
 
 | Task                            | Points | Grade           |
 |:--------------------------------|--------|--------------------|
 2 Exams (100 pts each)    |      200   |   A > 90% |
-Homework assignments     |      100    |  B = 80 – 89% |
+Homework assignments     |      200    |  B = 80 – 89% |
 Final Exam, comprehensive        |   150      |   C = 70 – 79% |
-Attendance & class activities       |  100    |     D = 60 – 69% |
-           |     |     F < 59% |
-      |      | |
+|      |      |     D = 60 – 69% |
+|           |     |     F < 60% |
+|      |      | |
 **Total possible points**               | **550** | |
 
-Total points and assignments may change to accommodate teaching and learning objectives. Grades are still based on percentage of total points. Grades from individual assignments will be posted on [blackboard](https://frostburg.blackboard.com), **however, the grade calculated by blackboard will likely be incorrect because of differences in weighting of assignments**. It is your responsibility to calculate your current grade based on the grading scheme described above.
+Total points and assignments may change to accommodate teaching and learning objectives. Grades are still based on percentage of total points. Grades from individual assignments will be posted on [Canvas](https://frostburg.instructure.com), **however, the grade calculated by Canvas may be incorrect because of differences in weighting of assignments**. It is your responsibility to calculate your current grade based on the grading scheme described above.
 
 ### Laboratory
 
-**Please note that many of our labs will be conducted at local field sites. These labs will be conducted outside so you are expected to use common sense in deciding what to wear and what to bring. You will get dirty and you will get wet during these labs.** Be prepared to spend 3 hours in areas without restrooms, if you have questions about outdoor restroom etiquette please consult leave-
-no-trace (lnt) principles: [http://www.lnt.org/training/educationaltraining.php](http://www.lnt.org/training/educationaltraining.ph), [http://lnt.org/training/OnlineCourse/](http://lnt.org/training/OnlineCourse/) or ask the instructor if you have specific questions. You must notify the instructor during the first week of class if you are 
+**Please note that some of our labs may be conducted at local field sites. These labs will be conducted outside so you are expected to use common sense in deciding what to wear and what to bring. You will get dirty and you will get wet during these labs.** Be prepared to spend 3 hours in areas without restrooms, if you have questions about outdoor restroom etiquette please consult leave-no-trace (lnt) principles: [http://www.lnt.org/training/educationaltraining.php](http://www.lnt.org/training/educationaltraining.ph), [http://lnt.org/training/OnlineCourse/](http://lnt.org/training/OnlineCourse/) or ask the instructor if you have specific questions. You must notify the instructor during the first week of class if you are 
 allergic to bees or have never been stung by a bee.  
 
 ### Expectation of Student Work
@@ -84,28 +84,30 @@ The schedule will adjust based on the previous experience of students in the the
 
 1. Introduction to populations and animal distributions
 2. Introduction to R and RMarkdown
-3. Generalized Linear (regression) Models for count data
-4. Generalized Linear Mixed Modesl for correlated count data
-5. Designing studies and collecting count data in the field
-6. Deterministic population dynamics
-7. Stochastic population dynamics
-8. Problem of imperfect detection and hierarchical modeling
-9. Marked populations; turtle &/or salamander mark-recapture field experience
-10. Demography and life tables
-11. Population Viability Analysis
-12. Population genetics
-
+3. Maximum likelihood, R Graphics
+4. Linear models
+5. Model selection (AIC)
+6. Mark-recapture introduction
+7. Closed populations
+8. Open populations & survival
+9. Robust design
+10. Occupancy models for understanding species distributions
+11. Abundance modeling from unmarked populations
+12. Random and mixed effect models
+13. Fecundity, demography, and population viability
 
 ### Important dates and information
 
-* November 3: last day to withdraw with a "W"
-* November 22 - 26: no classes (Thanksgiving Break)
-* December 11: last day of classes
-* Email and Blackboard: access to your email and Blackboard is required for this class. Check your email daily.
+* September 3: Labor Dat - no classes
+* November 2: last day to withdraw with a "W"
+* November 21 - 25: no classes (Thanksgiving Break)
+* December 10: last day of classes
+* December 13: Final Exam 2:30 - 5:00 pm
+* Email and Canvas: Access to your email and Canvas is required for this class. Check your email daily.
 
 ### Attendance
 
-If you miss class, you miss whatever quizzes, exams, or activities that were administered and you will receive a zero.  Attendance is critical to success. Makeup exams are extremely rare, and will likely be a different format from the original exam. However, you will be allowed to make up missed exams if you have a documented, excused absence. Additionally, if the absence was planned, you must notify me before the absence.  
+If you miss class, you miss whatever quizzes, exams, or activities that were administered and you will receive a zero. Attendance is critical to success. Makeup exams are extremely rare, and will likely be a different format from the original exam. However, you will be allowed to make up missed exams if you have a documented, excused absence. Additionally, if the absence was planned, you must notify me before the absence.  
 
 Documented excused absences are generally limited to the following examples: university sanctioned events (field trips, or events where the student is an athlete/performer), funerals (requires an obituary or other proof), or illness/medical emergencies (requires a doctor’s note or other proof). For all of these, documentation must be provided. If a student is participating in extracurricular activities or has an excused absence, I must be notified within one week to arrange makeup assignments.
 
@@ -129,7 +131,7 @@ If you or someone you know has experienced an incident of harassment or violence
 
 ### Academic Honesty
 
-Definition of Academic Dishonesty from your student handbook:  “Academic dishonesty is defined to include any form of cheating and/or plagiarism. Cheating includes, but is not limited to, such acts as stealing or altering testing instruments; falsifying the identity of persons for any academic purpose; offering, giving or receiving unauthorized assistance on an examination, quiz or other written or oral material in a course; or falsifying information on any type of academic record. Plagiarism is the presentation of written or oral material in a manner which conceals the true source of documentary material; or the presentation of materials which uses hypotheses, conclusions, evidence, data or the like, in a way that the student appears to have done work which he/she did not, in fact, do. In cases involving academic dishonesty, a failing grade or a grade of zero (0) for either an assignment and/or a course may be administered. Students who are expelled or suspended for reasons of academic dishonesty are not admissible to other institutions within the University System of Maryland. Suspension or expulsion for academic dishonesty is noted on a student’s academic transcript.” 
+Definition of Academic Dishonesty from your student handbook:  "Academic dishonesty is defined to include any form of cheating and/or plagiarism. Cheating includes, but is not limited to, such acts as stealing or altering testing instruments; falsifying the identity of persons for any academic purpose; offering, giving or receiving unauthorized assistance on an examination, quiz or other written or oral material in a course; or falsifying information on any type of academic record. Plagiarism is the presentation of written or oral material in a manner which conceals the true source of documentary material; or the presentation of materials which uses hypotheses, conclusions, evidence, data or the like, in a way that the student appears to have done work which he/she did not, in fact, do. In cases involving academic dishonesty, a failing grade or a grade of zero (0) for either an assignment and/or a course may be administered. Students who are expelled or suspended for reasons of academic dishonesty are not admissible to other institutions within the University System of Maryland. Suspension or expulsion for academic dishonesty is noted on a student’s academic transcript."
 
 **Any violation of academic honesty will result in a zero for that graded work, and a repeat violation will result in failure of the course. Cheating will be reported and further disciplinary action may be pursued by the University Judicial Board** This includes plagiarism. I will check long answers, essays, and lab reports with plagiarism-checking software. When in doubt, just cite the source. There's nothing wrong with building on somone else's ideas, in fact it's the way progress in made in science. Just give that person credit. Even if you get some information from a website, don't cite what the website cited (unless you read that), just cite the website.
 

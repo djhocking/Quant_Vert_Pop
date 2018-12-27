@@ -1,9 +1,0 @@
----
-title: "Replicate a Real Analysis"
-author: "Your Name Goes Here"
-output: word_document
----
-In groups of 3-4, find a paper that uses an analysis we've learned in class and similar data. It's best if they've made their data publicly available, but we can get simiar data or simulate a fake similar dataset if needed.
-
-Try to replicate their analysis in R.
-

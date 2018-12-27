@@ -1,9 +1,0 @@
----
-title: "Lab Activity: AIC and CJS in R"
-author: "Your_Name_Here"
-output: pdf_document
----
-
-## Pick any dataset you want and run at least 3 models and compare the AICc and the $\Delta AIC_c$ values for those models.
-
-## Use the dipper data again and use the `marked` package vignette (on Canvas) to run the same models from lab 5. Compare the AIC values. You will likely have to install the `marked` package.
