@@ -1,0 +1,3 @@
+# Maximum likelihood estimation{#mle}
+
+In our discussion of the linear model (chapter \@ref(linear)), we didn't talk about how to fit our data to the model. By this I mean, how do we figure out what value for the intercept and slope(s) best describe (fit) our data.

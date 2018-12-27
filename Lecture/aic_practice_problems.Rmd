@@ -1,9 +1,7 @@
 ---
 title: "AIC Practice Problems"
 author: "Your Name Goes Here"
-output:
-  pdf_document: default
-  html_document: default
+output: html_document
 ---
 
 ## Data
@@ -26,7 +24,7 @@ Turn into a Z-score by substracting the mean from each observeration and dividin
 Now 95% of your observations will be between -2 and 2 (if your data were normally distributed)
 
 $$
-x^{\prime}_i = \frac{x_i - \bar x}{\sigma}
+x^'_i = \frac{x_i - \bar x}{\sigma}
 $$
 
 ```{r}
@@ -34,88 +32,22 @@ $$
 range(sal$elev)
 range(sal$temp)
 
-# Use the scale function
-# ?scale
-sal$elev_s <- as.numeric(scale(sal$elev)) # without the as.numeric it creates a form that doesn't play well with others
+sal$elev_s <- scale(sal$elev)
 
-# by hand
-sal$temp_s <- (sal$temp - mean(sal$temp, na.rm = T)) / sd(sal$temp, na.rm = T) 
+sal$temp_s <- (sal$temp - mean(sal$temp, na.rm = T)) / sd(sal$temp, na.rm = T)
 
-# make a custom function that standardizes the variable. 
-# Requires a vector and outputs a standardized version of the vector
-std <- function(var) {
-  var_s <- (var - mean(var, na.rm = T)) / sd(var, na.rm = T)
-  return(var_s)
-}
-
-# use custom function on a variable
-sal$humidity_s <- std(sal$humidity)
-
-# use custom function in combination with dplyr mutate function
-library(dplyr)
-
-sal <- sal %>%
-  mutate(precip_s = std(precip),
-         twi_s = std(twi),
-         slope_s = std(slope))
-
-# look at str and summary
-str(sal)
 summary(sal)
-
+?scale
 ```
 
 ## Models
 
-Transects within plots were part of the study design so plots should be included as random groups
-
-```{r}
-library(lme4)
-
-glmer1 <- glmer(count ~ 1 + (1 | plot), data = sal, family = "poisson")
-glmer2 <- glmer(count ~ 1 + temp_s + humidity_s + (1 | plot), data = sal, family = "poisson")
-glmer3 <- glmer(count ~ 1 + elev_s + (1 | plot), data = sal, family = "poisson")
-glmer4 <- glmer(count ~ 1 + elev_s + I(elev_s^2) + (1 | plot), data = sal, family = "poisson")
-glmer5 <- glmer(count ~ 1 + slope_s + twi_s + (1 | plot), data = sal, family = "poisson")
-glmer6 <- glmer(count ~ 1 + temp_s + humidity_s + elev_s + I(elev_s^2) + slope_s + twi_s + (1 | plot), data = sal, family = "poisson")
-```
 
 ## AICc comparison
 
-```{r}
-library(AICcmodavg)
-
-##set up candidate models          
-Cand.mod <- list()
-
-##global model          
-Cand.mod[[1]] <- glmer1
-Cand.mod[[2]] <- glmer2
-Cand.mod[[3]] <- glmer3
-Cand.mod[[4]] <- glmer4
-Cand.mod[[5]] <- glmer5
-Cand.mod[[6]] <- glmer6
-
-##assign names to each model
-Modnames <- c("intercept only", 
-              "environ conditions",
-              "elevation", 
-              "quadratic elevation",
-              "physical environ", 
-              "global model") 
-
-##model selection table based on AICc
-aictab(cand.set = Cand.mod, modnames = Modnames)
-```
 
 ## Check model fit
 
-```{r}
-plot(glmer4)
-boxplot(resid(glmer4) ~ sal$plot,
-        xlab = "Plot",
-        ylab = "Pearson's Residuals")
-```
 
 ## Random grouping needed?
 
@@ -123,34 +55,7 @@ Because the grouping was part of the experimental design, it is important to alw
 
 Compare the best model from above with the same fixed effects model (same model just without any random effects).
 
-```{r}
-library(lme4)
-glm4 <- glm(count ~ 1 + elev_s + I(elev_s^2), data = sal, family = "poisson")
 
-##set up candidate models          
-Cand.mod2 <- list()
-
-##global model          
-Cand.mod2[[1]] <- glmer4
-Cand.mod2[[2]] <- glm4
-
-##assign names to each model
-Modnames2 <- c("GLMM", 
-              "GLM") 
-
-##model selection table based on AICc
-# aictab(cand.set = Cand.mod2, modnames = Modnames2) # throws error
-
-df <- data.frame(model = c("GLMM", "GLM"), AICc = c(AICc(glmer4), AICc(glm4)))
-df[order(df$AICc), ]
-
-anova(glm4, glmer4, test = "LRT") # not working correctly?
-
-```
-
-## Read the following paper and describe the main points of the paper:
-
-Grueber, Nakagawa, Laws, and Jamieson. 2011. Multimodel inference in ecology and evolution: challenges and solutions. Journal of Evolutionary Biology. 24:699-711.
 
 ## Grad Student Optional: Using Model Averaging for Multimodel Inference
 
