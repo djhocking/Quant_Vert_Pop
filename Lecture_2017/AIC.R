@@ -50,3 +50,6 @@ Modnames <- c("type + logperim + invertpred", "type + logperim",
 
 ##model selection table based on AICc
 aictab(cand.set = Cand.mod, modnames = Modnames)
+
+# get model results
+summary(Cand.Mod[[1]])
