@@ -1,18 +1,49 @@
 ---
+title: "Introduction to Population Modeling"
+author: "BIOL 414/514"
+date: "Quantitative Analysis of Vertebrate Populations"
 output:
-  pdf_document: default
-  html_document: default
+  tufte::tufte_handout:
+    df_print: kable
+  tufte::tufte_html: default
+  beamer_presentation: default
+  slidy_presentation: default
+urlcolor: blue
+bibliography: bibliography.bib
 ---
-# Populations and Linear Models {#pops}
 
-## What is a population?
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
 
+```{r, echo = FALSE}
+library(tufte)
+```
+
+`r newthought("Learning Objectives:")` Understand the challenges in defining and measuring populations and differentiate mathematical and statistical models.
+
+# What is a population?
+
+
+```{marginfigure}
+This is more space to take notes
+```
+
+Space to take notes:
+
+\vspace{20mm}
+
+<!---
 * Individuals of a single species
 * Potential interbreeding
 * Living in the same place and time
+-->
 
-## What do we want to know about populations?
+# What do we want to know about populations?
 
+\vspace{40mm}
+
+<!---
 * How many individuals (abundance)
 * How tightly packed (density)
 * Spatial extent (distribution)
@@ -20,23 +51,28 @@ output:
 * How affected by the each other, other spp., the environment
 * Genetic diversity and relatedness of individuals
 * Adaptation to the local environment
+-->
 
-## What types of data do we collect to learn about populations?
+# What types of data do we collect to learn about populations?
 
+\vspace{40mm}
+
+<!---
 * Observations of species presence/absence
 * Counts of individuals
 * Observations of individuals (Mark-Recapture)
 * Movements among populations/sub-populations
 * Population genetics
 * Correlations and responses to the environment
+-->
 
-## What do we do with the data
+# What do we do with the data?
 
 ![Adapted from Powell and Gale 2015](Figures/methods_table.png)
 
 \newpage
 
-## What managers want to know
+# What managers want to know
 
 I'm not a manager and this isn't a management course, so these are just a couple examples related to vertebrate populations.
 
@@ -46,11 +82,11 @@ I'm not a manager and this isn't a management course, so these are just a couple
 * How is the population changing?
 * How do management actions and environmental change affect population sizes or densities (Population Viability Analysis - PVA)
 
-## Population Change
+# Population Change
 
 Populations change through births, deaths, immigration, and emigration. This is described mathematically as $\Delta N = B - D + I - E$
 
-## Group Activity
+# Group Activity
 
 <style>
 .alert {
@@ -77,7 +113,7 @@ Finally, estimate where the line would cross the y-axis. This is your intercept,
 
 </div>
 
-## Why make models at all?
+# Why make models at all?
 
 1. **To understand a how the world works** - The natural world is messy and complex and we need ways to visualize, simplify, and describe it. We use a combination of *conceptual*, *graphical*, *mathematical* (analytical), and *statistical* models to do this. We can combine these with old and new data to understand how well our representation of the world fit with the actual ecological processes.
 
@@ -85,14 +121,16 @@ Finally, estimate where the line would cross the y-axis. This is your intercept,
 
 3. **Predict the future** - We often want to know how conditions or actions now will affect future populations. For example, if we allow for a 5 fish per angler per day limit, what will we expect the Rainbow Trout population to be in 10 years? Is this a sustainable harvest? What is the probability that it will cause a population crash and loss of the fishery? How will it affect the other species in the community?
 
-## Examples of why it matters
 
+# Examples of why it matters
+
+\vspace{30mm}
 
 ## How do we go about developing and testing models?
 
 Think about the development of your models from earlier. How did you come up with the models? What was the process?
 
-Steps from Powell and Gale (2015) based on Starfield (1997):
+Steps from Powell and Gale [-@Powell2015] based on Starfield (1997):
 
 1. Define the problem
 
@@ -100,13 +138,20 @@ Steps from Powell and Gale (2015) based on Starfield (1997):
 
 3. Create the model
 
-4. Solve the model (through simulation or incorporating real data)
+4. Solve the model (through simulation or incorporating real data)[^2]
 
 5. Interpret the results
 
 6. Invesitgate the model sensitivity - play with your model
 
-7. Consider the model assumptions
+7. Consider the model assumptions[^3]
+
+
+[^2]: From Dr. Michael Betancourt regarding generalization: The inference is conditioned on your testing (calibration) data.
+
+[^3]: From Dr. Dan Simpson, U. Toronto: A model assumption isn't an assumption if you can test it. If you demonstrate that it's true, then it's just a precondition of your model.
+
+# Literature Cited
 
 
 

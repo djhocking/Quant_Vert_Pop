@@ -7,9 +7,13 @@ output:
     fig_caption: true
 ---
 
-## Course Syllabus - Graduate Students
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, echo = FALSE, message = FALSE) 
+```
 
-***
+## Course Syllabus
+
+****
 
 **Frostburg State University**
 
@@ -17,7 +21,7 @@ output:
 
 **Semester:** Fall
 
-**Year:** 2018
+**Year:** 2019
 
 ### Instructor
 
@@ -29,9 +33,9 @@ output:
 
 **Laboratory:** F 8:00 - 10:50 AM; CCIT 127B
 
-**Office Hours:** Monday 11:00 - 12:00; Tuesday 9:00 - 11:00 AM, Wednesday 11:00 - 12:00 AM, Thursday 12:00 - 1:00 pm; or by appointment
+**Office Hours:** Monday 11:00 AM - 12:00 PM; Tuesday 9:00 - 10:30 AM, Wednesday 11:00 AM - 12:00 PM, Thursday 9:00 - 10:30 AM; or by appointment
 
-***
+****
 
 ### Description
 
@@ -50,22 +54,31 @@ MATH 120 or a course in calculus, MATH 109/209; BIOL 150, 160 or 161. BIOL 340 (
 * Gain experience with field methods for count data and mark-recapture
 * Develop computational skills for fish and wildlife management
 * Learn basic scientific programming skills in the R language
+* Learn the basics of program MARK
 
 ### Text
 
 Powell, L. A., and G. A. Gale. 2015. Estimation of parameters for animal populations: A primer for the rest of us. Caught Napping Publications, Lincoln, Nebraska.
 
+The textbook is available at the bookstore if you want a physical copy. There is also a free PDF version you can download at [https://larkinpowell.wixsite.com/larkinpowell/estimation-of-parameters-for-animal-pop](https://larkinpowell.wixsite.com/larkinpowell/estimation-of-parameters-for-animal-pop)
+
+### Course Structure
+
+The general structure of this course will consist of a weekly reading from the textbook with an associated question/notes homework assignment due before the start of class that day. This will usually be on Monday and you will only be able to turn in a maximum of two reading assignments late (up to three days) because these assignments are used to facilitate class discussion. Then typically on Wednesdays we will continue this discussion of the topics for the week and have an introduction to the software used to implement the methods. On Friday in lab there will be a weekly tutorial and an associated laboratory assignment. Lab assignments will usually be done in two parts (two Fridays in a row) and then be due the following (third) Friday. 
+
+Lab assignments may be turned in up to 3 days late with -10% penalty per day. No work will be accepted more than 3 days late. Saturday and Sundays are counted in these three days.
+
 ### Grades:
 
 | Task                            | Points | Grade           |
 |:--------------------------------|--------|--------------------|
-2 Exams (100 pts each)    |      200   |   A > 90% |
-Homework assignments     |      200    |  B = 80 – 89% |
-Final Exam, comprehensive        |   150      |   C = 70 – 79% |
-| Graduate Project     |  100    |     D = 60 – 69% |
-|           |     |     F < 60% |
+| Homework assignments     |      100   |   A > 90% |
+| Laboratory assignments     |      600    |  B = 80 – 89% |
+|  Midterm Exam       |   100      |   C = 70 – 79% |
+|  Final Exam, comprehensive    |  200    |     D = 60 – 69% |
+|  Graduate Project         | 100    |     F < 60% |
 |      |      | |
-**Total possible points**               | **650** | |
+**Total possible points**               | **1100** | |
 
 Total points and assignments may change to accommodate teaching and learning objectives. Grades are still based on percentage of total points. Grades from individual assignments will be posted on [Canvas](https://frostburg.instructure.com), **however, the grade calculated by Canvas may be incorrect because of differences in weighting of assignments**. It is your responsibility to calculate your current grade based on the grading scheme described above.
 
@@ -82,6 +95,20 @@ Student work is defined as assignments, homework, and other academic activities 
 
 The schedule will adjust based on the previous experience of students in the the class along with learning progress during the course. A rough outline of course topics follows:
 
+```{r, echo = FALSE}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+schedule <- read.csv("schedule_quant.csv", stringsAsFactors = FALSE)
+
+schedule %>%
+  select(-Date) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "responsive"),
+                fixed_thead = TRUE)
+```
+
+<!---
 1. Introduction to populations and animal distributions
 2. Introduction to R and RMarkdown
 3. Maximum likelihood, R Graphics
@@ -96,13 +123,17 @@ The schedule will adjust based on the previous experience of students in the the
 12. Random and mixed effect models
 13. Fecundity, demography, and population viability
 
+-->
+
 ### Important dates and information
 
-* September 3: Labor Dat - no classes
-* November 2: last day to withdraw with a "W"
-* November 21 - 25: no classes (Thanksgiving Break)
-* December 10: last day of classes
-* December 13: Final Exam 2:30 - 5:00 pm
+* August 29: Last day to add or drop classes
+* September 2: Labor Day - no classes
+* November 1: last day to withdraw with a "W"
+* November 27 - 30: no classes (Thanksgiving Break)
+* December 9: last day of classes
+* December 16: Final Exam 11:15 am - 1:45 pm
+	
 * Email and Canvas: Access to your email and Canvas is required for this class. Check your email daily.
 
 ### Attendance
@@ -115,9 +146,9 @@ If you have an unexcused absence, you do not need to contact me. Common examples
 
 ### Class Policies
 
-There will be no cell phones on the desk or in lab. You may not eat food or use tobacco products including electronic cigarettes in class or labs. Disruptive behavior (using phones, talking, etc.): I will ask you to leave if I think you are being disruptive.
+There will be no cell phones on the desk or in lab. You may not eat food or use tobacco products including electronic cigarettes in class or labs. Disruptive behavior (using phones, talking unrelated to the course, etc.) will not be tolerated. I will ask you to leave if I think you are being disruptive.
 
-"The University will not tolerate disorderly or disruptive conduct which substantially threatens, harms, or interferes with university personnel or orderly university processes and functions.  A faculty member may require a student to leave the classroom when his/her behavior disrupts the learning environment of the class.  A student found responsible for disruptive behavior in the classroom may be administratively withdrawn from the course."
+"The University will not tolerate disorderly or disruptive conduct which substantially threatens, harms, or interferes with university personnel or orderly university processes and functions. A faculty member may require a student to leave the classroom when his/her behavior disrupts the learning environment of the class.  A student found responsible for disruptive behavior in the classroom may be administratively withdrawn from the course."
 
 **Beacon Early Warning System:** all students should have a network of people who will support them in their educational journey. For that reason, the University uses a system known as Beacon, whereby your instructors and coaches, if applicable, can post notices about your academic behavior. For instance, if you are absent repeatedly from a class or are not completing assignments, your instructor may post a notice on Beacon. That information may be shared with your other instructors and/or your athletic coach. I will be monitoring notices posted on Beacon so that you and I may address any issues before they become obstacles to your academic success.
 
@@ -127,7 +158,11 @@ Frostburg State University and its faculty are committed to maintaining a safe l
  
 Faculty and staff are also obligated to report allegations of child abuse and neglect to University Police and to Child Protective Services. This obligation extends to disclosures of past abuse even if the victim is now an adult and the abuser is deceased. My duty to report suspected child abuse and neglect extends to disclosures that are made as part of classroom discussions and in writing assignments. 
 
-If you or someone you know has experienced an incident of harassment or violence, please go to www.frostburg.edu/titleix to find information on reporting options and the resources and services available for support.
+If you or someone you know has experienced an incident of harassment or violence, please go to [www.frostburg.edu/titleix](www.frostburg.edu/titleix) to find information on reporting options and the resources and services available for support.
+
+### Frostburg State University Anti-Harassment and Retaliation Statement
+
+Frostburg  State  University  is  firmly  committed  to  maintaining  a  learning  and  workplace  environment  free  from  discrimination  and  harassment  based  on  an  individual’s  gender  or  sex. Sexual  harassment,  sexual  assault,  and  other  categories  of  sexual  misconduct are  forms  of  sex  discrimination  that  are  not  tolerated  and  are  expressly  prohibited  by  FSU.  Such  misconduct undermines   the   University’s   mission   and   jeopardizes   the   character   and   integrity   of   our   community.   Retaliation   against   any   individual   who   files   a   complaint of gender   or   sex   discrimination  or  participates  in  the  investigation  of  such  complaint  is  strictly  prohibited.  Any  member  of  the  university  community  who  believes  they  have  experienced  gender  or  sex  discrimination, including sexual harassment and sexual violence is encouraged to promptly report the incident to FSU’s Office of Gender Equity. The university is committed to conducting a prompt investigation and addressing any violation of university policies in a timely manner. Any finding by the university that a student or employee has engaged in an act or acts of sex discrimination (including sexual harassment and sexual violence) or retaliation will be promptly addressed and may result in disciplinary action, including termination of their university affiliation. It  is  the  responsibility  of  all  members  of  the  FSU  community  to  create  a  safe  and  inclusive  environment. We  must  all  work  together  to  prevent  any  and  all  instances  of  gender  and  sex  discrimination  and  sexual  violence  at  Frostburg  State  University.  Members  of  the  university  community may report allegations of gender or sex discrimination (including sexual harassment and    sexual    violence)    to    the    Office    of    Gender    Equity,    126    Hitchins,    301.687.3035, [titleix@frostburg.edu](titleix@frostburg.edu).  Individuals can also submit an online report at [www.frostburg.edu/report](www.frostburg.edu/report).  FSU   offers   a   number   of   resources   for   individuals   who   have   experienced   gender   or   sex   discrimination (including sexual harassment and sexual violence). Individuals wishing to obtain help and support can find a full list of resources, including confidential and off-campus resources, at [www.frostburg.edu/titleix/getting-help-and-support/](www.frostburg.edu/titleix/getting-help-and-support/)
 
 ### Academic Honesty
 

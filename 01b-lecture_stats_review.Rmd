@@ -1,0 +1,124 @@
+---
+title: "Stats Review"
+author: "BIOL 414/514"
+date: "Quantitative Analysis of Vertebrate Populations"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: default
+  tufte::tufte_handout:
+    df_print: kable
+  tufte::tufte_html: default
+bibliography: bibliography.bib
+urlcolor: blue
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r, echo = FALSE}
+library(tufte)
+```
+
+`r newthought("Learning Outcomes"):`
+
+1. Be able to identify and develop null and alternative hypotheses
+2. Understand what a $p$-value is and some of the limitations in NHST
+3. Identify Type I & II errors and be able to discuss the relationship to management decisions
+4. Differentiate and describe accuracy, precision, and bias and how they relate to inference
+5. Decide when to use a $t$-test, ANOVA, or regression
+6. Recognize normal distributions with different means and variance
+7. Describe the meaning and importance of a confidence interval and its relationship to means, SE, and normal distributions
+8. Be able to articulate study objectives and limits of inference from each analysis (long term outcome)
+
+To acheive these learning outcomes[^1], we will review material covered in your introductory statistics class, discuss how it relates to populations and namangement inference, bring in some new techniques, and practice using these skills together. To begin this journey, **remind me of the steps of the scientific method.**
+
+[^1]: **Learning outcomes** are things you should be able to *do* after fully digesting this lesson. Some things you might be able to do immediately (or already) and other skills might take longer to develop. These are the type of things I will ask you do to in homeworks, labs, and exams. Hopefully you are all able to do these tasks by the final exam and bring the skills to your next class and your career.
+
+You are all familiar with these steps and have all implemented this process in your other science classes. However, up to this point the analysis portion that tests your hypotheses has been relatively superficial. That is great for simple problems and well designed experiments, but those same methods can fall short when dealing with complex studies of real ecosystems. In this class, we will spend most of our time learning ways to test hypotheses and evaluate scientific evidence. But before we can even do that, we need to ensure we have clear study objectives and hypotheses so we know what we are actually testing and what inference we can make[^2]. Let's first start with deductive reasoning, inductive reasoning, and causal inference.
+
+[^2]: This may seem trivial and obvious but many managers and scientists, myself included, conduct elaborate studies without sufficiently well delimited objectives. These studies get published in good journals but fall short in moving science and management forward.
+
+# What is deductive reasoning? What is an example?
+
+\vspace{30mm}
+
+<!---
+Reasoning from the general to the particular (top-down logic). This is central to the study of logic because deductive inferences must be correct.
+
+1. All swans are white. 
+2. this is a swan
+3. Therefore it is white.
+
+If falsify any of these then the other cannot be true
+-->
+
+# What is inductive reasoning? What are its pros and cons?
+
+```{marginfigure}
+This course will be all about inductive reasoning
+```
+
+\vspace{30mm}
+
+<!---
+From particular (specific) to the general.
+
+Do you believe it?
+-smoking causes cancer
+-weather forecast
+-good place to catch fish or see birds
+-->
+
+# Null hypotheses?
+
+```{marginfigure}
+**Null Hypothesis:** The hypothesis that there is no significant difference between specified populations, any observed difference being due to sampling or experimental error.
+```
+
+What is your null hypothesis if you are interested in the growth rate of painted turtles eating plants vs. carrion?
+
+\vspace{10mm}
+
+What about your null hypothesis if your question is, "how does the the proportion of plant material in a turtle's diet affect its growth rate?"
+
+\vspace{10mm}
+
+You can reject a null hypothesis or fail to reject a null hypothesis, but you can never accept a null hypothesis. Why?
+
+\vspace{10mm}
+
+# What is an alternative hypothesis?[^3]
+
+[^3]: A strong alternative hypothesis specifies direction or what the difference is between groups.
+
+Develop an alternative hypothesis for each of the questions above.
+
+\vspace{20mm}
+
+# What is a $p$-value?
+
+The $P$-value, or probability value, is *the probability of finding the observed results or even more extreme results when the null hypothesis is true*. Essentially, if you were theoretically to conduct this study many, many times, what proportion of the time would you find a difference between populations *if there really was no difference*. This is somewhat related to a Type I error.
+
+
+# Types of errors
+
+\vspace{30mm}
+
+# What are limitations of p-values and NHST?
+
+\vspace{30mm}
+
+
+
+
+
+Differentiate and describe accuracy, precision, and bias and how they relate to inference
+5. Decide when to use a $t$-test, ANOVA, or regression
+6. Recognize normal distributions with different means and variance
+7. Describe the meaning and importance of a confidence interval and its relationship to means, SE, and normal distributions
+8. Be able to articulate study objectives and limits of inference from each analysis (long term outcome)
+
+
+

@@ -1,0 +1,17 @@
+Date,Week,Chapters,Topics,Reading HW,Lab,Lab Due
+08/26/19,1,1-2,Populations & probabilities,,Intro R & prob,
+09/02/19,2,3,Maximum Likelihood,HW 1,NO LAB,
+09/09/19,3,5-6,Linear models (Jury Duty),HW 2,Graphics & ML (rice),
+09/16/19,4,4,AIC,HW 3,Linear models & AIC,Lab 1
+09/23/19,5,7-8,Closed Mark-Recapture,,Intro MARK,
+09/30/19,6,9,Known Fate,HW 4,,Lab 2
+10/07/19,7,10,CJS,HW 5,Midterm,
+10/14/19,8,11,Recovery Data,HW 6,CJS in MARK,Midterm
+10/21/19,9,12,Multi-state Models,,CJS in R,
+10/28/19,10,13,Robust Design,HW 7,Multi-state & Robust,Lab 3
+11/04/19,11,14-15,Surveys & Occupancy,HW 8,Occupancy,Lab 4
+11/11/19,12,16-17,Double-obs & Removal,,Removal,
+11/18/19,13,18,N-mixture,HW 9,,Lab 5
+11/25/19,14,19,Distance Sampling,HW 10,,
+12/02/19,15,,Review,,Work on Final Exam,Lab 6
+12/09/19,16,Work on final,,,,Final Exam

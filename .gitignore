@@ -12,3 +12,15 @@ Blackboard/
 Lab/Lab4/UnmarkedWebinar/
 Lab/Lab7_robust/mark*
 *.DS_Store
+Lecture_2017/
+Lecture_2017/*
+*.log
+*.tex
+Grades/
+Grades/*
+Lecture/
+Lab/
+Blackboard/
+Lecture_Book/
+Misc/
+Results/

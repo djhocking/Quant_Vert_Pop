@@ -6,7 +6,7 @@ output: pdf_document
 
 *Adapted from University of Tennessee Biometry course by Dr. Jim Fordyce*
 
-Turn in via blackboard next Friday by the end of the day. please title the document **hw1_yourlastname_yourfirstname**. Ideally it will be a PDF file generated from knitting an RMarkdown document.
+Turn in via Canvas on the due date by the end of the day. It should be a PDF file generated from knitting an RMarkdown document. Please see me well in advance if you have problems knitting. Knit as you go along to make sure it's working periodically. Do not wait until the end to knit the first time because it will be much more difficult to track down any problems.
 
 
 ## 1. Assign to a vector called X the values 1,3,5,6,7, and 9. Assign to a vector called Y the values 2,7,4,5,2 and 12.
@@ -34,7 +34,7 @@ Turn in via blackboard next Friday by the end of the day. please title the docum
 
 
 
-## 7. Calculate the mean of the rows of mat1 and add this as a third column.
+## 7. Calculate the mean of the rows of mat1 and add this as a third column. You can use the `rowMeans` function.
 
 
 
@@ -67,6 +67,35 @@ Turn in via blackboard next Friday by the end of the day. please title the docum
 
 
 ## 15 Create a sequence of numbers from -10 to 10 with intevals of 0.5 using R functions. Assign it to an object and calculate the sum of the values.
+
+
+
+## 16. Using the `iris` data, make a new dataframe called `iris_petal` with just the petal length and width columns.
+
+```{r}
+str(iris)
+```
+
+Based on the structure of iris I see that there are 150 observations of 5 variables. 
+
+
+##17. Now add a new column to `iris_petal` called `Random` filled with normally distributed random numbers.
+
+
+## 18. Display the first 15 rows of the `iris_petal` dataframe.
+
+
+## 19. Print a summary of the `iris_petal` dataframe.
+
+
+## 20. Read the `mallard_counts.csv` file into R and save the dataframe as an object call `ducks`. Be sure to use `stringsAsFactors = FALSE`. 
+
+
+## 21. Print at the structure of `ducks`. How many rows and columns does it have? 
+
+
+## 22. Plot the elevation vs. counts and include a linear regression line using ggplot
+
 
 
 

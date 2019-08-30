@@ -1,0 +1,19 @@
+---
+title: "Reading Homework 1"
+autor: "put your name here"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+## 1. Describe the difference between accuracy, precision, and bias.
+
+## 2. How do these terms relate to analysis of wildlife populations and potentially affect management decisions?
+
+## 3. How do you say the term $\binom{N}{n}$ and what is the value if $N = 10$ and $n = 4$?
+
+## 4. What is a Maximum Likelihood?
+
+## 5. How do we use calculus to maximum a likelihood?
+
+## 6. 
+

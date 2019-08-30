@@ -1,0 +1,75 @@
+---
+title: "Getting Started with Quantitative Analysis in R"
+author: "BIOL 414/514"
+date: "Quantitative Analysis of Vertebrate Populations"
+output:
+  tufte::tufte_handout:
+    df_print: kable
+  beamer_presentation: default
+  tufte::tufte_html: default
+  slidy_presentation: default
+urlcolor: blue
+bibliography: bibliography.bib
+---
+
+All the software for this course is loaded on the computers in CCIT 127B, the computers in the 24-hour computer cluster on the first floor of CCIT, and on the four laptops in Compton Science Center rm 321. The information below is intended to help guide you in setting up all the same software on your own computer whether you use Microsoft Windows, Mac OS, or Linux. Please let me know if there's anything else I can do to ensure you have access to the software and computing resources needed for this course. All the software we use is freely available with no purchase required.
+
+# Download R
+
+[R](https://cran.r-project.org/) is free open source software designed for doing statisical analyses. It has become the *lingua franca* of statistics and ecological and wildlife statistics. It is also an [Object-Oriented Programming Language](https://en.wikipedia.org/wiki/Object-oriented_programming). This means that R is for much more than statistics. You can do data analysis but also data manipulation, data organization, and interact with other programming languages. If you can dream it, you can do it in R. There are other languages that are much better for particular tasks but for this course we will use R and it will take you a VERY long way.[^1]
+
+[^1]: You can get R at: [https://cran.r-project.org/](https://cran.r-project.org/). It will work on any computer whether you are running Windows, Mac OS, or Linux.
+
+Learning a new language is challenging. R has a very steep learning curve, so it might be challenging and frustrating at times but it will be rewarding and helpful in the end. **Stick with it and ask questions and get help before you give up. We are in this together!**
+
+# Download RStudio
+
+[RStudio](https://www.rstudio.com/products/rstudio/download/#download) is also free and it's an amazing interface for R (technically an Integrated Development Environment or IDE). You need to have R installed but the RStudio is helpful interface that provide file organization, object lists, scripts in a variety of formats, code error checking, and code formatting. You can download RStudio for free on any computer (maybe not tablet) regardless of what type of operating system you use.[^2] 
+
+[^2]:[https://www.rstudio.com/products/rstudio/download/#download](https://www.rstudio.com/products/rstudio/download/#download)
+
+# File Types
+
+R scripts are text files ending in `.R` and all code in the file is run by the R program. To put notes in an R script that are not run as code you have to use the pound symbol `#` and everything on that line after that symbol is ignored by the program. 
+
+In this class, we will primarily use RMarkdown files that end in `.Rmd`. These files combine plain text with R code. The R code chunks are run when the file is knit and added to the text and code in a final document. This document can be a PDF, HTML, or MS Word Document. For this class, I will ask for a PDF file for lab assignments. RStudio makes a lot of cheatsheets (quick reference guides) for RMarkdown and R packages. These are wonderful references and nice to even have printed out while you work.[^3]
+
+[^3]:[https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
+
+To knit files you will need a version of \LaTeX\ to covert RMarkdown to a PDF. For Windows users will use MikTeX [https://miktex.org/howto/install-miktex](https://miktex.org/howto/install-miktex).
+
+```{marginfigure}
+[MikTeX: https://miktex.org/howto/install-miktex](https://miktex.org/howto/install-miktex)
+```
+
+For Mac users you can use the full version of MacTeX but it's very large and most users will find BasicTex sufficient and you can find it at [http://www.tug.org/mactex/morepackages.html](http://www.tug.org/mactex/morepackages.html).
+
+```{marginfigure}
+[Mac BasicTeX: http://www.tug.org/mactex/morepackages.html](http://www.tug.org/mactex/morepackages.html)
+```
+
+After you install the appropriate version of LaTeX for your computer you will need to install pandoc. [Pandoc](https://pandoc.org) is the workhorse for converting RMarkdown files to pdfs (using LaTeX), HTML, or word documents.
+
+```{marginfigure}
+[Pandoc: https://pandoc.org/installing.html](https://pandoc.org/installing.html)
+```
+
+# Setup
+
+When starting any new code you will want to have your R scripts, RMarkdown files, Data, and RProjects all in a single folder on your computer. The RMD files and RProj files should be in the main part of the folder but other things can be in subfolders (`Data/` folder, `Results/` folder, `Figures/` folder, etc.)
+
+```{marginfigure}
+**When working on a university computer DO NOT use your H: drive.** There are permissions issues that cause huge headaches. Be sure you know where what your working directory is and to where things are being saved. The easiest option for this class is to use a USB thumb drive.
+```
+
+# MARK
+
+```{marginfigure}
+[Get Program Mark](http://www.phidot.org/software/mark/downloads/)
+```
+
+Program MARK is the only program that we will use in this course that is only runs on Windows operating systems. There are ways to run it through R using the `RMark` package on Mac OS but to use the MARK GUI it requires Windows or potentially a Windows emulator. The download and installation instructions can be found at [http://www.phidot.org/software/mark/downloads/](http://www.phidot.org/software/mark/downloads/). Mark is a mature, well-developed software with a tremendous number of options. The extensive documentation is found at PhiDot: [http://www.phidot.org/software/mark/docs/book/](http://www.phidot.org/software/mark/docs/book/).[^4]
+
+[^4]: Program MARK can be challenging but is very powerful. The "Gentle Introduction" is now over 1200 pages! It is worth learning, but I do recommend R or other programming language for reproducibility and transparency when possible.
+
+

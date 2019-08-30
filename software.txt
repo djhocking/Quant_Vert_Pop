@@ -5,8 +5,10 @@ RStudio
 pandoc
 latex (miktex on Windows and mactex on Mac OS)
 Program Mark
+Stan
+JAGS (just another gibbs sampler)
 
-permissions to knit (convert) markdown files to html and pdf files via pandoc and miktex using the knitr package in R (or button in RStudio).
+permissions to knit (convert) markdown files to html and pdf files via pandoc and miktex using the knitr package in R (or button in RStudio). Permissions for students to install R packages is easiest as well.
 
 Rpackages (and all their dependencies):
 dplyr
@@ -22,7 +24,7 @@ swirl
 tidyr
 unmarked
 jagsUI
-stan
+rstan
 rjags
 rmarkdown
 secr
@@ -49,6 +51,10 @@ car
 ggmap
 grid.arrange
 popbio
-
+sf
+rgdal
+ggspatial
+knitr
+rmarkdown
 
 

@@ -1,0 +1,9 @@
+Hi all!
+
+Welcome to Quantitative Analysis of Vertebrate Populations ("Quant"). I'm looking forward to meeting all of you and facilitating your journey as a data analyst. I hope the class will be fun and rewarding for everyone, even if it's challenging or intimidating. Send me a message or stop by and chat the first week of classes if there's anything I can do to help you this semester. This includes but is in no way limited to letters from student support services. Everyone has different backgrounds in math and computing along with different educational needs. I'm here to help support your learning any way I can. Please don't be shy about stopping by my office to chat about anything you struggle with and what I can do to help.
+
+I have posted the syllabus on Canvas, which includes required textbook information. I am also posting a file entitled "setup.pdf" on Canvas under "files". All of the software for this course is loaded on the classroom (CCIT 127B) along with the 24-hour computer cluster in CCIT (Gira). However, if you also want to have the software on a personal computer, the "setup.pdf" document provides the necessary links and descriptions of all the software we will use. It is all free so you will not have to purchase anything to run any of the software on your own computer. Sometimes loading free programs can be challenging with different settings and dependencies and I am happy to help you troubleshoot if needed.
+
+I'm looking forward to a great semester.
+
+Dr. Hocking (djhocking@frostburg.edu) 
