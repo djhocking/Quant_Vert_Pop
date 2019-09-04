@@ -1,8 +1,10 @@
 ---
 title: "Reading Homework 1"
-autor: "put your name here"
 date: "`r Sys.Date()`"
-output: pdf_document
+output:
+  pdf_document: default
+  word_document: default
+autor: put your name here
 ---
 
 ## 1. Describe the difference between accuracy, precision, and bias.
@@ -11,9 +13,17 @@ output: pdf_document
 
 ## 3. How do you say the term $\binom{N}{n}$ and what is the value if $N = 10$ and $n = 4$?
 
-## 4. What is a Maximum Likelihood?
+## 4. What is a Maximum Likelihood estimate?
 
-## 5. How do we use calculus to maximum a likelihood?
+## 5. Desribe how we can use numerical methods to esimate the maximum likelihood graphically?
 
-## 6. 
+## 6. How do we use calculus to maximum a likelihood?
+
+## 7. Suppose you sample 50 plots in a national park looking for a rare species. You find it 6 of the plots (and never miss it if it's present). What is your esimate of $p$, the proportion of plots that it would occur in across the park?
+
+## 8. Calculate the 95% Confidence Interval for $p$ using the formulas on page 36 of your textbook.
+
+## 9. What is one thing you're struggling with in this chapter and want to talk about more or have it explained in a different way?
+
+## 10. What is one thing that would help you better understand this chapter?
 
