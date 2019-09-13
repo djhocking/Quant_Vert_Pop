@@ -163,9 +163,34 @@ vec2 <- c(a, vec)
 vec2
 ```
 
-We can also then manipulate these objects and filter them and summarize them. 
+We can also create sequences of numbers to store in a vector using the `seq` function.[^2] 
+
+[^2]:`seq()`
 
 ```{r}
+vec_3 <- seq(from = 1, to = 10, by = 0.2)
+vec_3
+```
+
+Or we can fill a vector with random numbers from a normal distribution using the function `rnorm` or from a sample of values using the `sample` function. The `rnorm` function will draw `n` random numbers from a normal distribution with some `mean` and some standard deviation, `sd`. The sample function randomly selects a number (`size = `) of values from a set of values, (`x = `).
+
+```{r}
+vec_4 <- rnorm(n = 10, mean = -1, sd = 2) # pick 10 random values from a normal distribution with mean = -1 and sd = 2
+vec_4
+
+vec_5 <- sample(x = 1:100, size = 10) # randomly pick 10 values from the set of 1-100 without replacement
+vec_5
+```
+
+```{marginfigure}
+Random numbers: `rnorm()`, `sample()`
+```
+
+We can also then manipulate these objects and filter them and summarize them. First we might want to know the length of the vector using the `length` function.
+
+```{r}
+length(vec2)
+
 # Take the third value of vec2
 vec2[3]
 
@@ -218,6 +243,12 @@ a_df
 
 colnames(a_df) <- c("cats", "dogs")
 a_df
+
+# look at the structure of the dataframe
+str(a_df)
+
+# print just the first 3 rows
+head(a_df, 3)
 ```
 
 Finally (this is a lot for now), we can save objects or groups of objects to work with again later. We will see how to load those and other data next time.
