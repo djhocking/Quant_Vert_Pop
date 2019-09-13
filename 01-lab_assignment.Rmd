@@ -1,7 +1,9 @@
 ---
-title: "Homework 1: R Introduction"
+title: 'Homework 1: R Introduction'
 author: "Your_Name_Here"
-output: pdf_document
+output:
+  pdf_document: default
+  word_document: default
 ---
 
 *Adapted from University of Tennessee Biometry course by Dr. Jim Fordyce*
@@ -79,7 +81,7 @@ str(iris)
 Based on the structure of iris I see that there are 150 observations of 5 variables. 
 
 
-##17. Now add a new column to `iris_petal` called `Random` filled with normally distributed random numbers.
+## 17. Now add a new column to `iris_petal` called `Random` filled with normally distributed random numbers.
 
 
 ## 18. Display the first 15 rows of the `iris_petal` dataframe.
@@ -88,13 +90,19 @@ Based on the structure of iris I see that there are 150 observations of 5 variab
 ## 19. Print a summary of the `iris_petal` dataframe.
 
 
-## 20. Read the `mallard_counts.csv` file into R and save the dataframe as an object call `ducks`. Be sure to use `stringsAsFactors = FALSE`. 
+## 20. Read the `mallard_counts.csv` file into R and assign the dataframe as an object call `ducks`. Be sure to use `stringsAsFactors = FALSE`. 
 
 
 ## 21. Print at the structure of `ducks`. How many rows and columns does it have? 
 
 
-## 22. Plot the elevation vs. counts and include a linear regression line using ggplot
+## 22. Plot the elevation vs. counts and include a linear regression line using ggplot.
+
+## 23. Read in the salamander demographic csv file and then select just the columns `sex`, `mass`, `svl`, `tl`, and `recap`. DO NOT print all the results.
+
+## 24. Filter the salamander data to just males ("Y") amd individuals where recapture equals "N". DO NOT print the entire results. Either the first 10 rows or just the structure of the resulting object.
+
+## 25. Make a scatterplot of `svl` (x-axis) vs. `mass` (y-axis) and add a linear regression line through the data points.
 
 
 
