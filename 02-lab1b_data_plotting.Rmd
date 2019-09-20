@@ -1,0 +1,220 @@
+---
+title: "Tutorial: Libraries, Plotting, and Data"
+author: "BIOL 414/514"
+date: "Quantitative Analysis of Vertebrate Populations"
+output:
+  tufte::tufte_handout:
+    df_print: kable
+  tufte::tufte_html: default
+urlcolor: blue
+bibliography: bibliography.bib
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r, echo = FALSE}
+library(tufte)
+```
+
+
+`r newthought("Learning Objectives:")`
+
+1. Learn to reorganize data, summarize, and extract pieces of dataframes
+
+2. Learn about plotting
+
+
+*Lab adapted from labs by Dr. Nicholas Nagel at the University of Tennessee*
+
+## R libraries
+
+There must be tens of thousands of different functions in R now, covering over a hundred different fields. More than you could possibly ever use. To keep all this straight, there is "base" R, and then over a thousand different add-on packages. Most people will only ever use a few. 
+
+The package we will use the most is called `ggplot2.` Another package that we will use in this lab is called `dplyr.`
+
+To load packages, use the `library` function.
+
+Below is an example of a code "chunk" in Rmarkdown. Try executing this chunk by either (1) clicking the *Run* button within the chunk (little green arrow on the right), (2) Selecting Run on the top menu, or (3) by placing your cursor inside the chunk and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(ggplot2)
+```
+
+On a classroom comupter this might work if the packages are already installed. If you're on your personal computer or it hasn't been installed on the lab computer, chances are high that you get the message, `Error in library(ggplot2) : there is no package called ‘ggplot2’`.
+
+This means that the package `ggplot2` is not in your computer's library. You may have to install it first. This is how to install it and `dplyr`.
+
+```{r, eval = FALSE}
+install.packages('dplyr')
+install.packages('ggplot2')
+```
+
+You only need to install packages once on any computer until you update to a new version of R. **Do not put the `install.packages()` in your RMarkdown file. You don't want to reinstall it every time you run a chunk or knit the file.** Just run it in the console or have an R script that you run once to install packages. 
+
+After they are installed, you can go back and load the libraries with the command:
+
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+You only need to install a package once. But everytime you fire up R, you will have to use the library command to load the package into R so that you can use it. Think of R as a desk in your bedroom where you do your studying. Before you can study, you will need to go to your `library` and get the books you need (you have your own library at home, right?). And if the library doesn't have the books, then you will have to ask the library to go out and get the books (with `install.packages`).
+
+Please note, while you can run R without internet access, you will need to be online when you run install.packages. **Pro Tip:** If you are taking a plane trip and expect to get work done, then always make sure that you have installed the packages you will need before you take off.
+
+## Getting the data
+
+Data are usually obtained from a file that someone gives you, or that you make yourself, or that you download from the web. Some data come installed with base R and others come as example datasets with particular packages. Download the `Sparrows.txt` file from Canvas and put it in a single folder containing your R Project and Rmd file (if can be in a subfolder within that folder such as `Data/Sparrows.txt`). Use the following code to read in the text file and look at the file structure. You can also click it in your "Environment" to the right in to open it with the RStudio Viewer.
+
+```{r}
+sparrows <- read.table("Data/Sparrows.txt", sep = "", header = TRUE, stringsAsFactors = FALSE)
+str(sparrows)
+```
+
+Let's also look at the first 10 rows of data.[^1]
+
+[^1]: You can use the `kable` package to make tables look pretty. [Click here for tutorial](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+
+```{r}
+head(sparrows, 10)
+# sparrows[1:10, ] # also prints the first 10 rows and each column
+```
+
+Or we can just look at the fist 12 rows of only the sex, wingcrd, and wt columns.
+
+```{r}
+sparrows[1:12, c("Sex", "wingcrd", "wt")]
+sparrows_subset <- sparrows[ , c("Sex", "wingcrd", "wt")]
+str(sparrows_subset)
+
+mean(sparrows_subset$wt)
+mean(sparrows_subset[ , "wt"])
+```
+ 
+or print the first 10 rows of just the wingcrd using the `$` to call that column
+ 
+```{r}
+head(sparrows$wingcrd, 10)
+```
+ 
+If you save a MS Excel file as a comma separated csv file, you will use a similar command but with a comma for the separator. You can try this with the `Salamander_Demographics.csv` file.
+
+```{r}
+sally <- read.csv("Data/Salamander_Demographics.csv", stringsAsFactors = FALSE)
+str(sally)
+```
+
+```{marginfigure}
+Always use the `stringsAsFactors = FALSE` argument with the `read.table` and read.csv` functions.
+```
+
+The `read.csv()` function is a shortcut for `read.table` with the ` sep = ",", header = TRUE` arguments so you can use the following code to achieve the same thing.
+
+```{r, eval = FALSE}
+sally <- read.csv("Data/Salamander_Demographics.csv", stringsAsFactors = FALSE)
+```
+
+
+## Plotting
+
+Let's use the sparrow data. Let's pick a length measurement, wingcrd, and examine the relationship with mass (unfortunately named `wt` for weight).
+
+It's always a good idea to plot your data to examine patterns. The x-axis should be `wingcrd`, and the y-axis should be `wt`. We usually use a scatter plot for plotting two continuous variables, and so let's use a point geometry in the ggplot2 package to show each observation.
+
+```{marginfigure} 
+ggplot2 (see cheatsheet)
+```
+
+```{r}
+ggplot(sparrows, aes(x = wingcrd, y = wt)) + 
+  geom_point() + 
+  labs(x='Wing cord length (mm)', y='Mass (g)')
+```
+
+It looks like a line fits that fairly well. So first, let's go ahead and add a line to the plot using `geom_smooth`.
+
+```{r}
+ggplot(sparrows, aes(x = wingcrd, y = wt)) + 
+  geom_point() + 
+  labs(x='Wing cord length (mm)', y='Mass (g)') +
+  geom_smooth(method = "lm")
+
+```
+
+You see the regression line in blue, but a grey band around the regression that represents our confidence in the regression line. We'll get that soon enough, but for now just recognize that we estimated this based on a sample, and so there is some uncertainty in our data, and thus, there is some uncertainty in our line. The grey band is an estimate of where the regression could be given this uncertainty. Visually, this looks like a decent regression.
+
+```{marginfigure}
+In the next tutorial, we will learn about running more formal linear regressions and summarizing and interpreting the results.
+```
+
+
+## dplyr (see cheatsheet)
+
+The `dplyr` package is extremely powerful for reoganizing and manipulating data. The important basic functions within dplyr are `filter`, `select`, `mutate` and the pipe `%>%`. These allow us do the same things with dataframes that we did above but more efficiently and with more clear commands.
+
+```{marginfigure}
+dplyr (see cheatsheet): `filter()`, `select()`, `mutate()` and the pipe `%>%`
+```
+
+`filter` is used for getting just the rows that mean particular conditions
+
+`select` is for getting just the columns your want
+
+`mutate` is used for creating new columns, often using calculations from other columns
+
+`%>%` is called a pipe and allows us to string together multiple function calls
+
+For example we could use the following functions to create a new dataframe with the features we want with the following code:
+
+```{r}
+sparrows_mini <- sparrows %>%
+  select(Speciescode, wingcrd, wt, Age) %>% # just select 4 columns
+  mutate(wingcrd_cm = wingcrd / 10) # add column converting wingcord from mm to cm
+
+dim(sparrows_mini)
+summary(sparrows_mini)
+```
+
+## Booleans
+
+```{marginfigure}
+Boolean - denoting a system of algebraic notation used to represent logical propositions, especially in computing and electronics.
+```
+
+Booleans are extremely useful for filtering and later you could use them for `ifelse` statements. For example if we want to just select Species 1 and individuals not equal to Age 2 with wing cord lengths greater than 6 cm and weight (mass) greater than or equal to 21.5 g.
+
+```{r}
+sparrows_filtered <- sparrows_mini %>%
+  filter(Speciescode == 1,
+         Age != 2,
+         wingcrd_cm > 6,
+         wt >= 21.5)
+
+sparrows_filtered
+```
+
+## Commands learned in this lab
+
+Base R
+
+- `$`
+- `mean( , na.rm=TRUE)`
+- `save()`
+- `write.csv()`
+- `==`, `>` `>=`, `!=`
+
+tidyverse (dplyr)
+
+- `%>%`
+- `filter()`
+- `select()`
+- `mutate()`
+
+ggplot
+
+- `ggplot()`
+- `geom_point()`
+- `geom_smooth(, method='lm')`
+

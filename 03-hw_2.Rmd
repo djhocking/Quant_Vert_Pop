@@ -1,0 +1,60 @@
+---
+title: "Reading Homework 2"
+date: '`r Sys.Date()`'
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+  pdf_document: default
+arthor: put your name here
+---
+
+## 1. Describe a management decision/scenario where your confidence would be important.
+
+## 2. Software will estimate your uncertainty (SE and CI), but we often have to calculate our own in other situations. When this might be the case (i.e. what is motivation for the delta method)?
+
+## 3. What is sampling variance vs. process variance?
+
+## 4. What is one alternative to the delta method?
+
+**The only calculus we will actively use for this course will be for the delta method.** And the only calculus you will have to really know is that
+
+$$
+\frac{\partial f}{\partial x} = \frac{\partial x^a}{\partial x} = ax^{a-1}
+$$
+
+The first part means that you are taking the derivative of some function, $f$ with respect to $x$. In this case the function is $x^a$ where $x$ is your parameter of interest and $a$ is a constant. The book uses $c$ for the constant, which is the exact same thing. You will also see the derivative of $f$ written as $f'$ (f-prime), which is the same thing with a different notation.
+
+When taking the derivative of $x$ you take the exponent and move it to the front and multiple it by $x$ and then subtract one from the exponent. Hence $x^2$ becomes $2x^1$ when we take the derivative (and we usually leave off the "1" in the exponent because it's the same as just $x$). More examples:
+
+$$
+\frac{\partial x^3}{\partial x} = 3x^2
+$$
+
+$$
+\frac{\partial x^4}{\partial x} = 4x^3
+$$
+
+$$
+\frac{\partial (2x^{10})}{\partial x} = 20x^9
+$$
+
+Refer to the table of derivatives on page 65 of the book if you need a refresher or more examples later.
+
+## 5. What is the derivative of $1-S$?
+
+## 6. Imagine you did a mark-recapture study and found that the survival rate of 0.984 per month. The standard error (standard deviation of the estimate) is 0.119. Remember the variance is $SD^2$. Calculate the annual survival rate, the variance, and the 95% CI. For the variance of the transformed parameter, you can use the equation on page 64 of the textbook:
+
+$$
+var(\hat{S}_{annual}) = var(\hat{S}_{month}) \frac{\partial (\hat{S}_{month}^{12})}{\partial x}
+$$
+
+## 7. What is a dummy variable and why do you use them?
+
+## 8. What is a link function and why do you use it?
+
+## 9. What is the most confusing part of chapter 5?
+
+## 10. What is one specific thing that you'd like more explanation or examples for in chpater 6?
+
+
