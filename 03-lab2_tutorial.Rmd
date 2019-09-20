@@ -135,6 +135,12 @@ summary(lm2)
 
 You can see that species has a significant affect on mass. Species two is generally 1.7 g heavier than species one and a bird is expected to get 0.42 g heavier for each 1 cm increase in wing cord.
 
+## Interpretting linear models
+
+* p-values and null hypotheses
+* $R^2$ - coefficient of determination
+* coefficients ($\Beta$) - effect sizes
+
 ## Export Data
 
 Now imagine you want to save some data or results you worked up in R. To save a set of R objects for later use in R, you can use the `save` function.
