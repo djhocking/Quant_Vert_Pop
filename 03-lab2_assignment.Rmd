@@ -1,33 +1,65 @@
 ---
-title: "Homework 2: Linear Regression"
+title: "Lab 2: Regression and Model Selection"
 author: "Your_Name_Here"
 output: pdf_document
 ---
 
-Turn in via Canvas next Friday by the end of the day. Submit both the .Rmd file and either a knitted pdf, html, or doc file.
+Turn in via Canvas next Friday by the end of the day. Submit either a knitted pdf, html, or doc file. Knit frequently as you go. It's easier to trouble shoot along the way rather than when you have lots of untested code.
 
-## 1. Using the `iris` data, make a new dataframe called `iris_petal` with just the petal length and width columns.
+**Do not print full dataframes unless I ask for them or I will not read your homework**
+
+## 1. Read the `mallard_counts.csv` file into R and save the dataframe as an object call `ducks`. Be sure to use `stringsAsFactors = FALSE`. 
+
+## 2. Print at the structure of `ducks`. How many rows and columns does it have? 
+
+## 3. Plot the elevation vs. counts and include a linear regression line using ggplot
+
+## 4. Run a linear regression of the effects of elevation and forest on count and print the summary table.
+
+## 5. Are the linear model assumptions met and how do you know (Hint: make diagnostic plots using `plot(Model_Name)` and interpret the output. You won't lose points if you correctly explain the plots even if I disagree with your judgement on whether things are normal or homogenous enough.
+
+## 6. What is the effect of elevation on the number of ducks observed? What's the effect of forest? Are they statistically significant and how do you know?
+
+## 7. Import (read in via a funtion in R, don't use the import funtion in RStudio) the `hares.txt` data. Look at (print) the structure of the data.
 
 ```{r}
-str(iris)
+
 ```
 
-Based on the structure of iris I see that there are 150 observations of 5 variables. 
+Get rid of missing data with the following code (I used `hares` as my dataframe when I read the data in but you can switch it out if you used something else).
 
-## 2. Now add a new column to `iris_petal` called `Random` filled with normally distributed random numbers.
+```{r}
+hares <- hares[which(!is.na(hares$count1)), ] # this takes all the columns for the rows where count1 is not missing (NA)
+```
 
-## 3. Display the first 15 rows of the `iris_petal` dataframe.
+## 8. Run a linear model with a normal distribution to test the effect of year, elevation, landuse, and region on the count (count1) of bunnies.
 
-## 4. Print a summary of the `iris_petal` dataframe.
+## 9. Does this model fit these data? Why or why not? How do you know? Include any tables or visualization you think appropriate.
 
-## 5. Read the `mallard_counts.csv` file into R and save the dataframe as an object call `ducks`. Be sure to use `stringsAsFactors = FALSE`. 
+## 10. Run a linear model with a normal distribution to test the effect of year, elevation, landuse, and region on the **mean.density** of bunnies.
 
-## 6. Print at the structure of `ducks`. How many rows and columns does it have? 
+## 11. How does this model fit the data?
 
-## 7. Plot the elevation vs. counts and include a linear regression line using ggplot
+## 12. Run a GLM with a Poisson distribution on the count1 data as a function of year, elevation, landuse, and region.
 
-## 8. Run a linear regression of the effects of elevation and forest on count and print the summary table.
+## 13. What are the effect sizes (coefficient estimates and their uncertainties (SE))? Do you believe the model (look at the residuals)?
 
-## 9. Are the linear model assumptions met and how do you know (Hint: make diagnostic plots using `plot(Model_Name)` and interpret the output. You won't lose points if you correctly explain the plots even if I disagree with your judgement on whether things are normal or homogenous enough.
+## 14. Add in the effect of area? Does that make a difference? What is the affect of area? 
 
-## 10. What is the effect of elevation on the number of ducks observed? What's the effect of forest? Are they statistically significant and how do you know?
+**Bonus**: See if you can add in the affect of area as an `offset` instead of a linear predictor. Is that any different?
+
+## 15. Run a logistic regression on the presence data with the same independent data as #7. 
+
+To get the data into presence/absence instead of counts, start with this code:
+
+```{r}
+# I called my data "hares" but you would use whatever dataframe you read the data into.
+hares$presence <- ifelse(hares$count1 > 0, 1, 0)
+```
+
+## 16. Read in the seals data, explore the data, and make a model of the data (use count as the indendent data). Describe what dependent variables you chose, why, and what model you used and why you think it might be appropriate.
+
+
+## I will add some AIC and possibly delta method question following the next tutorial
+
+

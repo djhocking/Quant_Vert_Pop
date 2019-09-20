@@ -44,17 +44,18 @@ library(ggplot2)
 
 On a classroom comupter this might work if the packages are already installed. If you're on your personal computer or it hasn't been installed on the lab computer, chances are high that you get the message, `Error in library(ggplot2) : there is no package called ‘ggplot2’`.
 
-This means that the package `ggplot2` is not in your computer's library. You may have to install it first. This is how to install it and lme4.
+This means that the package `ggplot2` is not in your computer's library. You may have to install it first. This is how to install it and `dplyr`.
 
 ```{r, eval = FALSE}
 install.packages('dplyr')
 install.packages('ggplot2')
 ```
 
+You only need to install packages once on any computer until you update to a new version of R. **Do not put the `install.packages()` in your RMarkdown file. You don't want to reinstall it every time you run a chunk or knit the file.** Just run it in the console or have an R script that you run once to install packages. 
+
 After they are installed, you can go back and load the libraries with the command:
 
 ```{r}
-library(lme4)
 library(ggplot2)
 library(dplyr)
 ```
@@ -109,9 +110,16 @@ str(sally)
 Always use the `stringsAsFactors = FALSE` argument with the `read.table` and read.csv` functions.
 ```
 
+The `read.csv()` function is a shortcut for `read.table` with the ` sep = ",", header = TRUE` arguments so you can use the following code to achieve the same thing.
+
+```{r, eval = FALSE}
+sally <- read.csv("Data/Salamander_Demographics.csv", stringsAsFactors = FALSE)
+```
+
+
 ## Plotting
 
-Let's use the sparrow data because we are familiar with it. Let's pick a length measurement, wingcrd, and examine the relationship with mass (unfortunately named `wt` for weight).
+Let's use the sparrow data. Let's pick a length measurement, wingcrd, and examine the relationship with mass (unfortunately named `wt` for weight).
 
 It's always a good idea to plot your data to examine patterns. The x-axis should be `wingcrd`, and the y-axis should be `wt`. We usually use a scatter plot for plotting two continuous variables, and so let's use a point geometry in the ggplot2 package to show each observation.
 

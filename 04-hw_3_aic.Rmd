@@ -1,0 +1,31 @@
+---
+title: "Reading Homework 3: AIC"
+arthor: "put your name here"
+date: '`r Sys.Date()`'
+output:
+  word_document: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+## 1. What is $AIC$ and how is it calculated
+
+## 2. What is $AIC$ used for (i.e. what is the point of doing it)?
+
+## 3. What is $AIC_c$?
+
+## 4. When would you use $AIC$ vs. $AIC_c$?
+
+## 5. What is model averaging and why would you use it?
+
+## 6. What is $K$ in relation to $AIC$ calculations?
+
+## 7. What is $\delta AIC$?
+
+## 8. How do you decide what the "best" model is and how does this related to $\delta AIC$?
+
+## 9. Does $AIC$ tell you about how good the model predicts new data? What other information would you use to understand your model and make inference from it?
+
+## 10. What parts of this chapter and topic would you like to discuss further?
+
