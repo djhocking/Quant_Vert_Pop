@@ -49,6 +49,7 @@ str(covariates)
 From Kery blue book - chp 18 black adders?
 
 ```{r}
+library(dplyr)
 N <- 30
 x1 <- rnorm(N, 0, 1)
 x2 <- rnorm(N, 0, 0.8)
@@ -68,11 +69,33 @@ df <- data.frame(counts, pres, x1, x2)
 
 
 ```{r}
-str(df)
-
 df
 
-glm1 <- 
+colnames(df) <- c("count", "pres", "veg", "temp")
+
+cor(df$veg, df$temp)
+
+lm1 <- lm(count ~ veg + temp, data = df)
+plot(lm1)
+
+glm1 <- glm(count ~ 1 + veg + temp, data = df, family = poisson(link = "log"))
+
+plot(glm1)
+
+summary(glm1)
+
+glm2 <- glm(count ~ 1 + veg, data = df, family = poisson)
+summary(glm2)
+
+AIC(glm1)
+AIC(glm2)
+
+
+glm3 <- glm(pres ~ 1 + veg + temp, data = df, family = binomial(link = "logit"))
+summary(glm3)
+
+
+exp(4.1589) / (1 + exp(4.1589))
 ```
 
 
