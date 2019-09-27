@@ -80,6 +80,21 @@ We always want to check the to see if our model and data matched the assumptions
 plot(my_lm)
 ```
 
+Alternatively, you can make your own residual plot.
+
+```{r, warning = FALSE, message = FALSE}
+resids <- resid(my_lm)
+fitted <- fitted(my_lm)
+
+plot(fitted, resids)
+
+library(ggplot2)
+df_resids <- data.frame(fitted, resids)
+
+ggplot(df_resids, aes(fitted, resids)) + geom_point() + geom_hline(yintercept = 0) + geom_smooth()
+```
+
+
 ## Calculate average response for each Species.
 
 Now let's look at the average response by spevies and sex.
