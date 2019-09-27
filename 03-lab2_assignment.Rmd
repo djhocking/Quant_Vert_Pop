@@ -55,6 +55,8 @@ hares <- hares[which(!is.na(hares$count1)), ] # this takes all the columns for t
 
 ## 17. Import (read in via a funtion in R, don't use the import funtion in RStudio) the ewilderae (Blue-ridge two-lined salamander) data from Great Smoky Mountains National Park.
 
+------------------ use different data for presence-absence - only 1 zero ------------------------
+
 
 ## 18. Run a linear model with a normal distribution to test the effect of elevation and temperature on the count (number) of salamanders.
 
