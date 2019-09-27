@@ -1,0 +1,49 @@
+---
+title: "Tutorial: GLM & AIC"
+author: "BIOL 414/514"
+date: "Quantitative Analysis of Vertebrate Populations"
+output:
+  tufte::tufte_handout:
+    df_print: kable
+  tufte::tufte_html: default
+urlcolor: blue
+bibliography: bibliography.bib
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r, echo = FALSE}
+library(tufte)
+```
+
+
+`r newthought("Learning Objectives:")`
+
+1.
+
+
+
+
+```{r, out.width='25%', fig.align='center', fig.cap='All models are wrong, but some are useful. - George Box', echo = FALSE}
+knitr::include_graphics("Figures/science_is_being_wrong.jpg")
+```
+
+
+```{r}
+trout <- read.csv("Data/Trout/regional_occupancy_data.csv", stringsAsFactors = FALSE)
+str(trout)
+```
+
+
+```{r}
+covariates <- readRDS("Data/Trout/covariates.RData")
+str(covariates)
+```
+
+## Select covariates and join with trout data
+
+```{r}
+
+```
