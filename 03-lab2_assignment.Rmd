@@ -48,18 +48,30 @@ hares <- hares[which(!is.na(hares$count1)), ] # this takes all the columns for t
 
 **Bonus**: See if you can add in the affect of area as an `offset` instead of a linear predictor. Is that any different?
 
-## 15. Run a logistic regression on the presence data with the same independent data as #7. 
-
-To get the data into presence/absence instead of counts, start with this code:
-
-```{r}
-# I called my data "hares" but you would use whatever dataframe you read the data into.
-hares$presence <- ifelse(hares$count1 > 0, 1, 0)
-```
+## 15. free points - I realized that the hares data didn't work as presence-absence data
 
 ## 16. Read in the seals data, explore the data, and make a model of the data (use count as the indendent data). Describe what dependent variables you chose, why, and what model you used and why you think it might be appropriate.
 
 
 ## I will add some AIC and possibly delta method question following the next tutorial
+
+## 17. Import (read in via a funtion in R, don't use the import funtion in RStudio) the ewilderae (Blue-ridge two-lined salamander) data from Great Smoky Mountains National Park.
+
+
+## 18. Run a linear model with a normal distribution to test the effect of elevation and temperature on the count (number) of salamanders.
+
+## 19. Examine the residual plots and consider the assumptions of the model. What's wrong with this model? What is a better approach and why?
+
+## 20. Run a GLM with a Poisson distribution on the count data as a function of elevation and temperature.
+
+## 21. What are the effect sizes? Do you believe the model (look at the residuals)? Tell me why or why not.
+
+## 22. Add in the effect of Observer? Does that make a difference? Are any observers better than others?
+
+## 23. Compare the models from 20 and 22 using $AIC_c$. Which is the better model (if either) and how can you tell?
+
+## 24. Run a logistic regression on the presence data with the same independent data as 20. 
+
+## 25. Predict the number of salamanders expected per transect using the results from the model in #20 when the elevation is 1500 meters and the temperature is 18 C. Use the model in #24 to predict the occupancy probability under the same conditions. Remember to use the appropriate link function for each.
 
 
