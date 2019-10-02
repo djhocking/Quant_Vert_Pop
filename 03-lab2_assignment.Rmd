@@ -50,12 +50,12 @@ hares <- hares[which(!is.na(hares$count1)), ] # this takes all the columns for t
 
 ## 15. free points - I realized that the hares data didn't work as presence-absence data
 
-## 16. Read in the seals data, explore the data, and make a model of the data (use count as the indendent data). Describe what dependent variables you chose, why, and what model you used and why you think it might be appropriate.
+## 16. Read in the seals data, explore the data, and make a model of the data (use "Abun" as the dendent data). Describe what dependent variables you chose, why, and what model you used and why you think it might be appropriate.
 
-
-## I will add some AIC and possibly delta method question following the next tutorial
 
 ## 17. Import (read in via a funtion in R, don't use the import funtion in RStudio) the ewilderae (Blue-ridge two-lined salamander) data from Great Smoky Mountains National Park.
+
+------------------ use different data for presence-absence - only 1 zero ------------------------
 
 
 ## 18. Run a linear model with a normal distribution to test the effect of elevation and temperature on the count (number) of salamanders.

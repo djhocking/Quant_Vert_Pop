@@ -142,7 +142,7 @@ mod_names <- c("forest",
                "forest-temp-precip", 
                "Area interaction")
 
-# makde AIC table
+# make AIC table
 aictab(cand.set = models, modnames = mod_names)
 ```
 
