@@ -1,0 +1,65 @@
+---
+title: "Lab 5 Tutorial: Open-population models in Program MARK"
+author: "Quantitative Analysis of Vertebrate Populations"
+output: pdf_document
+---
+
+*adapted from [https://naes.unr.edu/shoemaker/teaching/NRES-470/LAB7.html](https://naes.unr.edu/shoemaker/teaching/NRES-470/LAB7.html) by Dr. Kevin Shoemaker*
+
+Program MARK is primarily a tool for fitting open-population models- that is, for estimating population vital rates like survival.
+
+Cormack-Jolly-Seber model is the most basic model in Program MARK, and it only estimates survival parameters (not fecundity).
+
+For this exercise, we will use the classic European Dipper data!
+
+These data should look like this! Here it is in R (just the first 15 lines)!
+
+```
+##    h1 h2 h3 h4 h5 h6 h7
+## 1   1  1  1  1  1  1  0
+## 2   1  1  1  1  1  0  0
+## 3   1  1  1  1  0  0  0
+## 4   1  1  1  1  0  0  0
+## 5   1  1  0  1  1  1  0
+## 6   1  1  0  0  0  0  0
+## 7   1  1  0  0  0  0  0
+## 8   1  1  0  0  0  0  0
+## 9   1  1  0  0  0  0  0
+## 10  1  1  0  0  0  0  0
+## 11  1  1  0  0  0  0  0
+## 12  1  0  1  0  0  0  0
+## 13  1  0  1  0  0  0  0
+## 14  1  0  0  0  0  0  0
+## 15  1  0  0  0  0  0  0
+```
+
+Program MARK wants a particular type of input file (.INP). For the dipper data, it should look something like this
+
+An "INP"" file can be dowloaded from Canvas. This is just a plain text file with lines ending with `;` and `.inp` instead of `.txt`.
+
+Open Program MARK! You can download the software [here](http://www.phidot.org/software/mark/downloads/index.html) **ON WINDOWS ONLY**
+
+Double-click the MARK icon to open Program MARK. Click the spreadsheet icon in the upper left corner to open a menu for Specifications for Mark Analysis. This menu allows you to specify the kind of analysis you will conduct (Select Data Type). Today we will start with a data set that includes live recaptures only so be sure this Data Type is selected (Cormack-Jolly-Seber model).
+
+Look to the right and you will see a button: Click to Select File. Click this button and browse to find the `ed_males.inp` file you just downloaded. Double click this file to open this file in Program Mark. Now click the view this file button, which will allow you to see the data file. You will see encounter histories (e.g., 1110101, representing observations over 7 visits) followed by a space, followed by one or more additional columns, followed by a semicolon at the end. The encounter history indicates the occasions when each individual was encountered (actually observed), indicated by a 1, or not encountered, indicated by a 0. The length of the capture history is equal to the number of site visits. The column to the right of the capture histories indicate how many individuals in the population exhibit this particular capture history. The semicolon at the end indicates the end of the record. Note that in this encounter history each individual has its own record (the value in the final colummn is always 1). However, it is possible to specify only the unique observed encounter histories and indicate the number of individuals with each history.
+
+We now have to provide Mark some information about the data. You should provide a title for the data to keep your results organized. Below the data file selection area you will find some buttons and counters to provide additional information. Encounter occasions needs information about the number of possible times an individual could be encountered (number of site visits). Count the number of columns in the dipper encounter history (there are 7) and enter this number for encounter occasions. Once you have completed these tasks click OK; MARK has the basic information it needs to perform an analysis.
+
+A window will open entitled "apparent survival parameter (phi) males of live recaptures". Before we discuss this window we need to open an additional window. Click on the PIM button on the top toolbar, then click on “open parameter index matrix”. Click select all then OK. Click on the Window button on the top toolbar then click on Tile. You should see 2 similar appearing windows all with the upper triangular of a matrix. Look more closely and you’ll see that the window for male survival has numbers ranging from 1 to 6 as columns go from left to right. The encounter probability matrices have numbers 7 to 12. These numbers specify the model structure by defining the number of survival and capture probabilities we wish to estimate! The model you have specified by default allows survival and encounter probabilities to vary annually.
+
+Another useful way to visualize the parameters you wish to estimate is the “Parameter Index Chart”. Click on the PIM button on the top toolbar, then click on “open parameter index chart”. Here you see all parameters in one window- six different survival parameters and six different encounter probability parameters.
+
+Q: Why are there only 6 survival parameters, when there are seven surveys?
+
+To run this model click on the small button with the green arrow (third from left). A new window will open asking for the title for the analysis and the model name. Use ‘dippertest’ or another descriptive name for the analysis. Identify the model as: “phi(t) p(t)”, which indicates that survival and encounter probabilities can each vary across time, independently. This model is among the most general we can run for this data set (sometimes this is called the "full model" to distinguish from "reduced models" that are less-complex versions of this model).
+
+Click OK, and a new window will ask you if you want to use the identity matrix because no design matrix was specified. Click yes (or OK). A new black window with scrolling text will open indicating that MARK is doing calculations (the numerical methods to maximize the likelihood for the data and specified model).
+
+When Mark is finished a new window will open asking you if you want to append the model to the database. Click yes and a new table (The Results Browser) will open. The model is identified on the left based on the notation you provided, AIC, AIC weight, number of parameters and deviances are all reported. For now you can consider AIC as a ranking of the quality of the models from best (low AIC) to worst (high AIC). "Deviance" is a measure of how well the model fits the data.
+
+Re-open the PIMs for survival and capture probability. Use the minus button to reduce the numbers in survival windows to 1 for both males and females and 2 for the both the windows for encounter probabilities (for the latter reduce all matrix entries to 1 then use the plus button to increase them to 2). Use the green arrow to run this model and follow the same procedure as for the earlier model to run this model. Identify the model as {phi(.),p(.)}, which indicates that both parameters are constant across both groups and time. This is the simplest model we can run for these data. Again, use the identity matrix and append the results to the Results Browser. The “dot” model performs better (lower AIC) and has fewer parameters so it is the best of the two models run so far!
+
+Examine Parameter Estimates: To examine parameter estimates click on the model, then move the cursor to the top tool bar and click on ‘Retrieve’. Then click on current model. To see the parameter estimates for the retrieved model return the curser to the Results Browser and click the fourth icon from the left (the third minipage from the left). A text file will open with a list of parameters and their estimates (“view estimates of real parameters in notepad window”). For the ‘dot’ model you will only see one survival estimate and one encounter probability because you specified that both parameters would be constant across time.
+
+Now retrieve the {phi(t) p(t)} model and examine parameter estimates for this model. You will see 6 survival estimates and 6 estimates for detection probability. These are indexed using the numbers you provided in the PIMs. Notice that the 6th estimates for both phi and p have standard error that are either very large or zero. These are the estimates for the last survival and encounter probability for each group, which cannot be estimated.
+

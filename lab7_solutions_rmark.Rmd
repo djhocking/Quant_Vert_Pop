@@ -1,0 +1,29 @@
+---
+title: "Untitled"
+author: "Daniel J. Hocking"
+date: "11/26/2018"
+output: pdf_document
+---
+
+```{r}
+library(RMark)
+
+simple <- read.table("Data/rd_simple1.inp", header = FALSE,
+  colClasses=c("character", "character"),
+  col.names=c("ch", "count"))
+
+time.intervals=c(0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0)
+#
+# Random emigration, p=c varies by time and session, S by time
+#
+S.time = list(formula = ~time)
+p.session = list(formula = ~ -1 + session, share = TRUE)
+GammaDoublePrime.random=list(formula = ~ time, share = TRUE)
+model.1 = mark(data = simple, model = "Robust", 
+            time.intervals = time.intervals,
+            model.parameters = list(S=S.time,
+            GammaDoublePrime=GammaDoublePrime.random,
+            p=p.session),
+            threads=2)
+
+```

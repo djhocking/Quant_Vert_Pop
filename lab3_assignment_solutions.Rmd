@@ -1,0 +1,121 @@
+---
+title: "Lab 3: Generalized Linear Models"
+author: "Your_Name_Here"
+output: pdf_document
+---
+
+**Answers are focused on the code and the explanations are the minimum and can be discussed in class**
+
+## 1. Import (read in via a funtion in R, don't use the import funtion in RStudio) the `hares.txt` data. Look at (print) the structure of the data.
+
+```{r}
+hares <- read.table("Data/hares_data.txt", header = TRUE, stringsAsFactors = FALSE)
+str(hares)
+```
+
+Get rid of missing independent data with the following code (I used `hares` as my dataframe when I read the data in but you can switch it out if you used something else).
+
+```{r}
+hares <- hares[which(!is.na(hares$count1)), ] # this takes all the columns for the rows where count1 is not missing (NA)
+```
+
+## 2. Run a linear model with a normal distribution to test the effect of year, elevation, landuse, and region on the count (count1) of bunnies.
+
+```{r}
+lm1 <- lm(count1 ~ year + elevation + landuse + region, data = hares)
+```
+
+## 3. Does this model fit these data? Why or why not? How do you know? Include any tables or visualization you think appropriate.
+
+```{r}
+plot(lm1)
+```
+
+No, the residuals plot shows increasing spread with larger counts indicating heterogeneity. Additionally, the QQ-plot shows deviations from normality.
+
+## 4. Examine the residual plots and consider the assumptions of the model. What's wrong with this model? What is a better approach and why?
+
+The increasing spread of the residuals with larger expected values of counts suggests that a linear model with normally distributed error is inappropriate. Also a linear model allows for continuously distributed error but counts will be discrete so there is a mismatch. Counts also must be zero or greater and a normal distribution allows for expected counts to be negative. Using the log(count) would be more appropriate or better yet, a GLM with a Poisson distribution and log-link to the linear predictors.
+
+## 5. Run a linear model with a normal distribution to test the effect of year, elevation, landuse, and region on the **mean.density** of bunnies.
+
+```{r}
+lm2 <- lm(mean.density ~ year + elevation + landuse + region, data = hares)
+```
+
+6. How does this model fit the data?
+
+```{r}
+plot(lm2)
+```
+
+The residuals plot suggests so heterogeneity but it's not terrible. There is also some deviation from normality indicated by the qqplot but linear models are moderately robust to deviations from normality. I probably wouldn't draw inference from this model but it's not terrible.
+
+## 7. Run a GLM with a Poisson distribution on the count1 data as a function of year, elevation, landuse, and region.
+
+```{r}
+glm1 <- glm(count1 ~ year + elevation + landuse + region, data = hares, family = poisson)
+```
+
+## 7. What are the effect sizes (coefficient estimates and their uncertainties (SE))? Do you believe the model (look at the residuals)?
+
+The effect sizes are in the Estmate column in the table below and uncertainties in the SE column:
+
+```{r}
+summary(glm1)
+```
+
+```{r}
+plot(glm1)
+```
+
+Based on the residual plots above, I would trust the model since there is no evidence of pattern in the residuals even though the qqplot is not ideal. There are a few outliers that would be worth looking into to make sure there wasn't any problem with data collection or entry or to see if they are driving the results.
+
+## 8. Add in the effect of area? Does that make a difference? What is the affect of area? 
+
+```{r}
+glm2 <- glm(count1 ~ year + elevation + landuse + region + area, data = hares, family = poisson)
+plot(glm2)
+summary(glm2)
+
+AIC(glm1)
+AIC(glm2)
+```
+
+Adding area improved the normality but may have greated some mild clumping of residuals. It did improve the model fit even accounting for the additional model complexity as indicated by the lower AIC value (*not expected in your answer*). The effect of area is `r coef(glm2)["area"]`).
+
+**Bonus**: See if you can add in the affect of area as an `offset` instead of a linear predictor. Is that any different?
+
+```{r}
+glm3 <- glm(count1 ~ year + elevation + landuse + region, offset = area, data = hares, family = poisson)
+plot(glm3)
+summary(glm3)
+
+AIC(glm1)
+AIC(glm2)
+AIC(glm3) # not sure if AIC is valid for comparison with and without offset
+```
+
+Offsetting the area does not work as indicated by the extreme bias introduced (residuals plot)
+
+## 9. Run a logistic regression on the presence data with the same independent data as #6. 
+
+To get the data into presence/absence instead of counts, start with this code:
+
+```{r}
+# I called my data "hares" but you would use whatever dataframe you read the data into.
+hares$presence <- ifelse(hares$count1 > 0, 1, 0)
+
+glm4 <- glm(presence ~ year + elevation + landuse + region, data = hares, family = binomial)
+```
+
+## 10. Read in the seals data, explore the data, and make a model of the data (use count as the indendent data). Describe what dependent variables you chose, why, and what model you used and why you think it might be appropriate.
+
+```{r}
+seals <- read.table("Data/Seals.txt", header = TRUE, stringsAsFactors = FALSE)
+str(seals)
+glm_seals <- glm(Abun ~ Site + Week + Month + Year + Timeofday, data = seals, family = poisson)
+summary(glm_seals)
+plot(predict(glm_seals), resid(glm_seals))
+abline(h = 0, col = "red")
+```

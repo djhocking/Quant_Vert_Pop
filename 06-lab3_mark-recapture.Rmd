@@ -1,0 +1,11 @@
+---
+title: "Lab 3: Mark-Recapture Introduction"
+author: "Your_Name_Here"
+output: pdf_document
+---
+
+Turn in via Canvas next Friday by the end of the day. Submit either a knitted pdf, html, or doc file. Knit frequently as you go. It's easier to trouble shoot along the way rather than when you have lots of untested code.
+
+**Do not print full dataframes unless I ask for them or I will not read your homework**
+
+Use the turtle data - take it from lincoln-peterson, to chapman, to schnibel, to individual mark-recapture closed population. Eventually to robust design. Start in R, the MARK, then back to R. Introduce MARK next week?

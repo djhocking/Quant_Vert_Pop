@@ -1,0 +1,61 @@
+---
+title: 'Lab 3 Part 2: GLM Predictions'
+author: "Your_Name_Here"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+Turn in via Canvas next Friday by the end of the day. Submit either a knitted pdf, html, or doc file (you can submit the .Rmd file if knitting doesn't work).
+
+
+## 1. Read in the salamander demographics data and look at the structure. (2 pts)
+
+```{r}
+sal <- read.csv("Data/Salamander_Demographics.csv", stringsAsFactors = FALSE)
+str(sal)
+```
+
+## 2. Run a linear model to look at the effects of svl and sex on mass. Print the summary results. (2 pts)
+
+```{r}
+lm1 <- lm(mass ~ 1 + svl + sex, data = sal)
+summary(lm1)
+```
+
+## 3. What is the expected mass of an individual of male with a snout-vent length (svl) of 40? (4 pts)
+
+```{r}
+mass_y <- -0.8538963 + 0.0400386 * 40 + -0.00068 * 1
+mass_x <- -0.8538963 + 0.0400386  * 40 + 0.047855 * 1
+```
+
+`r round(mass_y, digits = 3)` g
+
+## 4. What is the expected mass of a female with the same svl? (4 pts)
+
+A female would have a mass of `r round(mass_x, digits = 3)` g. This is `r round(((mass_x/mass_y) - 1) * 100, digits = 1)`% bigger than males of the same length.
+
+## 5. Run a GLM to test the effect of year, elevation, and landuse on the count (count1) of bunnies. (2 pts)
+
+```{r}
+bunnies <- read.table("Data/hares_data.txt", header = TRUE, stringsAsFactors = FALSE)
+glm1 <- glm(count1 ~ year + elevation + landuse, data = bunnies, family = "poisson")
+summary(glm1)
+```
+
+## 6. What is the expected number of bunnies on at low elevation in a grassland in 2005? What about at high elevation? (6 pts)
+
+```{r, eval=FALSE}
+min(bunnies$elevation, na.rm = T)
+max(bunnies$elevation, na.rm = T)
+exp(-34.1 + 0.018513 * 2005 + 0.001170 * 350 + -0.295820 * 1)
+exp(-34.1 + 0.018513 * 2005 + 0.001170 * 600 + -0.295820 * 1)
+```
+
+The elevation in the data range from `r min(bunnies$elevation, na.rm = T)` to `r max(bunnies$elevation, na.rm = T)` meters. So the expected number of hares at a low elevation of 350 m in a grassland in 2005 would be `r round(exp(-34.1 + 0.018513 * 2005 + 0.001170 * 350 + -0.295820 * 1), digits = 0)`. We use the exponential because of the log link within a Poisson GLM. The expected number in the same year and habitat (grassland) would be `r round(exp(-34.1 + 0.018513 * 2005 + 0.001170 * 600 + -0.295820 * 1), digits = 0)` at a high elevation of 600 m
+
+
+
+
+

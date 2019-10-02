@@ -1,0 +1,42 @@
+---
+title: "Reading Homework 4: Mark-Recapture Introduction"
+arthor: "put your name here"
+date: '`r Sys.Date()`'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. What is catch-per-unit-effort and what is its major limitation?
+
+## 2. What is the difference between closed and open populations?
+
+## 3. If the probability of catching an individual is $p_4$, what is the probability of not catching an individual?
+
+## 4. We wanted to estimate the abundance of salt marsh sparrows, but we had limited funds and time before the management decision was needed. We caught and marked 32 individuals the first day with a single orange band on their right leg. We released them and then came back a week later. This second day we captured 41 individuals and 17 of them had marks. Use the Lincoln-Peterson estimator to calculate population size.
+
+## 5. Now calculate population size using the Chapman estimator with the data from #4.
+
+## 6. It turns out we have a few more weeks before the decision is needed and we want to improve our estimate a bit. We go out to more times. During the third sampling weather was not great and we only caught 9 individuals and 6 were recaptures. During the fourth and final visit, we had a better day and captured 56 individuals and 43 were recaptures. Use the Schnabel method to estimate the population size, $\hat N$
+
+## 7. Rewrite the following capture histories as probability statements assuming a modern closed population mark-recapture study:
+
+11101
+
+00010
+
+01101
+
+11101011
+
+
+
+
+
+

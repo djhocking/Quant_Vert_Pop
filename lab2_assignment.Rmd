@@ -1,0 +1,57 @@
+---
+title: "Homework 2: Linear Regression"
+author: "Your_Name_Here"
+output: pdf_document
+---
+
+---
+title: "Homework 2: Plotting & Linear Regression"
+author: "BIOL 414/514"
+date: "Quantitative Analysis of Vertebrate Populations"
+output:
+  tufte::tufte_handout:
+    df_print: kable
+  tufte::tufte_html: default
+urlcolor: blue
+bibliography: bibliography.bib
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r, echo = FALSE}
+library(tufte)
+```
+
+Turn in via Canvas next Friday by the end of the day. Submit both the .Rmd file and either a knitted pdf, html, or doc file.
+
+## 1. Using the `iris` data, make a new dataframe called `iris_petal` with just the petal length and width columns.
+
+```{r}
+str(iris)
+```
+
+Based on the structure of iris I see that there are 150 observations of 5 variables. 
+
+## 2. Now add a new column to `iris_petal` called `Random` filled with normally distributed random numbers.
+
+## 3. Display the first 15 rows of the `iris_petal` dataframe.
+
+## 4. Print a summary of the `iris_petal` dataframe.
+
+## 5. Read the `mallard_counts.csv` file into R and save the dataframe as an object call `ducks`. Be sure to use `stringsAsFactors = FALSE`. 
+
+## 6. Print at the structure of `ducks`. How many rows and columns does it have? 
+
+## 7. Plot the elevation vs. counts and include a linear regression line using ggplot
+
+## 8. Run a linear regression of the effects of elevation and forest on count and print the summary table.
+
+## 9. Are the linear model assumptions met and how do you know (Hint: make diagnostic plots using `plot(Model_Name)` and interpret the output. You won't lose points if you correctly explain the plots even if I disagree with your judgement on whether things are normal or homogenous enough.
+
+## 10. What is the effect of elevation on the number of ducks observed? What's the effect of forest? Are they statistically significant and how do you know?
+
+
+
