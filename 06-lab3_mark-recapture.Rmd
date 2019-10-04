@@ -1,6 +1,6 @@
 ---
 title: "Lab 3: Mark-Recapture Introduction"
-author: "Answers"
+author: "Put your name here"
 output: pdf_document
 ---
 
@@ -22,11 +22,13 @@ First, we will read in the full turtle data from the first three primary session
 ```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 turtles <- read.csv("Data/turtle_scr.csv", stringsAsFactors = FALSE)
-str(turtles)
+# str(turtles)
 
 turtle_lp <- turtles %>%
   group_by(species, primary, secondary, batch_recap) %>%
   summarise(count = n())
+
+# turtle_lp
 ```
 
 ## 1. Use the data above to fill out this table for Painted Turtles (`CPIC`):
