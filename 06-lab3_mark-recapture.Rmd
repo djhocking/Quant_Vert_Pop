@@ -1,7 +1,9 @@
 ---
-title: "Lab 3: Mark-Recapture Introduction"
+title: 'Lab 3: Mark-Recapture Introduction'
 author: "Put your name here"
-output: pdf_document
+output:
+  word_document: default
+  pdf_document: default
 ---
 
 Turn in via Canvas next Friday by the end of the day. Submit either a knitted pdf, html, or doc file. Knit frequently as you go. It's easier to trouble shoot along the way rather than when you have lots of untested code.
@@ -9,6 +11,13 @@ Turn in via Canvas next Friday by the end of the day. Submit either a knitted pd
 **Do not print full dataframes unless I ask for them or I will not read your homework**
 
 Your instructor will provide instruction about R-projects and working directories.
+
+```{r}
+getwd()
+
+setwd("C:/Users/djhocking/Documents/Quant_Vert_Pop/")
+
+```
 
 
 For this lab we will be using turtle Mark-Recapture data from the C&O Canal in Cumberland, MD collected by Frostburg State University students. The data are collected using a robust design spatial capture-recapture approach with turtles receving individual marks. 
@@ -45,11 +54,11 @@ turtle_lp <- turtles %>%
 | 3  | 2 |   |   |   |   |
 | 3  | 3 |   |   |   |   |
 
-## 2. Use these data to estimate the population size ($\hat N$) in each primary period with the Lincoln-Peterson Estimator.
+## 2. Use these data to estimate the population size ($\hat N$) in each primary period with the Lincoln-Petersen Estimator. Just use the first 2 days of each primary period, pretending that we did a traditional Lincoln-Petersen design with just two sampling days (secondary sessions).
 
-## 3. Now use these data to estimate $\hat N$ using the Chapman Method for each primary period.
+## 3. Now use these data to estimate $\hat N$ using the Chapman Method for each primary period. Again only use the first two secondary sessions (days) for the Chapman method. 
 
-## 4. Finally, use these data to estimate $\hat N$ with the Schnabel Method for each primary period.
+## 4. Finally, use these data to estimate $\hat N$ with the Schnabel Method for each primary period. For this method you will use all secondary sessions within a primary period.
 
 ## 5. Make a plot of estimated abundances (y-axis) over time (x-axis = primary period) with one line for each method.
 

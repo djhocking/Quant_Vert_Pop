@@ -22,7 +22,7 @@ First, we will read in the full turtle data from the first three primary session
 ```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 turtles <- read.csv("Data/turtle_scr.csv", stringsAsFactors = FALSE)
-str(turtles)
+# str(turtles)
 
 turtle_lp <- turtles %>%
   group_by(species, primary, secondary, batch_recap) %>%
@@ -33,15 +33,46 @@ turtle_lp <- turtles %>%
 
 | PP  | Day  | $C_t$  | $R_t$  | New Marks  | $M_t$  |
 |---|---|---|---|---|---|
-| 1  | 1  |   |   |   |   |
-| 1  | 2 |   |   |   |   |
-| 1  | 3 |   |   |   |   |
-| 1  | 4 |   |   |   |   |
+| 1  | 1  | 15  |   |   |   |
+| 1  | 2 | 5  |   |   |   |
+| 1  | 3 | 13 |   |   |   |
+| 1  | 4 | 16 |   |   |   |
 | 2  | 1 |   |   |   |   |
 | 2  | 2 |   |   |   |   |
 | 3  | 1 |   |   |   |   |
 | 3  | 2 |   |   |   |   |
 | 3  | 3 |   |   |   |   |
+
+```{r}
+Ct <- turtle_lp %>%
+  ungroup() %>%
+  group_by(primary, secondary) %>%
+  filter(species == "CPIC") %>%
+  summarise(count = sum(count)) %>%
+  .$count
+
+Rt <- turtle_lp %>%
+  ungroup() %>%
+  group_by(primary, secondary) %>%
+  filter(species == "CPIC") %>%
+  summarise(count = sum(count[batch_recap == 1])) %>%
+  .$count
+
+New <- Ct - Rt
+
+df <- turtle_lp %>%
+  ungroup() %>%
+  filter(species == "CPIC") %>%
+  select(primary, secondary)
+
+df$Ct <- Ct
+df$Rt <- Rt
+df$New <- New
+
+
+
+```
+
 
 ## 2. Use these data to estimate the population size ($\hat N$) in each primary period with the Lincoln-Peterson Estimator.
 
