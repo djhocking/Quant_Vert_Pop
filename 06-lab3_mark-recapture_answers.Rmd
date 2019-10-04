@@ -15,7 +15,7 @@ For this lab we will be using turtle Mark-Recapture data from the C&O Canal in C
 
 Your instructor will provide more details about the study.
 
-We will use these data for a variety of mark-recapture labs to examine the details and inference we get from different study designs. This week we will pretend that the data were collected using a closed population design. In later labs we will allow for population change explicitly and more complicated individual capture history information.
+We will use these data for a variety of mark-recapture labs to examine the details and inference we get from different study designs. This week we will pretend that the data were collected using a closed population design.
 
 First, we will read in the full turtle data from the first three primary session (summer 2018, fall 2018, spring 2019). Then we will summarize the data as if we just batch marked the turtles:
 
@@ -70,7 +70,7 @@ turtle_lp <- turtles %>%
 00101010
 
 
-Next week I will add more questions about calculating closed populations from individually marked animals (not batch marked) using maximum likelihood. We will continue to use the turtle data to see how the estimates compare as our data collection becomes more detailed. Maximum likelihood will also provide us with information about the uncertainty in our estimates, which you will notice wasn't estimated with any of these current batch-mark methods.
+
 
 
 
