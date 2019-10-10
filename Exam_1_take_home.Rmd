@@ -1,0 +1,55 @@
+---
+title: "Exam 1: Take Home"
+author: "Your Name Here"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+*Turn in your .Rmd file and your knitted word or pdf file on Canvas*
+
+DO NOT PRINT FULL DATA SETS. I don't want dozens of pages of printed numbers. If you want to see what the data looks like, you can use the `str` function or the `head` function. You can also look at the full dataset in the console but not keep it in the knitr chunks.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+There is concern about declines of grassland birds due to forest regeneration in the eastern United States. As such, you are tasked with collecting and analyzing data related to the relative abundance of Eastern Meadowlarks. During the summer breeding season, you and two coworkers conduct point counts at 50 different grasslands in Pennsylvania. At each site, one of you counts all the meadowlark you see or hear in 10 minutes, careful not to double count any individuals. They are territorial, which makes the task of not double counting a bit easier. You use GIS and satellite imagery to measure the size (area in hectars) of each grassland. However, remembering your ornithology class, you recall that free-roaming cats kill a tremendous number of birds. To account for this you also get data from another study on the density of cats in each grassland (estimated from spatial capture-recapture using camera trapping grids). Finally, you consider that you and your coworkers vary in your hearing, focus, and bird call identification. You think it might be worth considering the effect of observer on the number of meadowlarks you count.
+
+Use the `meadowlark.csv` data file to answer the following questions.
+
+- filter the data
+- summarize the data
+- add a column?
+- plot the data
+- do lm and look at residuals
+- do glm for count data
+- interpret the results
+- make prediction
+- compare models with AIC
+- do glm for presence/absence data
+- interpret the results
+- do predictions
+
+- survival?
+- known fate?
+- capture histories - in-class exam
+
+
+
+## 22. Plot the elevation vs. counts and include a linear regression line using ggplot.
+
+## 23. Read in the salamander demographic csv file and then select just the columns `sex`, `mass`, `svl`, `tl`, and `recap`. DO NOT print all the results.
+
+## 24. Filter the salamander data to just males ("Y") amd individuals where recapture equals "N". DO NOT print the entire results. Either the first 10 rows or just the structure of the resulting object.
+
+## 25. Make a scatterplot of `svl` (x-axis) vs. `mass` (y-axis) and add a linear regression line through the data points.
+
+
+
+
+
+
+
+

@@ -1,0 +1,95 @@
+---
+title: "Exam 1: In Class"
+author: "Quantitative Analysis of Vertebrate Populations"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+### Name:_________________________________
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 1. Answer the following questions using this equation 
+
+$$
+y_i = \beta_0 + \beta_1 X + \epsilon_i
+$$
+
+where 
+
+$$
+\epsilon_i \sim \mathcal{N}(0, \sigma)
+$$
+
+### A. The independent data are represented by the term: 
+
+### B. The dependent data are represented by the term: 
+
+### C. The intercept is represented by the term: 
+
+### D. The residuals are represented by the term: 
+
+### E. The equation represents what type of model:
+
+### F. The slope (coefficient) is represented by the term:
+
+
+## 2. When plotting the effect of one variable on another (e.g. scatterplot) does the independent or dependent variable go on the x-axis?
+
+
+## 3. What distribution is typically used when examining a series of Yes/No outcomes?
+
+
+
+## 4. A statistical model is comprised of a deterministic part and a _____________________ component, which represents the unexplained random noise around the expectations.
+
+
+
+## 5. Is the Poisson distribution continuous or discrete?
+
+
+
+## 6. $\sigma$ is the _______________________ and $\sigma^2$ is the _________________. 
+
+
+
+## 7. The binomial distribution is defined by what parameter(s)?
+
+
+
+
+## 8. If you had the following residuals from a linear model, what would you conclude about them and would you choose to draw inference from the model?
+
+```{r resid-1, echo=FALSE, message=FALSE, warning=FALSE, out.width = "300px"}
+library(ggplot2)
+Residuals <- rnorm(200)
+Y <- runif(100, 10, 20)
+foo <- data.frame(Y, Residuals)
+ggplot(data = foo, aes(Y, Residuals)) + geom_point() + geom_hline(aes(yintercept = 0), colour = "red") + ylim(-3, 3) + theme_bw()
+
+```
+
+\vspace{10mm}
+
+## 9. If you had the following residuals from a linear model, what would you conclude about them and would you choose to draw inference from the model?
+
+```{r resid-2, echo=FALSE, message=FALSE, warning=FALSE, out.width = "300px"}
+library(ggplot2)
+Y <- runif(100, 0.01, 10)
+Residuals <- 1 - log(Y) + rnorm(200)
+bar <- data.frame(Y, Residuals)
+ggplot(data = bar, aes(Y, Residuals)) + geom_point() + geom_hline(aes(yintercept = 0), colour = "red") + ylim(-3.5, 3.5) + theme_bw()
+
+```
+
+## Scenario 1: You are interested in how temperature and food density affect the growth rate of minnows. To do this you and your colleagues set up 100 cattle tanks filled with 1000 liters of water and 1 kg of air-dried leaf litter and add 10 minnows to each tank. Tanks get randomly assigned varying amounts of zooplankton ranging from 0.1 to 1.0 kg. You use water heaters to raise the temperature by 0, 1, 2, 3, 4, or 5 C above ambient. You weigh all minnows in each tank at the start and end of the study and record the mean change in mass for each tank over the course of the study. In some tanks they lost mass and in others they gained mass.
+
+## 10. What model would you use and why? Include any information on distributions and link functions as appropriate.
+
+
+
+
+
