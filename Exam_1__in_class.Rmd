@@ -90,6 +90,10 @@ ggplot(data = bar, aes(Y, Residuals)) + geom_point() + geom_hline(aes(yintercept
 ## 10. What model would you use and why? Include any information on distributions and link functions as appropriate.
 
 
+- survival?
+- known fate?
+- capture histories - in-class exam
+
 
 
 
