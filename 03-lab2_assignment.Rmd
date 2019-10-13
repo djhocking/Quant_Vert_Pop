@@ -8,7 +8,7 @@ Turn in via Canvas next Friday by the end of the day. Submit either a knitted pd
 
 **Do not print full dataframes unless I ask for them or I will not read your homework**
 
-## 1. Read the `mallard_counts.csv` file into R and save the dataframe as an object call `ducks`. Be sure to use `stringsAsFactors = FALSE`. 
+## 1. Read the `mallard_counts.csv` file into R and store the resulting dataframe as an object call `ducks`. Be sure to use `stringsAsFactors = FALSE`. 
 
 ## 2. Print at the structure of `ducks`. How many rows and columns does it have? 
 
@@ -46,11 +46,9 @@ hares <- hares[which(!is.na(hares$count1)), ] # this takes all the columns for t
 
 ## 14. Add in the effect of area? Does that make a difference? What is the affect of area? 
 
-**Bonus**: See if you can add in the affect of area as an `offset` instead of a linear predictor. Is that any different?
-
 ## 15. free points - I realized that the hares data didn't work as presence-absence data
 
-## 16. Read in the seals data, explore the data, and make a model of the data (use "Abun" as the dendent data). Describe what dependent variables you chose, why, and what model you used and why you think it might be appropriate.
+## 16. Read in the seals data, explore the data, and make a model of the data (use "Abun" as the dependent data). Describe what dependent variables you chose, why, and what model you used and why you think it might be appropriate.
 
 
 ## 17. Import (read in via a funtion in R, don't use the import funtion in RStudio) the ewilderae (Blue-ridge two-lined salamander) data from Great Smoky Mountains National Park.
