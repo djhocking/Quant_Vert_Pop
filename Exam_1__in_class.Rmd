@@ -8,6 +8,8 @@ output:
 
 ### Name:_________________________________
 
+\vspace{10mm}
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -24,42 +26,43 @@ $$
 \epsilon_i \sim \mathcal{N}(0, \sigma)
 $$
 
-### A. The independent data are represented by the term: 
+A. The independent data are represented by the term: 
 
-### B. The dependent data are represented by the term: 
+B. The dependent data are represented by the term: 
 
-### C. The intercept is represented by the term: 
+C. The intercept is represented by the term: 
 
-### D. The residuals are represented by the term: 
+D. The residuals are represented by the term: 
 
-### E. The equation represents what type of model:
+E. The equation represents what type of model:
 
-### F. The slope (coefficient) is represented by the term:
+F. The slope (coefficient) is represented by the term:
 
+\vspace{10mm}
 
 ## 2. When plotting the effect of one variable on another (e.g. scatterplot) does the independent or dependent variable go on the x-axis?
 
+\vspace{20mm}
 
 ## 3. What distribution is typically used when examining a series of Yes/No outcomes?
 
-
+\vspace{20mm}
 
 ## 4. A statistical model is comprised of a deterministic part and a _____________________ component, which represents the unexplained random noise around the expectations.
 
-
+\vspace{10mm}
 
 ## 5. Is the Poisson distribution continuous or discrete?
 
-
+\vspace{10mm}
 
 ## 6. $\sigma$ is the _______________________ and $\sigma^2$ is the _________________. 
 
+\vspace{10mm}
 
+## 7. What is one method of maximizing a likelihood function?
 
-## 7. The binomial distribution is defined by what parameter(s)?
-
-
-
+\vspace{15mm}
 
 ## 8. If you had the following residuals from a linear model, what would you conclude about them and would you choose to draw inference from the model?
 
@@ -72,7 +75,7 @@ ggplot(data = foo, aes(Y, Residuals)) + geom_point() + geom_hline(aes(yintercept
 
 ```
 
-\vspace{10mm}
+\vspace{20mm}
 
 ## 9. If you had the following residuals from a linear model, what would you conclude about them and would you choose to draw inference from the model?
 
@@ -85,15 +88,125 @@ ggplot(data = bar, aes(Y, Residuals)) + geom_point() + geom_hline(aes(yintercept
 
 ```
 
+\vspace{20mm}
+
 ## Scenario 1: You are interested in how temperature and food density affect the growth rate of minnows. To do this you and your colleagues set up 100 cattle tanks filled with 1000 liters of water and 1 kg of air-dried leaf litter and add 10 minnows to each tank. Tanks get randomly assigned varying amounts of zooplankton ranging from 0.1 to 1.0 kg. You use water heaters to raise the temperature by 0, 1, 2, 3, 4, or 5 C above ambient. You weigh all minnows in each tank at the start and end of the study and record the mean change in mass for each tank over the course of the study. In some tanks they lost mass and in others they gained mass.
 
 ## 10. What model would you use and why? Include any information on distributions and link functions as appropriate.
 
+\vspace{30mm}
 
-- survival?
-- known fate?
-- capture histories - in-class exam
+## 11. In Scenario 1, you were also interested in survival of fish in the tank and recorded the number that survived to the end of the study. Write out the model function you would use (in math not R code) including distributions and link functions.
 
+\vspace{20mm}
 
+## 12. What is AIC used for and how does it acheive this goal?
 
+\vspace{20mm}
+
+## 13. You run three models to examine survival from your minnow experiment in scenario 1. Which model is best and how do you know?
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
+# library(lme4)
+library(AICcmodavg)
+
+N <- 100
+n_fish <- 10
+
+b0 <- 1
+# b0_i <- rnorm(N, b0, 1.5)
+b1 <- 1.8
+b2 <- -1.1
+
+temp <- sample(c(0, 1, 2, 3, 4, 5), N, TRUE)
+zoo <- rep(seq(0.1, 1, length.out = 10), 10)
+
+logit_p_survive <- b0 + b1*zoo + b2 * temp
+p_survive <- exp(logit_p_survive) / (1 + exp(logit_p_survive))
+survive <- rbinom(N, n_fish, p_survive)
+
+df <- data.frame(survive, start = 10, temp, zoo, stringsAsFactors = FALSE)
+# 
+# glm1 <- glm(survive ~ zoo + temp, data = df, family = poisson)
+# summary(glm1)
+
+glm1 <- glm(cbind(survive, start) ~ temp, data = df, family = binomial)
+glm2 <- glm(cbind(survive, start) ~ zoo, data = df, family = binomial)
+glm3 <- glm(cbind(survive, start) ~ temp + zoo, data = df, family = binomial)
+# summary(glm2)
+
+mod_list <- list(glm1, glm2, glm3)
+mod_names <- c("temperature", "zooplankton", "temp + zoo")
+
+aictab(cand.set = mod_list, modnames = mod_names)
+
+```
+
+\vspace{30mm}
+
+## 14. You estimate that monthly survival of the minnows on average is 0.93 with a SE = 0.08. What is the annual survial rate of the minnows?
+
+\vspace{20mm}
+
+## 15. What is one method you would use to calculate the SE or variance or the annual minnow survival (you don't have to actually calculate it)?
+
+\vspace{20mm}
+
+## 16. What is a dummy variable and what do you use it for?
+
+\vspace{20mm}
+
+## 17. The Lincoln-Petersen estimator is
+
+$$
+N = \frac{M_1*C_2}{R_2}
+$$
+
+or
+
+$$
+N = \frac{n_1*n_2}{m_2}
+$$
+
+You caughted and marked 27 salt marsh sparrows on day 1. Then you mist-netted a week later and caught 33 birds and 18 of them were recaptures (previously marked). Using the Lincoln-Peterson Estimator, what is the estimated population size?
+
+\vspace{25mm}
+
+## 18. What are the assumptions of the Lincoln-Petersen method?
+
+\vspace{30mm}
+
+## 19. What is a better method than the Lincoln-Petersen estimator and why?
+
+\vspace{20mm}
+
+## 20. Rewrite the following capture histories as probability statements assuming a modern closed population mark-recapture study with the probability of capture equal to the probability of recapture and the same every day.
+
+0010110
+
+101011
+
+\vspace{10mm}
+
+## 21. Rewrite the following capture history as probability statements assuming a modern closed population mark-recapture study with the probability of capture *is not equal* to the probability of recapture and *they can vary each day*.
+
+110101
+
+001010
+
+\vspace{10mm}
+
+## 22. Describe two ways (study methods) to get known fate data.
+
+\vspace{25mm}
+
+## 23. What is right censoring and when is it used?
+
+\vspace{20mm}
+
+## 24. What do you estimate with Cormack-Jolly-Seber (CJS)?
+
+\vspace{15mm}
+
+## 25. What are the assumptions of a CJS model?
 
