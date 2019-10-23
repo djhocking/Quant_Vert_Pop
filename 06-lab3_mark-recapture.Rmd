@@ -2,8 +2,8 @@
 title: 'Lab 3: Mark-Recapture Introduction'
 author: "Put your name here"
 output:
-  word_document: default
   pdf_document: default
+  word_document: default
 ---
 
 Turn in via Canvas next Friday by the end of the day. Submit either a knitted pdf, html, or doc file. Knit frequently as you go. It's easier to trouble shoot along the way rather than when you have lots of untested code.
@@ -12,7 +12,7 @@ Turn in via Canvas next Friday by the end of the day. Submit either a knitted pd
 
 Your instructor will provide instruction about R-projects and working directories.
 
-```{r}
+```{r, eval=FALSE}
 getwd()
 
 setwd("C:/Users/djhocking/Documents/Quant_Vert_Pop/")
@@ -81,9 +81,13 @@ turtle_lp <- turtles %>%
 00101010
 
 
-Next week I will add more questions about calculating closed populations from individually marked animals (not batch marked) using maximum likelihood. We will continue to use the turtle data to see how the estimates compare as our data collection becomes more detailed. Maximum likelihood will also provide us with information about the uncertainty in our estimates, which you will notice wasn't estimated with any of these current batch-mark methods.
+## 11. Using the simple_closed1.inp data, run a closed population Huggins model in program MARK assumming p(.) = c(.). Display the results on the true scale.
 
+## 12. Using the simple_closed1.inp data, run a closed population Huggins model in program MARK assumming p(.), c(.). Display the results on the true scale.
 
+## 13. Using the simple_closed1.inp data, run a closed population Huggins model in program MARK assumming p(t) = c(t). Display the results on the true scale.
 
+## 14. Using the simple_closed1.inp data, run a closed population Huggins model in program MARK assumming p(t), c(t). Display the results on the true scale.
 
+## 15. Thoroughly describe and interpret the results of numbers 11-14. Compare and contrast the results and the results of the different models and do multimodel comparison using AIC.
 
