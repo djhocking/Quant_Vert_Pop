@@ -1,7 +1,9 @@
 ---
-title: "Exam 1: Take Home"
+title: 'Exam 1: Take Home'
 author: "Answers"
 output:
+  html_document:
+    df_print: paged
   pdf_document: default
   word_document: default
 ---
@@ -10,8 +12,10 @@ output:
 
 DO NOT PRINT FULL DATA SETS. I don't want dozens of pages of printed numbers. If you want to see what the data looks like, you can use the `str` function or the `head` function. You can also look at the full dataset in the console but not keep it in the knitr chunks.
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(kableExtra)
 ```
 
 
@@ -19,7 +23,7 @@ There is concern about declines of grassland birds due to forest regeneration in
 
 Use the `meadowlark.csv` data file to answer the following questions.
 
-1. Pick one continuous independent variable and plot it vs. the count data.
+## 1. Pick one continuous independent variable and plot it vs. the count data.
 
 ```{r, message = FALSE, warning = FALSE}
 larks <- read.csv("Data/meadowlarks.csv", stringsAsFactors = FALSE)
@@ -29,26 +33,93 @@ library(ggplot2)
 ggplot(larks, aes(grass, count)) + geom_point() + geom_smooth()
 ```
 
-2. Your boss tells you to run a linear model to examine the effects of the size of the grassland (`grass`), cat density (`cats`), and observer on the relative abundance of meadowlarks (`count`).
+## 2. Your boss tells you to run a linear model to examine the effects of the size of the grassland (`grass`), cat density (`cats`), and observer on the relative abundance of meadowlarks (`count`).
 
-3. You have some concerns about the analysis your boss suggested. Do you trust the results (i.e. check if it meets the assumptions). Be sure to show any evidence when discussing.
+```{r}
+lm1 <- lm(count ~ grass + cats + observer, data = larks)
+```
 
-4. Assume you're not satisfied with the appropriateness of the first analysis. Run another analysis that you think would be an improvement. Show the code and results of the analysis.
+I don't bother looking at the results until I check the assumptions because they might not be trustworthy.
 
-5. Interpret the results of your analysis. Be sure to include descriptions of the effect sizes, significance, and anything else you think is relevant. 
+## 3. You have some concerns about the analysis your boss suggested. Do you trust the results (i.e. check if it meets the assumptions). Be sure to show any evidence when discussing.
 
-6. Is there a difference in counts by observer? How do you know? Whos't the best?
+```{r}
+plot(lm1)
+```
 
-7. Calculate the expected count (predict count) when the grassland is 10 hectares with a density of 5 cats/ha and observer 1 is doing the point count.
+Normality is ok. Homogeneity of variance is potentially problematic with larger residuals with higher counts. The biggest problem is bias with patterning in the residuals. They start high, go low, and then come back up. This bias will create an unreliable model that should not be trusted.
 
+## 4. Assume you're not satisfied with the appropriateness of the first analysis. Run another analysis that you think would be an improvement. Show the code and results of the analysis.
+
+```{r, warning=FALSE, message=FALSE}
+glm1 <- glm(count ~ grass + cats + observer, data = larks, family = poisson(link = "log"))
+
+resid_df <- data.frame(predicted = predict(glm1), residuals = resid(glm1, type = "pearson"))
+ggplot(data = resid_df, aes(predicted, residuals)) + geom_point() + geom_hline(aes(yintercept = 0)) + geom_smooth() 
+
+# plot(glm1) Alternative
+
+summary(glm1)
+
+# VIF(glm1)
+```
+
+Residuals look excellent. Homoscedastic, no evidence of bias. Trust the results.
+
+
+## 5. Interpret the results of your analysis. Be sure to include descriptions of the effect sizes, significance, and anything else you think is relevant. 
+
+Not going into details but basics:
+
+grassland area has significant positive effect, while cats have a significant negative effects. Observer 3 is significantly worse (lower counts) than observer 1, whereas we did not detect a signficant difference in counts between observer 1 and 2.
+
+
+## 6. Is there a difference in counts by observer? How do you know? Whos't the best?
+
+Yes, observer 1 and 2 were not significantly different but observer 3 was worse and would have 1.5 (+/- 0.21 SE) fewer meadowlarks counted per plot compared with observer 1 in the same plot.
+
+## 7. Calculate the expected count (predict count) when the grassland is 10 hectares with a density of 5 cats/ha and observer 1 is doing the point count.
+
+```{r}
+exp(sum(coef(glm1) * c(1, 10, 5, 0, 0)))
+```
 
 Someone tells you that meadowlarks are hit hard by the prescribed burns that are done to maintain the grasslands. The frequency of burns ranges from every 1 to 5 years. But then your boss says that no, she read that pesticides from the surrounding farms are actually most important for regulating meadowlark populations.
 
-8. Compare the three models representing different processes generating the meadowlark counts. Which is the best model and how do you know?
+## 8. Compare the three models representing different processes generating the meadowlark counts. Which is the best model and how do you know?
 
-9. Imagine you only recorded the presence or absence of eastern meadowlarks at each site. Reanalyze the results from the best model with presence as the dependent variable. Display and interpret the results.
+```{r}
+glm2 <- glm(count ~ fire + observer, data = larks, family = poisson(link = "log"))
 
-10.  Calculate the expected probability of occurrence when the grassland is 5 hectares with a density of 3 cats/ha and observer 3 is doing the data collection.
+glm3 <- glm(count ~ pesticides + observer, data = larks, family = poisson(link = "log"))
 
+library(AICcmodavg)
+mods <- list(glm1, glm2, glm3)
+mod_names <- c("grass + cats", "fire", "pesticides")
 
+aictab(mods, modnames = mod_names)
+```
 
+I chose to keep observer in all models because it's an important part of the observational process and should be accounted for when estimating the ecological processes.
+
+The model including grassland and cats is the best for generalization based on the data when accounting for model fit pentalized by model complexity. It has the lowest $AIC_c$ value and the next best model has a $\Delta AIC_c$ > 2.
+
+## 9. Imagine you only recorded the presence or absence of eastern meadowlarks at each site. Reanalyze the results from the best model with presence as the dependent variable. Display and interpret the results.
+
+```{r}
+glm4 <- glm(presence ~ grass + cats + observer, data = larks, family = binomial)
+summary(glm4)
+```
+
+Minimal:
+
+Grassland has a small, significant positive effect on the probability of occurrence while cats have a significant negative effect. We did not observe any affect of observer on the detection of the species. This is different than with counts where observer 3 saw fewer individual birds. The trends were the same with presence/absence but the results for observers were not statistically significant.
+
+## 10.  Calculate the expected probability of occurrence when the grassland is 5 hectares with a density of 3 cats/ha and observer 3 is doing the data collection.
+
+```{r}
+logit_p <- sum(coef(glm1) * c(1, 5, 3, 0, 1))
+
+p <- exp(logit_p) / (1 + exp(logit_p))
+p
+```
