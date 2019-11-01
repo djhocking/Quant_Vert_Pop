@@ -1,0 +1,24 @@
+---
+title: "Reading Homework 4: Mark-Recapture Introduction"
+arthor: "put your name here"
+date: '`r Sys.Date()`'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Read chapter 11 on recovery data and answer the following questions.
+
+
+## 1. What are ways you get recovery data and what does the term mean?
+
+## 2. What do you estimate using recovery data?
+
+## 3. What are the assumptions of this approach and its limitations?
