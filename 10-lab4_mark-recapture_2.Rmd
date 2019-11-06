@@ -1,0 +1,40 @@
+---
+title: "Lab 4: Mark-Recapture Comparison"
+author: "Put Your Name Here"
+output: pdf_document
+---
+
+## 1. Calculate the populations size of each primary period using the closed population data and a Huggins p,c model. Which is the best model for each based on AICc and make sure that the model works (SE not equal to 0 or very large number)
+
+## 2. Report the mean estimates, SE, and CI for each.
+
+## 3. Plot the population size over time with the CI (there will be a tutorial next week for plotting the CI)
+
+```{r, eval = FALSE}
+p <- ggplot(data=data, aes(x = PP, y = N)) + geom_point() + geom_line()
+p <- p + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.1)
+p
+```
+
+## 4. Calculate apparent survival and p for the open population data. Report each with CI.
+
+## 5. Test the effect of different numbers of mark-recapture sessions on abundance estimates and the uncertainty around the estimates. Calculate the population size for primary period 4 if using 3 (already done above), 4, or 5 secondary sessions. 
+
+## 6. Make a plot to compare these effects
+
+Columns should be sessions, PP, N, lower, upper
+
+```{r}
+ggplot(data=data, aes(x = PP, y = N, color = sessions)) + geom_point() + geom_line() + geom_ribbon(aes(ymin = lower, ymax = upper, color = sessions), linetype = 2, alpha = 0.1)
+```
+
+## 7. Discuss the effects of different numbers of sessions on the estimation of population sizes and the confidence/uncertainty in the estimates.
+
+## 8. Use a robust design analysis to estimate the population sizes for each primary period. Compare different models of temporary emigration. Compare the models with AIC and include the table. Discuss which model is best and what it means.
+
+## 9. Report the results of the best model.
+
+## 10. How do the population estimates and confidence from the best robust model compare to the estimates from doing the closed models?
+
+## 11. How do the survival estimates compare to those from the CJS open population model you did earlier?
+
