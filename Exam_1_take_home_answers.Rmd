@@ -21,14 +21,6 @@ Use the `meadowlark.csv` data file to answer the following questions.
 
 1. Pick one continuous independent variable and plot it vs. the count data.
 
-```{r, message = FALSE, warning = FALSE}
-larks <- read.csv("Data/meadowlarks.csv", stringsAsFactors = FALSE)
-str(larks)
-
-library(ggplot2)
-ggplot(larks, aes(grass, count)) + geom_point() + geom_smooth()
-```
-
 2. Your boss tells you to run a linear model to examine the effects of the size of the grassland (`grass`), cat density (`cats`), and observer on the relative abundance of meadowlarks (`count`).
 
 3. You have some concerns about the analysis your boss suggested. Do you trust the results (i.e. check if it meets the assumptions). Be sure to show any evidence when discussing.

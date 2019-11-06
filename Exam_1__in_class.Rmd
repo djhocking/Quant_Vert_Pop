@@ -23,8 +23,16 @@ $$
 where 
 
 $$
-\epsilon_i \sim \mathcal{N}(0, \sigma)
+\epsilon_i \sim \mathcal{N}(0, \sigma^2)
 $$
+
+This same equation could be written as 
+
+$$
+y_i \sim \mathcal{N}(\beta_0 + \beta_1 X, \sigma^2)
+$$
+
+Which is exactly equivalent.
 
 A. The independent data are represented by the term: 
 
@@ -32,7 +40,7 @@ B. The dependent data are represented by the term:
 
 C. The intercept is represented by the term: 
 
-D. The residuals are represented by the term: 
+D. The variance is represented by the term (variation in the residuals): 
 
 E. The equation represents what type of model:
 
@@ -62,7 +70,7 @@ F. The slope (coefficient) is represented by the term:
 
 ## 7. What is one method of maximizing a likelihood function?
 
-\vspace{15mm}
+\newpage
 
 ## 8. If you had the following residuals from a linear model, what would you conclude about them and would you choose to draw inference from the model?
 
@@ -92,6 +100,8 @@ ggplot(data = bar, aes(Y, Residuals)) + geom_point() + geom_hline(aes(yintercept
 
 ## Scenario 1: You are interested in how temperature and food density affect the growth rate of minnows. To do this you and your colleagues set up 100 cattle tanks filled with 1000 liters of water and 1 kg of air-dried leaf litter and add 10 minnows to each tank. Tanks get randomly assigned varying amounts of zooplankton ranging from 0.1 to 1.0 kg. You use water heaters to raise the temperature by 0, 1, 2, 3, 4, or 5 C above ambient. You weigh all minnows in each tank at the start and end of the study and record the mean change in mass for each tank over the course of the study. In some tanks they lost mass and in others they gained mass.
 
+\vspace{10mm}
+
 ## 10. What model would you use and why? Include any information on distributions and link functions as appropriate.
 
 \vspace{30mm}
@@ -102,7 +112,7 @@ ggplot(data = bar, aes(Y, Residuals)) + geom_point() + geom_hline(aes(yintercept
 
 ## 12. What is AIC used for and how does it acheive this goal?
 
-\vspace{20mm}
+\newpage
 
 ## 13. You run three models to examine survival from your minnow experiment in scenario 1. Which model is best and how do you know?
 
@@ -154,7 +164,7 @@ aictab(cand.set = mod_list, modnames = mod_names)
 
 ## 16. What is a dummy variable and what do you use it for?
 
-\vspace{20mm}
+\newpage
 
 ## 17. The Lincoln-Petersen estimator is
 
@@ -170,7 +180,7 @@ $$
 
 You caughted and marked 27 salt marsh sparrows on day 1. Then you mist-netted a week later and caught 33 birds and 18 of them were recaptures (previously marked). Using the Lincoln-Peterson Estimator, what is the estimated population size?
 
-\vspace{25mm}
+\vspace{35mm}
 
 ## 18. What are the assumptions of the Lincoln-Petersen method?
 
