@@ -74,6 +74,14 @@ backTransform(fm1, type="det")
 
 ```
 
+```{r}
+backTransform(linearComb(fm2, coefficients = c(1,-2), type = "state"))
+
+(exp(1.5587 + 2.0502 * -2)) / (1 + exp(1.5587 + 2.0502 * -2))
+
+```
+
+
 ## Distance Sampling
 
 ### Example
