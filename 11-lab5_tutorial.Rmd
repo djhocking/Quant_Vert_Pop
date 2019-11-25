@@ -166,7 +166,30 @@ backTransform(fm1, type="det")
 (fm4 <- pcount(~date ~woody, alfl.umf))
 ```
 
+## Removal Sampling
 
+### Example
+
+We can use data that come loaded with a package using the `data()` function. You can get a list of all the data available with currently loaded packages in R using `names(data())`. - not working!
+
+For example if we load `unmarked` and look at the available data
+
+```{r, message=FALSE, warning=FALSE}
+library(unmarked)
+names(data())
+```
+
+```{r}
+library(unmarked)
+data(issj)
+str(issj)
+
+help("issj")
+
+data(ovendata)
+head(ovendata.list[[1]])
+head(ovendata.list[[2]])
+```
 
 
 
