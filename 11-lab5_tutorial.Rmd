@@ -108,6 +108,28 @@ fm1 <- distsamp(~chaparral ~chaparral + offset(log(area)),
 fm1
 ```
 
+```{r}
+library(ggplot2)
+df = data.frame(distance = rep(0:50),
+                intercept = dnorm(0:50, 0, 4.38),
+                chaparral = dnorm(0:50, 0, 4.38 + 2 * 0.65)) # high chap
+
+ggplot(df, aes(distance, intercept)) + geom_line() + geom_line(aes(distance, chaparral), color = "blue")
+
+
+# Plot detection function.
+fmhz.shape <- exp(coef(fm1, type="det"))
+# fmhz.scale <- exp(coef(fm1, type="scale"))
+plot(function(x) dnorm(x, mean = 0, sd=fmhz.shape), 0, 25,
+	xlab="Distance (m)", ylab="Detection probability")
+
+# Plot detection function.
+fmhz.shape <- exp(coef(fm1, type="det"))
+fmhz.scale <- exp(coef(fm1, type="scale"))
+plot(function(x) gxhaz(x, shape=fmhz.shape, scale=fmhz.scale), 0, 25,
+	xlab="Distance (m)", ylab="Detection probability")
+
+```
 
 ## Abundance with an *N*-mixture model
 

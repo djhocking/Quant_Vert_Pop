@@ -62,6 +62,24 @@ turtle_lp <- turtles %>%
 
 ## 5. Make a plot of estimated abundances (y-axis) over time (x-axis = primary period) with one line for each method.
 
+
+```{r}
+abund_df <- read.csv("Data/lab3.csv")
+
+library(ggplot2)
+
+ggplot(data = abund_df, aes(PP, N, color = method)) + geom_point() + geom_line()
+
+```
+
+```{r}
+df <- read.csv("Data/lab3_wide.csv")
+
+ggplot(data = df, aes(PP, LP)) + geom_point() + geom_line() +
+  geom_point(aes(PP, Chapman), color = "blue")
+
+```
+
 ## 6. Compare and contrast the estimates from each method and describe the pros and cons of each and differences in inference from the different methods. (Discuss your results).
 
 ## 7. Write out the probability for this capture history assuming that $p(.) = c(.)$ for a closed population (see page 98-99 in the textbook along with class notes):
@@ -84,6 +102,43 @@ turtle_lp <- turtles %>%
 ## 11. Using the simple_closed1.inp data, run a closed population Huggins model in program MARK assumming p(.) = c(.). Display the results on the true scale.
 
 ## 12. Using the simple_closed1.inp data, run a closed population Huggins model in program MARK assumming p(.), c(.). Display the results on the true scale.
+
+Delete this example after viewing how to set up the table after pasted in from program MARK:
+
+
+  Parameter                  Estimate       Standard Error      Lower           Upper
+ --------------------------  --------------  --------------  --------------  --------------
+     1:p                      0.5195804       0.0093423       0.5012514       0.5378568                          
+     2:p                      0.5487627       0.0134246       0.5223385       0.5749148                          
+     3:p                      0.6112901       0.0195768       0.5723037       0.6489030                          
+     4:p                      0.5684643       0.0319044       0.5051694       0.6295993                          
+     5:p                      0.4038452       0.0481135       0.3140690       0.5005568                          
+     6:p                      0.3225809       0.0593673       0.2185014       0.4478278                          
+     7:p                      0.4285700       0.0763621       0.2892890       0.5801682                          
+     8:p                      0.4166702       0.1006373       0.2408554       0.6165854                          
+     9:p                      0.2142841       0.1096602       0.0707071       0.4943233                          
+    10:p                      0.4545381       0.1501408       0.2027383       0.7319552                          
+    11:p                      0.4999754       0.2040980       0.1679499       0.8320226                          
+    12:p                      0.3333344       0.2721765       0.0433664       0.8465053                          
+    13:p                      0.9999444       0.0126608      0.2956149E-189   1.0000000                          
+    14:p                      0.0657492       5.2975965       0.2727215E-74   1.0000000                          
+    15:p                      0.0657491       4.8740591       0.2017527E-68   1.0000000                          
+    16:c                      0.4885599       0.0129672       0.4631955       0.5139833                          
+    17:c                      0.5183034       0.0105574       0.4975914       0.5389526                          
+    18:c                      0.3417335       0.0092678       0.3238074       0.3601234                          
+    19:c                      0.3457910       0.0090599       0.3282548       0.3637567                          
+    20:c                      0.3498928       0.0090165       0.3324329       0.3677645                          
+    21:c                      0.2274663       0.0078967       0.2123611       0.2433140                          
+    22:c                      0.2383639       0.0080009       0.2230379       0.2543981                          
+    23:c                      0.2456078       0.0080687       0.2301385       0.2617634                          
+    24:c                      0.1705861       0.0070471       0.1572144       0.1848457                          
+    25:c                      0.1706378       0.0070418       0.1572757       0.1848860                          
+    26:c                      0.1753587       0.0071144       0.1618478       0.1897422                          
+    27:c                      0.2197340       0.0077453       0.2049303       0.2352907                          
+    28:c                      0.2276224       0.0078404       0.2126218       0.2433541                          
+    29:c                      0.2346154       0.0079238       0.2194424       0.2505008                          
+       N                      2860.0001       0.0243717       2860.0000       2860.0656   
+
 
 ## 13. Using the simple_closed1.inp data, run a closed population Huggins model in program MARK assumming p(t) = c(t). Display the results on the true scale.
 
