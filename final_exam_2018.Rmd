@@ -1,0 +1,135 @@
+---
+title: "Final Exam"
+author: "Quantitative Analysis of Vertebrate Populations"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+### You want to know how age and habitat affect meadow vole size. You measure the mass of meadow voles in 100 plots over a habitat gradient where percent of the plot that is classified as grassland field ranges from 30-100%. You also record the age of the vole.
+
+
+*First you want to explore your data and make some plots.*
+
+### 1. Read the `voles.csv` file into R
+
+### 2. Examine the dataframe structure
+
+### 3. Is the `field` variable continuous or categorical?
+
+### 4. What is the max age of voles in this population?
+
+### 5. Make a histogram of vole mass
+
+*Okay, now you're ready to analyze your data. You decide to do a linear regression model to examine the effects of age and field on mass.*
+
+### 6. Run the linear model and print the summary results table
+
+### 7. What is the dependent variable?
+
+### 8. What is the effect of one year of growth on the mass of a vole?
+
+### 9. What is the effect of field cover on vole mass? What's the uncertainty in this estimate?
+
+### 10. Use the model to predict the mass of a two year old vole in a plot with 50% field cover. 
+
+### 11. Check the assumptions of a linear model (visual check with plots). Are you comfortable using this model to draw inference, why or why not?
+
+### 12. Read in the `mallards.csv` file and look at the structure of the dataframe.
+
+### 13. Run a logistic regression to examine the effects elevation, length of habitat, and forest cover on the presence or absence of mallards across the landscape. Print your results table.
+
+### 14. What are the significant affects?
+
+### 15. What would the expected probability of occurrence be for a site a mean elevation, length, and cover? *Remember the coefficient estimates are on the logit scale so you will have to covert to the true scale.*
+
+### 16. What are the limitations of this analysis?
+
+
+**You conduct a study where you count the number of calling barking treefrogs at 50 sites each three times over the course of a week during the breeding season. You make the following models and compare them with AICc.**
+
+```{r, echo = FALSE}
+# library(unmarked)
+# library(AHMbook)
+library(AICcmodavg)
+# library(lme4)
+
+load("Data/final_exam.RData")
+
+print(format(AIC_table, digits = 2))
+
+```
+
+
+### 17. Which is the best model and how do you know? Is it distinctly better than the other models?
+
+
+### 18. Do you know if this model is a good fit for the data (e.g. will it be useful for predicting treefrog abundance at other sites)? If yes, how do you know? If no, what information would you use to determine fit (or ability to predict)?
+
+
+### 19. From the study above, run a model to estimate abundance using `frog_counts` with `wind` and `clouds` affecting detection and `impervious` and `connectivity` affecting abundance. The data can be found in `frogs_data.RData` on canvas and brought into R using `load("frogs_data.RData")` once you download it and put it in the folder with your Rmd file.
+
+
+
+### 20. What are three options for estimating the abundance of closed populations using mark-recapture?
+
+### 21. What parameters are estimated using CJS?
+
+### 22. What are two methods of learning about the true survival in a population?
+
+
+### 23. Capture histories are generally represented by a series of zeros and ones for each individual. What would the probabilities of an animal having the following capture histories in a closed population? Use $p$ for first capture and $c$ for recapture probabilities assuming they are not equal and they vary by time (i.e. $p(t) \neq c(t)$): 
+
+* 11001:
+
+* 01010:
+
+### 24. Write the probabilities of an animal having the same capture histories in an open population but you can assume that the capture probabilites and recapture probabilities are the same over time (i.e. $p(.)$ and the apparent survival is also constant over time.
+
+* 11001:
+
+* 01010:
+
+### 25. Finally, write the probabilities of an animal having the same capture histories in an open population but apparent survival and capture probability vary by time.
+
+* 11001:
+
+* 01010:
+
+
+### You conduct a study over multiple years doing individual mark-recapture. The PIM in Mark looks like this:
+
+**Survival**
+ 
+|          |    1     |    2    |     3    |     4 |
+|:--------:|:---------:|:---------:|:--------:|:--------:|
+| 1        | 1         | 2         | 3        |  4       |
+| 2        |           | 2         | 3        |  4       |
+| 3        |           |           | 3        |  4       |
+| 4        |           |           |          |  4       |
+
+### and your resulting estimated values corresponding to the PIM are:
+
+**Real Parameter S**
+ 
+ |          |    1     |    2    |     3    |     4 |
+|:--------:|:---------:|:---------:|:--------:|:--------:|
+| 1        | 0.8862         | 0.8708        | 0.7492        |  0.7743       |
+| 2        |           | 0.8708         | 0.7492        |  0.7743       |
+| 3        |           |           | 0.7492        |  0.7743       |
+| 4        |           |           |          |  0.7743       |
+
+
+### 26. For how many years was this study conducted?
+
+
+### 27. Does this model represent time-varying or time-constant survival?
+
+### 28. What year has the highest survival?
+
+### 29. What is the probability of survival for individuals from year 3 to year 4 who were first marked in year 2?
+
+### 30. What are five different models you could use to estimate abundance? Describe one you would use to estimate abundance at many locations across the landscape and how you would setup your study (experimental design in 2-3 sentences).
+
+
+

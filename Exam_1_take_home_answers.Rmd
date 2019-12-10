@@ -111,7 +111,7 @@ The model including grassland and cats is the best for generalization based on t
 ## 9. Imagine you only recorded the presence or absence of eastern meadowlarks at each site. Reanalyze the results from the best model with presence as the dependent variable. Display and interpret the results.
 
 ```{r}
-glm4 <- glm(presence ~ grass + cats + observer, data = larks, family = binomial)
+glm4 <- glm(presence ~ grass + cats + observer, data = larks, family = binomial(link = "logit"))
 summary(glm4)
 ```
 

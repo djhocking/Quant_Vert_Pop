@@ -1,0 +1,37 @@
+---
+title: "Lab 5: Hierarchical Models"
+author: "Put Your Name Here"
+output: pdf_document
+---
+
+add tutorial 
+* offset
+* descriptions of the data files
+* standardizing with the scale function
+
+
+### Use the Alder Flycatcher data `alfl05.csv` for the following questions
+
+## 1. Estimate abundance and detection with an *N*-mixture model using time and date as independent variables on detection and woody vegetation and vegetation structure on abundance.
+
+## 2. Based on the analysis in question 1, what is the affect of structure on abundance? Include the mean estimate and SE.
+
+## 3. Based on the analysis in question 1, what is the effect of time on detection? Is it a significant affect?
+
+## 4. Convert abundance to presence or absence (0 or 1) and run the same model but for occupancy. Display the results. To convert counts to 0 or 1, run this code `y[y>1] <- 1` to take all the values above 1 and make them 0, leaving the zeros alone.
+
+## 5. Based on the analysis in question 4, what are the effects of woody vegetation and structure on the probability of occupancy?
+
+*Point counts were done for Island Scrub Jays with 100, 200, and 200 m cutoffs. Use the `issj` data in the `unmarked` package for the questions below.* 
+
+## 6. Run an analysis including chaparral in detection and forest and elevation in abundance along with the log offset of area in abundance. Describe the results of the model and where you think the high abundances of bird are. 
+
+## 7. From the above analysis, what is the effect of chaparral on the detection of birds with distance from the observer?
+
+*General terminology and overview*
+
+## 8. Describe the relationship between counts, abundance, and index of abundance.
+
+## 9. What is the probability of detection and why is it important? Are there taxa where you think a researcher would not need to account for imperfect detection? Why?
+
+## 10. Describe the sampling design for an occupancy study (not the statistical design but what you would do in the field).
