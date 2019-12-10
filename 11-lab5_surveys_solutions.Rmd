@@ -1,7 +1,9 @@
 ---
-title: "Lab 4: Hierarchical Models"
+title: 'Lab 4: Hierarchical Models'
 author: "Solutions"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 Turn in via Canvas next Friday by the end of the day. Submit either a knitted pdf, html, or doc file (you can submit the .Rmd file if knitting doesn't work).
@@ -54,14 +56,51 @@ The effect of time on the logit of detection is $-0.457 \pm 0.175$ and is statis
 The effect on the true scale (not logit) would be
 
 $$
-logit(p) = -0.457
+logit(p) = -0.519 + -0.457 time
 $$
 
+Probability at mean time (standardized so mean = 0)
+
 $$
-p = \frac{e^{-0.457}}{1 + e^{-0.457}}
+p = \frac{e^{-0.519 + -0.457 * 0}}{1 + e^{-0.519 -0.457 * 0}}
+$$
+$p$ = `r round(exp(-0.519) / (1 + exp(-0.519)), digits = 3)`
+
+
+At a later time (1 sd later):
+
+$$
+p = \frac{e^{-0.519 + -0.457 * 1}}{1 + e^{-0.519 -0.457 * 1}}
 $$
 
-$p$ = `r round(exp(-0.457) / (1 + exp(-0.457)), digits = 3)`, although it doesn't make as much sense without adding in the intercept and showing the effect over a range of times.
+$p$ = `r round(exp(-0.519-0.457) / (1 + exp(-0.519-0.457)), digits = 3)`
+
+Using the `backTransform()` function from the `unmarked` package which is nice because it will also calculate the uncertainty in the true scale estimate (SE):
+
+```{r}
+backTransform(linearComb(fm1, c(1, 0, 1), type = "det"))
+```
+
+Can view over a range of values to look at the shape of the function with different amounts of time. This will all be done for the mean date but you could vary each of them.
+
+```{r}
+summary(alfl.data$time.1) # range of times on real scale from 5 - 10
+times <- seq(4, 12, length.out = 1000) # extrapolate just a bit on each side of observed data
+times_std <- (times - mean(as.matrix(alfl.data[ ,c("time.1", "time.2", "time.3")]))) / sd(as.matrix(alfl.data[,c("time.1", "time.2", "time.3")]))
+
+p_time <- rep(NA_real_, length(times_std))
+for(i in 1:length(times_std)) {
+  p_time[i] <- backTransform(linearComb(fm1, c(1, 0, times_std[i]), type = "det"))@estimate
+}
+
+df <- data.frame(times, p_time)
+library(ggplot2)
+ggplot(df, aes(times, p_time)) + geom_line()
+
+
+```
+
+
 
 ## 4. Convert abundance to presence or absence (0 or 1) and run the same model but for occupancy. Display the results.
 

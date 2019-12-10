@@ -14,7 +14,7 @@ PP	Model	AICc
 5		
 
 
-## 2. Report the mean estimates, SE, and CI for each.
+## 2. Report the mean abundance estimates, SE, and CI for each.
 
 ```{r}
 library(ggplot2)
