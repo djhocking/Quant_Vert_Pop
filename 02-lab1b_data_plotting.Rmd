@@ -145,6 +145,16 @@ ggplot(sparrows, aes(x = wingcrd, y = wt)) +
 
 You see the regression line in blue, but a grey band around the regression that represents our confidence in the regression line. We'll get that soon enough, but for now just recognize that we estimated this based on a sample, and so there is some uncertainty in our data, and thus, there is some uncertainty in our line. The grey band is an estimate of where the regression could be given this uncertainty. Visually, this looks like a decent regression.
 
+
+We may also want to plot multiple groups of points or lines on the same figure. This is quite easy in with `ggplot2` with the `color =` aesthetic. Here is an example with some vehicle data that comes with R.
+
+```{r}
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+
+
+
 ```{marginfigure}
 In the next tutorial, we will learn about running more formal linear regressions and summarizing and interpreting the results.
 ```

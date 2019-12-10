@@ -24,3 +24,9 @@ Blackboard/
 Lecture_Book/
 Misc/
 Results/
+*.DBF
+*.FPT
+*.rel
+Data/*.DBF
+Data/*.FPT
+Data/*.rel

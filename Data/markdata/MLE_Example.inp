@@ -1,0 +1,8 @@
+/* Example Occupancy dataset without covariates */
+/* 4 survey occasions, 1 group */
+
+1111 10;
+1110 20;
+1100 30;
+1000 20;
+0000 20;

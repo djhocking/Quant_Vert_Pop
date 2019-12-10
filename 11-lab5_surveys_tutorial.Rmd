@@ -1,0 +1,167 @@
+---
+title: "Lab 5 Tutorial: Hierarchical Models"
+author: "Daniel Hocking"
+output: pdf_document
+---
+
+## Background
+
+**Read Chapters 14 - 18 in Powell and Gale**
+
+## Key Terms
+
+* Census
+* Survey
+* Count
+* Abundance (estimate)
+* Catch-per-unit-effort (CPUE)
+* Index of abundance
+* Detection probability
+* Availability probability
+
+## Methods
+
+* Distance sampling
+* Double-observer
+* Removal sampling (also called depletion sampling)
+* Repeated counts (*N*-mixture model)
+* Occupancy modeling
+
+## Occupancy Model
+
+Repeated presence-absence data to account for imperfect detection
+
+### Example
+
+*formula in `unmarked`*
+Double right-hand side formula describing covariates of detection and occupancy in that order.
+
+```{r}
+library(unmarked)
+
+# --------------------- Analysis of real data ----------------------------
+# This a subset of point-count data from Chandler et al. (Auk 2009)
+# alfl is Alder Flycatcher (Empidonax alnorum)
+# PART I. Import and format data
+alfl.data <- read.csv("Data/alfl05.csv", row.names=1)
+str(alfl.data)
+# Pull out count matrix and covert to binary
+alfl.y <- alfl.data[,c("alfl1", "alfl2", "alfl3")]
+alfl.y1 <- alfl.y # Make a copy
+alfl.y1[alfl.y>1] <- 1
+
+# Standardize site-covariates
+woody.mean <- mean(alfl.data$woody)
+woody.sd <- sd(alfl.data$woody)
+woody.z <- (alfl.data$woody-woody.mean)/woody.sd
+struct.mean <- mean(alfl.data$struct)
+struct.sd <- sd(alfl.data$struct)
+struct.z <- (alfl.data$struct-struct.mean)/struct.sd
+
+# Create unmarkedFrame
+library(unmarked)
+alfl.umf <- unmarkedFrameOccu(y=alfl.y1,
+    siteCovs=data.frame(woody=woody.z, struct=struct.z),
+    obsCovs=list(time=alfl.data[,c("time.1", "time.2", "time.3")],
+                 date=alfl.data[,c("date.1", "date.2", "date.3")]))
+# Here’s an easy way to standardize covariates after making the UMF
+obsCovs(alfl.umf) <- scale(obsCovs(alfl.umf))
+summary(alfl.umf)
+
+# PART II. Model fitting
+(fm1 <- occu(~1 ~1, alfl.umf))
+backTransform(fm1, type="state")
+backTransform(fm1, type="det")
+(fm2 <- occu(~date ~woody, alfl.umf))
+
+```
+
+## Distance Sampling
+
+### Example
+
+```{r}
+library(unmarked)
+
+# Load and format the data
+data(issj) # island scrub jay
+head(issj)
+covs <- issj[,c("elevation", "forest", "chaparral")]
+area <- pi*300^2 / 10000 # just converts distance in meters to hectares
+jayumf <- unmarkedFrameDS(y=as.matrix(issj[,1:3]),
+                          siteCovs=data.frame(covs, area),
+                          dist.breaks=c(0,100,200,300),
+                          unitsIn="m", survey="point")
+# Fit model
+fm1 <- distsamp(~chaparral ~chaparral + offset(log(area)),
+                jayumf, keyfun="halfnorm", output="abund")
+fm1
+```
+
+
+## Abundance with an *N*-mixture model
+
+### Example
+
+```{r}
+# PART 1: Set-up the data for analysis
+#
+#
+# -------------------------- Format data ---------------------------------
+# This a subset of point-count data from Chandler et al. (Auk 2009)
+# alfl is Alder Flycatcher (Empidonax alnorum)
+
+# Import data and check structure
+#alfl.data <- read.csv("alfl05.csv", row.names=1)
+alfl.data <- read.csv("Data/alfl05.csv", row.names=1)
+
+str(alfl.data)
+
+# Pull out count matrix 
+# No need to covert to binary as we did for occupancy model
+
+alfl.y <- alfl.data[,c("alfl1", "alfl2", "alfl3")]
+
+# Standardize site-covariates
+woody.mean <- mean(alfl.data$woody)
+woody.sd <- sd(alfl.data$woody)
+woody.z <- (alfl.data$woody-woody.mean)/woody.sd
+
+struct.mean <- mean(alfl.data$struct)
+struct.sd <- sd(alfl.data$struct)
+struct.z <- (alfl.data$struct-struct.mean)/struct.sd
+
+
+# Create unmarkedFrame
+library(unmarked)
+alfl.umf <- unmarkedFramePCount(y=alfl.y,
+    siteCovs=data.frame(woody=woody.z, struct=struct.z),
+    obsCovs=list(time=alfl.data[,c("time.1", "time.2", "time.3")],
+                 date=alfl.data[,c("date.1", "date.2", "date.3")]))
+summary(alfl.umf)
+
+
+# Here's an easy way to standardize covariates after making the UMF
+obsCovs(alfl.umf) <- scale(obsCovs(alfl.umf))
+summary(alfl.umf)
+
+
+#
+#
+# PART 2: Fit some models
+#
+# -------------------------- Model fitting  -----------------------------
+
+(fm1 <-  pcount(~1 ~1, alfl.umf))
+backTransform(fm1, type="state")
+backTransform(fm1, type="det")
+
+# model with date affecting detection and woody vegetation affecting abundance
+(fm4 <- pcount(~date ~woody, alfl.umf))
+```
+
+
+
+
+
+

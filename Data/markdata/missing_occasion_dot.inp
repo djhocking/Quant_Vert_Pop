@@ -1,0 +1,35 @@
+/* Example data set with missing sampling occasion at occasion 3. The
+generating model is phi(t)p(t), where phi(t) = 0.85,0.75,0.9,0.7,0.85,
+and where p(t)=0.5 for all occasions, except third, where p=0.
+
+In this version, the missin occasion is coded with a dot (.)   */
+110.00 99;
+101.00 49;
+100.00 161;
+111.00 40;
+110.10 10;
+100.10 15;
+111.11 16;
+101.10 17;
+111.01 11;
+100.11 13;
+100.01 8;
+110.01 11;
+101.11 13;
+110.11 15;
+101.01 12;
+111.10 10;
+011.00 104;
+010.00 229;
+011.01 22;
+011.10 37;
+011.11 23;
+010.11 29;
+010.10 34;
+010.01 22;
+001.11 57;
+001.00 292;
+001.10 92;
+001.01 59;
+000.10 300;
+000.11 200;

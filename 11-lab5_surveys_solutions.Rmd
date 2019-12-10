@@ -1,0 +1,132 @@
+---
+title: "Lab 4: Hierarchical Models"
+author: "Solutions"
+output: pdf_document
+---
+
+Turn in via Canvas next Friday by the end of the day. Submit either a knitted pdf, html, or doc file (you can submit the .Rmd file if knitting doesn't work).
+
+### Use the Alder Flycatcher data `alfl05.csv` for the following questions
+
+## 1. Estimate abundance and detection with an *N*-mixture model using time and date as independent variables on detection and woody vegetation and vegetation structure on abundance.
+
+```{r, warning = FALSE, message = FALSE}
+alfl.data <- read.csv("Data/alfl05.csv", stringsAsFactors = FALSE)
+
+# Pull out count matrix 
+alfl.y <- alfl.data[,c("alfl1", "alfl2", "alfl3")]
+
+# Standardize site-covariates
+woody.mean <- mean(alfl.data$woody)
+woody.sd <- sd(alfl.data$woody)
+woody.z <- (alfl.data$woody-woody.mean)/woody.sd
+
+struct.mean <- mean(alfl.data$struct)
+struct.sd <- sd(alfl.data$struct)
+struct.z <- (alfl.data$struct-struct.mean)/struct.sd
+
+# Create unmarkedFrame
+library(unmarked)
+alfl.umf <- unmarkedFramePCount(y=alfl.y,
+    siteCovs=data.frame(woody=woody.z, struct=struct.z),
+    obsCovs=list(time=alfl.data[,c("time.1", "time.2", "time.3")],
+                 date=alfl.data[,c("date.1", "date.2", "date.3")]))
+# summary(alfl.umf)
+
+# Here's an easy way to standardize covariates after making the UMF
+obsCovs(alfl.umf) <- scale(obsCovs(alfl.umf))
+# summary(alfl.umf)
+
+# -------------------------- Model fitting  -----------------------------
+fm1 <- pcount(~date + time ~woody + struct, alfl.umf)
+fm1
+
+```
+
+## 2. What is the affect of structure on abundance? Include the mean estimate and SE.
+
+Structure has no significant effect on Alder Fly Catcher abundance. The estimate of the effect (on log(abundance)) is $0.213 \pm 0.126$. the P-value is > 0.05, therefore we fail to reject the null that structure has no effect on abundance (i.e. we cannot confidently differentiate the effect from 0).
+
+## 3. What is the effect of time on detection? Is it a significant affect?
+
+The effect of time on the logit of detection is $-0.457 \pm 0.175$ and is statistically signficant. Therefore the detection probability goes down with increasing time of day, likely because bird calling and activity is highest early in the morning and then declines.
+
+The effect on the true scale (not logit) would be
+
+$$
+logit(p) = -0.457
+$$
+
+$$
+p = \frac{e^{-0.457}}{1 + e^{-0.457}}
+$$
+
+$p$ = `r round(exp(-0.457) / (1 + exp(-0.457)), digits = 3)`, although it doesn't make as much sense without adding in the intercept and showing the effect over a range of times.
+
+## 4. Convert abundance to presence or absence (0 or 1) and run the same model but for occupancy. Display the results.
+
+```{r}
+alfl.y1 <- alfl.y
+alfl.y1[alfl.y>1] <- 1
+
+# Create unmarkedFrame for occupancy
+alfl.umf <- unmarkedFrameOccu(y=alfl.y1,
+    siteCovs=data.frame(woody=woody.z, struct=struct.z),
+    obsCovs=list(time=alfl.data[,c("time.1", "time.2", "time.3")],
+                 date=alfl.data[,c("date.1", "date.2", "date.3")]))
+# Here’s an easy way to standardize covariates after making the UMF
+obsCovs(alfl.umf) <- scale(obsCovs(alfl.umf))
+
+# Model fitting
+fm2 <- occu(~date + time ~woody + struct, alfl.umf)
+fm2
+```
+
+## 5. What are the effects of woody vegetation and structure on the probability of occupancy?
+
+The effect of woody vegetation is $1.824 \pm 0.644$ and the effect of structure is $0.505 \pm 0.463$ but is not significant and cannot be differentiated from zero. This means that Alder Flycatchers are more likely to occur in habitats with more woody vegetation.
+
+*Point counts were done for Island Scrub Jays with 100, 200, and 200 m cutoffs. Use the `issj` data in the `unmarked` package for the questions below.* 
+
+## 6. Run an analysis including chaparral in detection and forest and elevation in abundance along with the log offset of area in abundance. Describe the results of the model and where you think the high abundances of bird are. 
+
+```{r}
+data(issj)
+
+covs <- issj[,c("elevation", "forest", "chaparral")]
+area <- pi*300^2 / 10000 # just converts distance in meters to hectares
+jayumf <- unmarkedFrameDS(y=as.matrix(issj[,1:3]),
+                          siteCovs=data.frame(covs, area),
+                          dist.breaks=c(0,100,200,300),
+                          unitsIn="m", survey="point")
+# Fit model
+fm1 <- distsamp(~chaparral ~forest + elevation + offset(log(area)),
+                jayumf, keyfun="halfnorm", output="abund")
+fm1
+```
+
+Forest cover does not significantly affect the abundance of Island Scrub Jays; however, elevation has a negative effect on abundance indicating high abundances at lower elevations.
+
+## 7. From the above analysis, what is the effect of chaparral on the detection of birds with distance from the observer?
+
+The amount of chaparral has a positive effect of detection with distance indicating that the more chaparral, the higher the detection probability in the point counts (with distance from the observer). Therefore, the birds are easier to see and/or hear in sites with more chaparral.
+
+
+*General terminology and overview*
+
+## 8. Describe the relationship between counts, abundance, and index of abundance.
+
+Counts are the number of individuals observed. This is a function of both how many their are (abundance) and the ability (probability) of observing them. Abundance is the true number of individuals in a population or given area. Index of abundance is a value that is proportional to abundance but the true abundance is unknown. The index can be useful but requires caution to ensure that the index is consistent across locations or time periods otherwise incorrect inference would be make regarding the changes or differences in abundance across space and time.
+
+## 9. What is the probability of detection and why is it important? Are there taxa where you think a researcher would not need to account for imperfect detection? Why?
+
+Detection probability is the probability of detecting (observing) and individual or species given that it is present in the population or area. It is important because if detection is variable in time and space, the inference regarding abundance or occupancy or distributions of species would be biased if detection is not accounted for. It is also important if we are setting regulations regarding catch or harvest levels as managers so we can have unbaised information regarding the population status.
+
+Doing surveys of trees might not require accounting for imperfect detection because they are stationary and easily observed (detection is close to 1 and consistent). However, it's also easy to miss individual trees that are rare in an area or seedlings if those are of concern.
+
+
+## 10. Describe the sampling design for an occupancy study (not the statistical design but what you would do in the field).
+
+(a short answer)
+
+Visit 100 sites (benefits from many sites) 4 times each throughout the main activity season of the species of interest. Record the presence or absence of the species on each visit along with any independent variables that could affect detection or occupancy.

@@ -1,0 +1,47 @@
+/*	
+Simulated mark-recapture data for use with "Density with Telemetry" data type.
+
+Order of Input:
+	1) AnimalID
+	2) Encounter History for 5 capture occasions
+	3) #telemetry locations on grid
+	4) #telemetry locations total
+	5) 2 groups (e.g., habitat types)
+	6) Individual Covariate: Distance (m) to edge of grid from mean capture location
+
+NOTE: Animals that were not sampled via telemetry have "." for 3) and 4)
+Note: Area of grid = 1 ha
+*/
+
+/*01*/	01000	5	10	1	0	 0;
+/*02*/	01100	10	10	1	0	20;
+/*03*/	01000	4	10	1	0	 0;
+/*04*/	10000	5	10	1	0	 0;
+/*05*/	10110	10	10	1	0	20;
+/*06*/	10000	7	10	1	0	10;
+/*07*/	00011	7	10	1	0	10;
+/*08*/	00010	10	10	1	0	30;
+/*09*/	11010	10	10	1	0	10;
+/*10*/	10000	6	10	1	0	10;
+/*11*/	01000	.	.	1	0	 0;
+/*12*/	00100	.	.	1	0	 0;
+/*13*/	00001	.	.	1	0	10;
+/*14*/	00010	.	.	1	0	10;
+/*15*/	00011	.	.	1	0	10;
+/*16*/	01001	.	.	1	0	 5;
+/*17*/	00100	.	.	1	0	20;
+/*18*/	00010	.	.	1	0	10;
+/*19*/	01000	.	.	1	0	20;
+/*20*/	10010	10	10	0	1	20;
+/*21*/	10000	1	10	0	1	 0;
+/*22*/	00100	8	10	0	1	20;
+/*23*/	00001	10	10	0	1	20;
+/*24*/	00010	5	10	0	1	 0;
+/*25*/	00010	5	10	0	1	20;
+/*26*/	00010	0	10	0	1	0;
+/*27*/	00110	.	.	0	1	25;
+/*28*/	00001	.	.	0	1	0;
+/*29*/	00101	.	.	0	1	20;
+/*30*/	11101	.	.	0	1	15;
+/*31*/	01010	.	.	0	1	25;
+/*32*/	11101	.	.	0	1	27.5;
